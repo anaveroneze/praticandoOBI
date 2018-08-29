@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Provas</title>
+</head>
+<body>
+    <h2>Listagem das provas:</h2>
+
+    <ul>
+        {% for prova in provas %}
+        <li>{{ prova.anoprova }} - {{prova.faseprova}} - {{prova.nivelprova}} - <a href="{{prova.urlprova}}"> Acesse </a> </li>
+        {% endfor%}
+
+    </ul>
+
+</body>
+</html>

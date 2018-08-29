@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Problemas da Prova tal</title>
+</head>
+<body>
+    <h2>Listagem dos problemas:</h2>
+
+    <br>
+        {% for prob in problemas %}
+        <br>{{ prob.numeroproblema }} - {{prob.tituloproblema}}<br/>{{prob.enunciadoproblema}}</br>
+
+        {% if prob.regrasproblema != null %}
+        <br/>{{prob.regrasproblema}}<br/>
+        {% endif %}
+
+        {% if prob.imgproblema != null %}
+            {{ prob.imgproblema }}</br>
+
+        {% load static %}
+        <img src="{% static prob.imgproblema %}"  width="30" height="30" alt="My image">
+        {% endif %}
+        <!--<script type="text/javascript">-->
+            <!--var regras = {{regrasproblema}};-->
+            <!--if( regras != "None")-->
+                <!--return '{{prob.regrasproblema}}';-->
+        <!--</script>-->
+
+        {% endfor%}
+
+    </ul>
+
+</body>
+</html>
