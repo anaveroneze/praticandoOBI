@@ -24,5 +24,6 @@ urlpatterns = [
     path('', home),
     path('provas/', provas, name='url_provas'),
     path('problemas/<int:pk>', problemas, name='url_prob'),
+   # path('gabarito/<int:pk>', gabarito, name='url_gabarito'),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

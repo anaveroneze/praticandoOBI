@@ -2,10 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Problemas da Prova tal</title>
+
+    <style>
+    #myDIV {
+        width: 100%;
+        padding: 20px 0;
+        text-align: center;
+        background-color: white;
+        margin-top: 10px;
+    }
+    </style>
+
+    <title>Problemas</title>
 </head>
 
-<>
     <h2>Listagem dos problemas:</h2>
 
     <br>
@@ -31,6 +41,24 @@
                             {{a.letraalternativa}} - {{a.textoalternativa}}</br>
                         {% endif %}
                     {% endfor %}
+
+                <button onclick="mostraGabarito()">Ver Gabarito</button>
+
+                <div id="myDIV" style="display:none">
+                    {{q.gabaritoquestao}}
+                </div>
+
+                <script>
+                    function mostraGabarito(){
+                        var v = document.getElementById("myDIV");
+                        if(v.style.display == "none"){
+                            v.style.display = "block";
+                        }else{
+                            v.style.display = "none";
+                        }
+                    }
+                </script>
+
                 {% endif %}
             {% endfor %}
 

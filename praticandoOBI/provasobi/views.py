@@ -27,5 +27,3 @@ def problemas(request, pk):
     #data = {}
     #data['problemas'] = Problema.objects.filter(pk=pk)
     #return render(request, 'problemas.html', data)
-
-
