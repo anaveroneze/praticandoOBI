@@ -24,20 +24,6 @@ class Prova(models.Model):
         db_table = 'prova'
         ordering = ['anoprova']
 
-
-class Questao(models.Model):
-    codquestao = models.IntegerField(db_column='codQuestao', primary_key=True)  # Field name made lowercase.
-    numeroquestao = models.IntegerField(db_column='numeroQuestao', blank=True, null=True)  # Field name made lowercase.
-    enunciadoquestao = models.CharField(db_column='enunciadoQuestao', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    gabaritoquestao = models.CharField(db_column='gabaritoQuestao', max_length=10, blank=True, null=True)
-    codprova = models.ForeignKey(Prova, models.DO_NOTHING, db_column='codProva', blank=True, null=True)  # Field name made lowercase.
-    codproblema = models.ForeignKey('Problema', models.DO_NOTHING, db_column='codProblema', blank=True, null=True)
-
-    class Meta:
-        managed = True
-        db_table = 'questao'
-        db_table = 'questao'
-
 class Problema(models.Model):
     codproblema = models.AutoField(db_column='codProblema', primary_key=True)
     numeroproblema = models.IntegerField(db_column='numeroProblema', blank=True, null=True)
@@ -51,6 +37,18 @@ class Problema(models.Model):
     class Meta:
         managed = True
         db_table = 'problema'
+
+class Questao(models.Model):
+    codquestao = models.IntegerField(db_column='codQuestao', primary_key=True)  # Field name made lowercase.
+    numeroquestao = models.IntegerField(db_column='numeroQuestao', blank=True, null=True)  # Field name made lowercase.
+    enunciadoquestao = models.CharField(db_column='enunciadoQuestao', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    gabaritoquestao = models.CharField(db_column='gabaritoQuestao', max_length=10, blank=True, null=True)
+    codprova = models.ForeignKey(Prova, models.DO_NOTHING, db_column='codProva', blank=True, null=True)  # Field name made lowercase.
+    codproblema = models.ForeignKey(Problema, models.DO_NOTHING, db_column='codProblema', blank=True, null=True, related_name="cod_problemas_questao")
+
+    class Meta:
+        managed = True
+        db_table = 'questao'
 
 class Classificacao(models.Model):
     codclassificacao = models.AutoField(db_column='codClassificacao', primary_key=True)

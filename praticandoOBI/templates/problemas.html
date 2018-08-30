@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Problemas da Prova tal</title>
 </head>
+
 <body>
     <h2>Listagem dos problemas:</h2>
 
@@ -16,19 +17,17 @@
         {% endif %}
 
         {% if prob.imgproblema != null %}
-            {{ prob.imgproblema }}</br>
-
-        {% load static %}
-        <img src="{% static prob.imgproblema %}"  width="30" height="30" alt="My image">
+            {% load static %}
+            <img src={% static prob.imgproblema %} width="120" height="120" alt="My image">
         {% endif %}
-        <!--<script type="text/javascript">-->
-            <!--var regras = {{regrasproblema}};-->
-            <!--if( regras != "None")-->
-                <!--return '{{prob.regrasproblema}}';-->
-        <!--</script>-->
+
+            {% for q in questoes %}
+                {% if q.codproblema.codproblema == prob.numeroproblema %}
+                    <br>{{ q.numeroquestao }} - {{q.enunciadoquestao}}</br>
+                {% endif %}
+            {% endfor %}
 
         {% endfor%}
-
     </ul>
 
 </body>
