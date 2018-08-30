@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Prova, Problema, Questao
+from .models import Prova, Problema, Questao, Alternativa
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
@@ -16,17 +16,14 @@ def provas(request):
 def problemas(request, pk):
     problemas = Problema.objects.all().select_related('codprova').filter(codprova=pk)
     questoes = Questao.objects.all().select_related('codprova').filter(codprova=pk)#.filter(codproblema__in=id_questoes)
+    id_questoes = []
 
     for q in questoes:
-         print(q)
-    for p in problemas:
-         print(p)
+         id_questoes.append(q)
 
-    # for p in problemas:
-    #     prob = p.codproblema
-    #     id_questoes.append(prob)
-    #     print(prob)
-    return render(request, 'problemas.html', {'problemas': problemas, 'questoes': questoes})
+    alternativas = Alternativa.objects.all().select_related('codquestao').filter(codquestao__in=id_questoes)
+
+    return render(request, 'problemas.html', {'problemas': problemas, 'questoes': questoes, 'alternativas' : alternativas})
     #data = {}
     #data['problemas'] = Problema.objects.filter(pk=pk)
     #return render(request, 'problemas.html', data)

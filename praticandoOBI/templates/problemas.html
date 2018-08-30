@@ -5,25 +5,32 @@
     <title>Problemas da Prova tal</title>
 </head>
 
-<body>
+<>
     <h2>Listagem dos problemas:</h2>
 
     <br>
         {% for prob in problemas %}
         <br>{{ prob.numeroproblema }} - {{prob.tituloproblema}}<br/>{{prob.enunciadoproblema}}</br>
 
-        {% if prob.regrasproblema != null %}
+        {% if prob.regrasproblema %}
         <br/>{{prob.regrasproblema}}<br/>
         {% endif %}
 
         {% if prob.imgproblema != null %}
             {% load static %}
             <img src={% static prob.imgproblema %} width="120" height="120" alt="My image">
+
         {% endif %}
 
             {% for q in questoes %}
                 {% if q.codproblema.codproblema == prob.numeroproblema %}
                     <br>{{ q.numeroquestao }} - {{q.enunciadoquestao}}</br>
+
+                    {% for a in alternativas %}
+                        {% if a.codquestao.codquestao == q.codquestao %}
+                            {{a.letraalternativa}} - {{a.textoalternativa}}</br>
+                        {% endif %}
+                    {% endfor %}
                 {% endif %}
             {% endfor %}
 

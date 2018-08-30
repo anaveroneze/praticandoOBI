@@ -2,15 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Provas</title>
+    <title>Praticando OBI</title>
 </head>
 <body>
-    <h2>Listagem das provas:</h2>
-
+    <h2>Bem Vindo - Praticando OBI</h2>
+    <a href = "{% url 'url_provas' %}">Ver Provas</a>
     <ul>
-        {% for prova in provas %}
-        <li>{{ prova.anoprova }} - {{prova.faseprova}} - {{prova.nivelprova}} - <a href="{{prova.urlprova}}"> Acesse </a> </li>
-        {% endfor%}
 
     </ul>
 
