@@ -2,17 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-
-    <style>
-    #myDIV {
-        width: 100%;
-        padding: 20px 0;
-        text-align: center;
-        background-color: white;
-        margin-top: 10px;
-    }
-    </style>
-
     <title>Problemas</title>
 </head>
 
@@ -42,28 +31,31 @@
                         {% endif %}
                     {% endfor %}
 
-                <button onclick="mostraGabarito()">Ver Gabarito</button>
 
-                <div id="myDIV" style="display:none">
-                    {{q.gabaritoquestao}}
-                </div>
+                 <button class="btn btn-outline-success" onclick="myFunction('{{q.codquestao}}')">Ver gabarito</button><br/>
+                 <div id="{{q.codquestao}}">
+                   <div class="highlight">
+                     <pre>{{q.gabaritoquestao}}</pre>
+                   </div>
+                 </div>
 
                 <script>
-                    function mostraGabarito(){
-                        var v = document.getElementById("myDIV");
-                        if(v.style.display == "none"){
-                            v.style.display = "block";
-                        }else{
-                            v.style.display = "none";
-                        }
+                document.getElementById( '{{q.codquestao}}' ).style.display = 'none';
+                function myFunction(elementID) {
+                    var x = document.getElementById(elementID);
+                    if (x.style.display === 'none') {
+                        x.style.display = 'block';
+                    } else {
+                        x.style.display = 'none';
                     }
-                </script>
+                }</script>
 
                 {% endif %}
             {% endfor %}
 
         {% endfor%}
     </ul>
+
 
 </body>
 </html>
