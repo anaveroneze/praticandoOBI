@@ -9,7 +9,15 @@
 
     <br>
         {% for prob in problemas %}
-            <br>{{ prob.numeroproblema }} - {{prob.tituloproblema}}<br/>{{prob.enunciadoproblema}}</br>
+            <br>{{ prob.numeroproblema }} - {{prob.tituloproblema}}<br/>
+
+            <!--Mostra a classificação do problema, se ele tiver-->
+            <br><b>CLASSIFICAÇÃO:</b>
+            {% for f in prob.classificacao.all %}
+                <br><b>{{f.tituloclassificacao}}</b>
+            {% endfor %}
+
+            <br/><br/>{{prob.enunciadoproblema}}</br>
 
             <!--Mostra as regras do problema, se ele tiver-->
             {% if prob.regrasproblema %}
