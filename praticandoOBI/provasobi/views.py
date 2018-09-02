@@ -15,9 +15,14 @@ def provas(request):
 
 def problemas(request, pk):
     problemas = Problema.objects.all().select_related('codprova').filter(codprova=pk)
-    questoes = Questao.objects.all().select_related('codprova').filter(codprova=pk)#.filter(codproblema__in=id_questoes)
-    id_questoes = []
 
+    id_prob = []
+    for p in problemas:
+        id_prob.append(p)
+
+    questoes = Questao.objects.all().select_related('codproblema').filter(codproblema__in=id_prob).order_by('numeroquestao')#.filter(codproblema__in=id_questoes)
+
+    id_questoes = []
     for q in questoes:
          id_questoes.append(q)
 

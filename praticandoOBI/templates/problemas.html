@@ -9,28 +9,36 @@
 
     <br>
         {% for prob in problemas %}
-        <br>{{ prob.numeroproblema }} - {{prob.tituloproblema}}<br/>{{prob.enunciadoproblema}}</br>
+            <br>{{ prob.numeroproblema }} - {{prob.tituloproblema}}<br/>{{prob.enunciadoproblema}}</br>
 
-        {% if prob.regrasproblema %}
-        <br/>{{prob.regrasproblema}}<br/>
-        {% endif %}
+            <!--Mostra as regras do problema, se ele tiver-->
+            {% if prob.regrasproblema %}
+                <br/>{{prob.regrasproblema}}<br/>
+            {% endif %}
 
-        {% if prob.imgproblema != null %}
-            {% load static %}
-            <img src={% static prob.imgproblema %} width="120" height="120" alt="My image">
+            <!--Mostra as imagens do problema, se ele tiver-->
+            {% if prob.imgproblema %}
+                {% load static %}
+                <img src={% static prob.imgproblema %} width="200" height="200" alt="My image">
+            {% endif %}
 
-        {% endif %}
-
+            <!--Mostra as questões do problema-->
             {% for q in questoes %}
-                {% if q.codproblema.codproblema == prob.numeroproblema %}
+                {% if q.codproblema.codproblema == prob.codproblema %}
                     <br>{{ q.numeroquestao }} - {{q.enunciadoquestao}}</br>
 
+                    <!--Mostra as imagens da questão-->
+                    {% if q.imgquestao %}
+                        {% load static %}
+                        <img src={% static q.imgquestao %} width="200" height="200" alt="Img"></br>
+                    {% endif %}
+
+                    <!--Mostra as alternativas da questão-->
                     {% for a in alternativas %}
                         {% if a.codquestao.codquestao == q.codquestao %}
                             {{a.letraalternativa}} - {{a.textoalternativa}}</br>
                         {% endif %}
                     {% endfor %}
-
 
                  <button class="btn btn-outline-success" onclick="myFunction('{{q.codquestao}}')">Ver gabarito</button><br/>
                  <div id="{{q.codquestao}}">

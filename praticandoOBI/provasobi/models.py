@@ -32,6 +32,7 @@ class Problema(models.Model):
     regrasproblema = models.CharField(db_column='regrasProblema', max_length=500, blank=True, null=True)
     imgproblema = models.CharField(db_column='imgProblema', max_length=300, blank=True, null=True, default='')
     codprova = models.ForeignKey('Prova', models.DO_NOTHING, db_column='codProva', blank=True, null=True)
+    classificacao = models.ManyToManyField('Classificacao', blank=True)
 
 
     class Meta:
@@ -43,7 +44,7 @@ class Questao(models.Model):
     numeroquestao = models.IntegerField(db_column='numeroQuestao', blank=True, null=True)  # Field name made lowercase.
     enunciadoquestao = models.CharField(db_column='enunciadoQuestao', max_length=100, blank=True, null=True)  # Field name made lowercase.
     gabaritoquestao = models.CharField(db_column='gabaritoQuestao', max_length=10, blank=True, null=True)
-    codprova = models.ForeignKey(Prova, models.DO_NOTHING, db_column='codProva', blank=True, null=True)  # Field name made lowercase.
+    imgquestao = models.CharField(db_column='imgQuestao', max_length=300, blank=True, null=True, default='')
     codproblema = models.ForeignKey(Problema, models.DO_NOTHING, db_column='codProblema', blank=True, null=True, related_name="cod_problemas_questao")
 
     class Meta:
@@ -53,7 +54,7 @@ class Questao(models.Model):
 class Classificacao(models.Model):
     codclassificacao = models.AutoField(db_column='codClassificacao', primary_key=True)
     tituloclassificacao = models.CharField(db_column='tituloClassificacao', max_length=100, blank=True, null=True)
-    problemas = models.ManyToManyField(Problema)
+
     class Meta:
         managed = True
         db_table = 'classificacao'
