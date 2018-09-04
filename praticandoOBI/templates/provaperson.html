@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    {% block content %}
+    <title>Nova prova</title>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Salvar</button>
+    </form>
+    {% endblock %}
+</head>
+<body>
+
+</body>
+</html>

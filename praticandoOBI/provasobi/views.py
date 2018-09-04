@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-from .models import Prova, Problema, Questao, Alternativa
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from .models import Prova, Problema, Questao, Alternativa, ProvaPerson
+from .forms import ProvaForm
 
 def home(request):
     data = {}
@@ -32,3 +33,16 @@ def problemas(request, pk):
     #data = {}
     #data['problemas'] = Problema.objects.filter(pk=pk)
     #return render(request, 'problemas.html', data)
+
+def provaperson(request):
+
+    if request.method == "POST":
+        form = ProvaForm(request.POST)
+        if form.is_valid():
+            provaperson = form.save(commit=False)
+            provaperson.autor = request.user
+            provaperson.save()
+            return redirect('home')
+    else:
+        form = ProvaForm()
+    return render(request, 'provaperson.html', {'form':form})
