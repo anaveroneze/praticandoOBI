@@ -62,6 +62,6 @@ class Classificacao(models.Model):
 class ProvaPerson(models.Model):
     autor = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     titulo = models.CharField(db_column='titulo', max_length=200, blank=True, null=True)
-    #ano = 1º - 9º ou todos - selected box
-    dificuldade = models.IntegerField(db_column='dificuldade', blank=True, null=True)
+    ano = models.CharField(db_column='ano',  max_length=20, blank=True, null=True)
+    dificuldade = models.IntegerField(db_column='dificuldade', blank=True, null=True, default=0)
     observacoes = models.TextField(db_column='observacoes', blank=True, null=True)

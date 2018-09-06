@@ -1,4 +1,7 @@
 from django.contrib import admin
-# from .models import Model
+from .models import Prova, Classificacao, ProvaPerson
+
 # # Register your models here.
-# admin.site.register(Modelo)
+admin.site.register(Prova)
+admin.site.register(Classificacao)
+admin.site.register(ProvaPerson)

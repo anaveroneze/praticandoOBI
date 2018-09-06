@@ -1,16 +1,19 @@
 <!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
 <html lang="en">
 <head>
-    <link href="{% static 'admin/css/bootstrap.css' %}" rel="stylesheet">
+
     <meta charset="UTF-8">
     <title>Praticando OBI</title>
 </head>
 <body>
     <h2>Bem Vindo<br/>Praticando OBI</h2>
 
+    {% block content %}
     <a href = "{% url 'url_provas' %}">Ver Provas</a><br/>
     <a href="{% url 'provaperson' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span>Nova Prova</a>
+    {% endblock %}
     <ul>
 
     </ul>

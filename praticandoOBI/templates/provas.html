@@ -1,10 +1,13 @@
 <!DOCTYPE html>
+{% extends 'base.html' %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Provas</title>
 </head>
 <body>
+
+    {% block content %}
     <h2>Listagem das provas:</h2>
 
     <ul>
@@ -13,6 +16,7 @@
         <li><a href="{% url 'url_prob' prova.codprova %}">Ver problemas</a></li>
         {% endfor%}
     </ul>
+    {% endblock %}
 
 </body>
 </html>

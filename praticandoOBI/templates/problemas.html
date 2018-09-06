@@ -1,10 +1,12 @@
 <!DOCTYPE html>
+{% extends 'base.html' %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Problemas</title>
 </head>
 
+    {% block content %}
     <h2>Listagem dos problemas:</h2>
 
     <br>
@@ -71,6 +73,7 @@
 
         {% endfor%}
     </ul>
+    {% endblock %}
 
 
 </body>

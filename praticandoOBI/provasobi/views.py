@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Prova, Problema, Questao, Alternativa, ProvaPerson
@@ -42,7 +42,11 @@ def provaperson(request):
             provaperson = form.save(commit=False)
             provaperson.autor = request.user
             provaperson.save()
-            return redirect('home')
+            return redirect('provaperson_detail', pk=provaperson.pk)
     else:
         form = ProvaForm()
     return render(request, 'provaperson.html', {'form':form})
+
+def provaperson_detail(request, pk):
+    provaperson = get_object_or_404(ProvaPerson, pk=pk)
+    return render(request, 'provaperson_detail.html', {'provaperson':provaperson})
