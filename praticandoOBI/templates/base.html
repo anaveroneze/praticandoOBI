@@ -17,6 +17,9 @@
                 {% block content %}
                 {% endblock %}
                 </div>
+                {% for m in messages %}
+                    {{ m }}
+                {% endfor %}
             </div>
         </div>
     </body>

@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Alternativa(models.Model):
     codalternativa = models.IntegerField(db_column='codAlternativa', primary_key=True)  # Field name made lowercase.
     letraalternativa = models.CharField(db_column='letraAlternativa', max_length=100, blank=True, null=True)  # Field name made lowercase.
@@ -65,3 +64,9 @@ class ProvaPerson(models.Model):
     ano = models.CharField(db_column='ano',  max_length=20, blank=True, null=True)
     dificuldade = models.IntegerField(db_column='dificuldade', blank=True, null=True, default=0)
     observacoes = models.TextField(db_column='observacoes', blank=True, null=True)
+
+    # > from django.contrib.auth.models import User
+    # > from provasobi.models import Profile
+    # > users = User.objects.filter(profile=None)
+    # > for user in users:
+    #     > Profile.objects.create(user=user)

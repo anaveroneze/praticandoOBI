@@ -14,19 +14,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from provasobi.views import home, provas, problemas, provaperson, provaperson_detail
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', home, name='home'),
-    path('provas/', provas, name='url_provas'),
-    path('problemas/<int:pk>', problemas, name='url_prob'),
-    path('prova/nova', provaperson, name='provaperson'),
-    path('prova/nova/<int:pk>', provaperson_detail, name= 'provaperson_detail')
+    path('provas/', include('provasobi.urls', namespace='provas_obi')),
+    path('admin/', admin.site.urls),
+    path('usuario/', include('usuarios.urls', namespace='usuarios_obi')),
+
+    #path('<int:pk>/minhasprovas/', minhasprovas, name='url_minhasprovas'),
+    path('nova/', provaperson, name='provaperson'),
+    path('nova/<int:pk>', provaperson_detail, name='provaperson_detail'),
    # path('prova/<int:pk>', provaperson_detail, name='provadetail'),
    # path('gabarito/<int:pk>', gabarito, name='url_gabarito'),
 ]
-#urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

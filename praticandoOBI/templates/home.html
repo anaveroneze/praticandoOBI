@@ -11,8 +11,9 @@
     <h2>Bem Vindo<br/>Praticando OBI</h2>
 
     {% block content %}
-    <a href = "{% url 'url_provas' %}">Ver Provas</a><br/>
-    <a href="{% url 'provaperson' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span>Nova Prova</a>
+        <a href = "{% url 'provas_obi:url_provas' %}">Ver Provas</a><br/>
+        <a href="{% url 'provaperson' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span>Nova Prova</a><br/>
+        <a href="{% url 'usuarios_obi:update_perfil' %}" class="top-menu">Usuário</a>
     {% endblock %}
     <ul>
 

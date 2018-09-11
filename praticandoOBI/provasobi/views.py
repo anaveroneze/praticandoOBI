@@ -5,9 +5,10 @@ from .models import Prova, Problema, Questao, Alternativa, ProvaPerson
 from .forms import ProvaForm
 
 def home(request):
-    data = {}
-    data['provas'] = Prova.objects.all()
-    return render(request, 'home.html', data)
+    return render(request, 'home.html', {})
+    # data = {}
+    # data['provas'] = Prova.objects.all()
+    # return render(request, 'home.html', data)
 
 def provas(request):
     data = {}
@@ -50,3 +51,4 @@ def provaperson(request):
 def provaperson_detail(request, pk):
     provaperson = get_object_or_404(ProvaPerson, pk=pk)
     return render(request, 'provaperson_detail.html', {'provaperson':provaperson})
+

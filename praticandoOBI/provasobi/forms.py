@@ -6,3 +6,4 @@ class ProvaForm(forms.ModelForm):
         model = ProvaPerson
         fields = ('titulo', 'ano', 'observacoes',)
 
+
