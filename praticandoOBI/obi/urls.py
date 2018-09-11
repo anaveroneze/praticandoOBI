@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from provasobi.views import home, provas, problemas, provaperson, provaperson_detail
+from provasobi.views import home, provas, problemas
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -26,8 +26,8 @@ urlpatterns = [
     path('usuario/', include('usuarios.urls', namespace='usuarios_obi')),
 
     #path('<int:pk>/minhasprovas/', minhasprovas, name='url_minhasprovas'),
-    path('nova/', provaperson, name='provaperson'),
-    path('nova/<int:pk>', provaperson_detail, name='provaperson_detail'),
+   # path('nova/', provaperson, name='provaperson'),
+   # path('nova/<int:pk>', provaperson_detail, name='provapersoninfo'),
    # path('prova/<int:pk>', provaperson_detail, name='provadetail'),
    # path('gabarito/<int:pk>', gabarito, name='url_gabarito'),
 ]

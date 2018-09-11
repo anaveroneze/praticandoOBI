@@ -34,21 +34,3 @@ def problemas(request, pk):
     #data = {}
     #data['problemas'] = Problema.objects.filter(pk=pk)
     #return render(request, 'problemas.html', data)
-
-def provaperson(request):
-
-    if request.method == "POST":
-        form = ProvaForm(request.POST)
-        if form.is_valid():
-            provaperson = form.save(commit=False)
-            provaperson.autor = request.user
-            provaperson.save()
-            return redirect('provaperson_detail', pk=provaperson.pk)
-    else:
-        form = ProvaForm()
-    return render(request, 'provaperson.html', {'form':form})
-
-def provaperson_detail(request, pk):
-    provaperson = get_object_or_404(ProvaPerson, pk=pk)
-    return render(request, 'provaperson_detail.html', {'provaperson':provaperson})
-

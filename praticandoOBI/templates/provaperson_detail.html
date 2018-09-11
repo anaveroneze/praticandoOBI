@@ -8,11 +8,11 @@
 <body>
 
     {% block content %}
-    <h2>Minhas provas:</h2>
+    <h2>Minhas:</h2>
     <div class="provaperson">
         <h1>{{ provaperson.title }}</h1>
     </div>
     {% endblock %}
-
+  <!--<a class="btn btn-default" href="{% url 'usuarios_obi:provaperson_nova' pk=provaperson.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
 </body>
 </html>

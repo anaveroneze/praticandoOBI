@@ -8,11 +8,13 @@
 <body>
 
     {% block content %}
-    <h2>Minhas provas:</h2>
+    <h2>Minhas Provas:</h2>
     <ul>
-        {% for prova in provaperson %}
-        <h1><a href="{% url 'provaperson_detail' pk=prova.pk %}">{{ prova.titulo }}</a></h1>
-        {% endfor%}
+    <div class="provaperson">
+        {{ provaperson.titulo }}<br/>
+        {{ provaperson.ano }}<br/>
+        {{ provaperson.observacoes }}<br/>
+    </div>
     </ul>
     {% endblock %}
 
