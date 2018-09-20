@@ -8,7 +8,6 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     localizacao = models.CharField(max_length=30, blank=True)
     data_nascimento = models.DateField(null=True, blank=True)
-    provas = models.ManyToManyField(ProvaPerson, blank=True)
 
     def __str__(self):
         return self.user.username + ' ' + self.localizacao
