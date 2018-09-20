@@ -2,6 +2,17 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import Profile
 from provasobi.models import ProvaPerson
+from django.contrib.auth.forms import UserCreationForm
+
+class PerfilForm(UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = User
+
+    def save(self, commit=True):
+        user = super(PerfilForm, self).save(commit=False)
+        if commit:
+            user.save()
+        return user
 
 class UserForm(forms.ModelForm):
     class Meta:

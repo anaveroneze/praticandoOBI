@@ -9,11 +9,21 @@
 </head>
 <body>
     {% block content %}
-        <div class="page header">
-            <a href="{% url 'usuarios_obi:update_perfil' %}" class="top-menu">Usuário</a>
-        </div>
-        <a href = "{% url 'provas_obi:url_provas' %}">Ver Provas</a><br/>
+        {% if user.is_authenticated %}
+        Olá {{user.username}}!<br/>
         <a href="{% url 'usuarios_obi:provaperson_nova' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span>Nova Prova</a><br/>
+        <a href="{% url 'usuarios_obi:provaperson_lista' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span>Minhas Provas</a><br/>
+        <p><a href="{% url 'logout' %}">Sair</a></p>
+        {% else %}
+        <p>Você não está logado.</p>
+        <div class="page header">
+            <a href="{% url 'usuarios_obi:entrar_perfil' %}" class="top-menu">Usuário- login</a>
+        </div>
+        {% endif %}
+        <a href = "{% url 'provas_obi:url_provas' %}">Ver Provas</a><br/>
+        <a href="{% url 'provas_obi:url_busca' %}"></span>Buscar em Provas</a><br/>
+        <a href="{% url 'provas_obi:url_buscaprob' %}"></span>Buscar em Problemas</a><br/>
+
     {% endblock %}
     <ul>
 

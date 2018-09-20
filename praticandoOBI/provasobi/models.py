@@ -64,6 +64,7 @@ class ProvaPerson(models.Model):
     ano = models.CharField(db_column='ano',  max_length=20, blank=True, null=True)
     dificuldade = models.IntegerField(db_column='dificuldade', blank=True, null=True, default=0)
     observacoes = models.TextField(db_column='observacoes', blank=True, null=True)
+    questoes = models.ManyToManyField(Questao, blank='True')
 
     # > from django.contrib.auth.models import User
     # > from provasobi.models import Profile

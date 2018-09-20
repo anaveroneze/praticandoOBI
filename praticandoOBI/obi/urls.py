@@ -23,11 +23,9 @@ urlpatterns = [
     path('', home, name='home'),
     path('provas/', include('provasobi.urls', namespace='provas_obi')),
     path('admin/', admin.site.urls),
-    path('usuario/', include('usuarios.urls', namespace='usuarios_obi')),
 
-    #path('<int:pk>/minhasprovas/', minhasprovas, name='url_minhasprovas'),
-   # path('nova/', provaperson, name='provaperson'),
-   # path('nova/<int:pk>', provaperson_detail, name='provapersoninfo'),
-   # path('prova/<int:pk>', provaperson_detail, name='provadetail'),
-   # path('gabarito/<int:pk>', gabarito, name='url_gabarito'),
+    path('contas/', include('django.contrib.auth.urls')),
+    path('contas/login/', include('usuarios.urls', namespace='usuarios_obi')),
+    #path('usuario/', include('usuarios.urls', namespace='usuarios_obi')),
+
 ]

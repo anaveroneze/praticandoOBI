@@ -1,11 +1,25 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Profile
 from provasobi.models import ProvaPerson
-from .forms import UserForm, ProfileForm, ProvaForm
+from .forms import UserForm, ProfileForm, ProvaForm, PerfilForm
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib.auth import login
+from django.views.generic import (CreateView, DeleteView, DetailView, ListView, UpdateView)
+from django.views.decorators.csrf import csrf_protect
 
 # Create your views here.
+@csrf_protect
+class entrar_perfil(CreateView):
+    model = User
+    form = PerfilForm
+    template_name = 'usuarios/entrar_form.html'
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('home')
+
 def update_perfil(request):
 
     if request.method == 'POST':
@@ -28,8 +42,17 @@ def provaperson_info(request, pk):
     return render(request, 'provapersoninfo.html', {'provaperson':provaperson})
 
 def provaperson_lista(request):
-    provaperson = get_object_or_404(ProvaPerson, pk=pk)
-    return render(request, 'provapersoninfo.html', {'provaperson':provaperson})
+
+    user = User.objects.get(username=request.user)
+    model = ProvaPerson
+    ordering = ('codprovaperson', )
+    template_name = 'usuarios/minhasprovas.html'
+
+    def get_queryset(self):
+        queryset = self.request.user.quizzes\
+            .select_related('titulo') \
+            .annotate(questions_count=Count('questoes', distinct=True))
+        return queryset
 
 def provaperson_nova(request):
 
