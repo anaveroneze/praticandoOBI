@@ -1,26 +1,19 @@
 <!DOCTYPE html>
 {% extends './../base.html' %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Usuário</title>
-</head>
-<body>
 
-    <h2>{{ user.nome }}</h2>
 
-    {% block content %}
-    <!--<ul>-->
-        <!--<li>Nome: {{user.username}}</li>-->
-        <!--<li>Local: {{user.localizacao}} </li>-->
-        <!--<li>Data de Nascimento: {{user.data_nascimento}} </li>-->
-    <!--</ul>-->
-        <form method="POST" class="post-form" >{% csrf_token %}
-          {{ user_form.as_p }}
-          {{ profile_form.as_p }}
-          <button type="submit">Salvar</button>
-        </form>
-    {% endblock %}
-</body>
-</html>
+{% block container %}
+
+    <h2>Olá: {{ user.nome }}</h2>
+<!--<ul>-->
+    <!--<li>Nome: {{user.username}}</li>-->
+    <!--<li>Local: {{user.localizacao}} </li>-->
+    <!--<li>Data de Nascimento: {{user.data_nascimento}} </li>-->
+<!--</ul>-->
+    <form method="POST" class="post-form" >{% csrf_token %}
+      {{ user_form.as_p }}
+      {{ profile_form.as_p }}
+      <button type="submit">Salvar</button>
+    </form>
+{% endblock %}

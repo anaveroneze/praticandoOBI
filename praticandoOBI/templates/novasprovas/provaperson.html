@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block container %}
+    <div class="row">
+        <div class="col-md-8 col-sm-10 col-12">
+        <h2>Nova Prova:</h2>
+            <form method="POST" class="post-form">{% csrf_token %}
+                <!--{{ form.as_p }}-->
+                {% for field in form %}<p>
+                    {{field.label_tag}}<br>
+                    {% if field.help_text %}
+                        <small style="color: grey">{{field.help_text}}</small><br>
+                    {% endif %}
+                    {{field}}
+                    {% for error in field.error %}
+                        <p style="color:red">{{error}}</p>
+                    {% endfor %}
+                </p>{% endfor %}
+
+                <button type="submit" class="save btn btn-default">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,26 +1,93 @@
+<!DOCTYPE html>
 {% load static %}
-<html>
+<html lang="en">
+
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Praticando OBI</title>
+
         <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
         <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">-->
         <!--<link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>-->
         <link href="{% static 'admin/css/bootstrap.css' %}" rel="stylesheet">
+        <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
     </head>
-    <body>
-        <div class="page-header">
-            <h1><a href="/"> Praticando OBI</a></h1>
+    <body style="background-color: ">
+
+    <div id="wrapper" class="animate">
+    <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-light" style="background-color: #54a9ff;">
+        <a class="navbar-brand" href="#"> Praticando OBI</a>
+        <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"-->
+                <!--aria-expanded="false" aria-label="Toggle navigation">-->
+            <!--<span class="navbar-toggler-icon"></span>-->
+        <!--</button>-->
+
+        <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav animate side-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">Home
+                <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'provas_obi:url_provas' %}">Ver Provas</a>
+          </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'usuarios_obi:provaperson' %}">Nova Prova</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'usuarios_obi:provaperson' %}">Minhas Provas</a>
+            </li>
+            {% endif %}
+        </ul>
+        <ul class="navbar-nav ml-md-auto d-md-flex">
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'usuarios_obi:logout_perfil' %}">Sair</a>
+                </li>
+            {% else %}
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'usuarios_obi:login_perfil' %}">Acesso
+                <span class="sr-only">(current)</span>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="{% url 'usuarios_obi:cadastro_perfil' %}">Criar Conta
+                <span class="sr-only">(current)</span>
+            </a>
+            </li>
+            {% endif %}
+        </ul>
+      </div>
+    </nav>
+
+        {% block messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}} alert-dismissable" style="width: 30%; float:right; text-align: center;">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>{{message}}</strong>
         </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-4">
-                {% block content %}
-                {% endblock %}
-                </div>
-                {% for m in messages %}
-                    {{ m }}
-                {% endfor %}
-            </div>
+        {% endfor %}
+        {% endblock messages %}
+        <div style="margin-left: 10px; margin-top: 100px; margin-bottom:50px;" class="container" >
+            {% block container %}
+            {% endblock %}
         </div>
+
+
+        <!--<div class="container-fluid">-->
+            <!--<div class="row">-->
+                <!--<div class="col">-->
+                <!--{% block content %}-->
+                <!--{% endblock %}-->
+                <!--</div>-->
+                <!--{% for m in messages %}-->
+                    <!--{{ m }}-->
+                <!--{% endfor %}-->
+            <!--</div>-->
+        <!--</div>-->
+  </div>
     </body>
 </html>

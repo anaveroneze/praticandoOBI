@@ -1,22 +1,12 @@
-<!DOCTYPE html>
 {% extends 'base.html' %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Provas</title>
-</head>
-<body>
+{% load static %}
 
-    {% block content %}
-    <h2>Minhas Provas:</h2>
+{% block content %}
+    <h2>Prova criada:</h2>
     <ul>
-    <div class="provaperson">
-        {{ provaperson.titulo }}<br/>
-        {{ provaperson.ano }}<br/>
-        {{ provaperson.observacoes }}<br/>
-    </div>
+        {% for prova in provaperson %}
+        <h1><a href="{% url 'provaperson_detail' pk=prova.pk %}">{{ prova.titulo }}</a></h1>
+        {% endfor%}
     </ul>
-    {% endblock %}
+{% endblock %}
 
-</body>
-</html>

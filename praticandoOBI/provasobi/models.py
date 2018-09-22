@@ -1,4 +1,5 @@
 from django.db import models
+from usuarios.models import Profile
 
 class Alternativa(models.Model):
     codalternativa = models.IntegerField(db_column='codAlternativa', primary_key=True)  # Field name made lowercase.
@@ -49,6 +50,8 @@ class Questao(models.Model):
     class Meta:
         managed = True
         db_table = 'questao'
+        verbose_name_plural = 'Questões'
+        verbose_name = 'Questão'
 
 class Classificacao(models.Model):
     codclassificacao = models.AutoField(db_column='codClassificacao', primary_key=True)
@@ -57,14 +60,23 @@ class Classificacao(models.Model):
     class Meta:
         managed = True
         db_table = 'classificacao'
+        verbose_name_plural = 'Classificações'
+        verbose_name = 'Classificação'
+
 
 class ProvaPerson(models.Model):
-    autor = models.ForeignKey('auth.User', on_delete=models.CASCADE)
-    titulo = models.CharField(db_column='titulo', max_length=200, blank=True, null=True)
-    ano = models.CharField(db_column='ano',  max_length=20, blank=True, null=True)
+    autor = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    titulo = models.CharField(db_column='titulo', max_length=200, blank=True, null=True, default='')
+    ano = models.CharField(db_column='ano',  max_length=20, blank=True, null=True, default='')
     dificuldade = models.IntegerField(db_column='dificuldade', blank=True, null=True, default=0)
-    observacoes = models.TextField(db_column='observacoes', blank=True, null=True)
+    observacoes = models.TextField(db_column='observacoes', blank=True, null=True, default='')
 
+    def __str__(self):
+        return self.autor.user.username
+
+    class Meta:
+        verbose_name_plural = 'Provas personalizadas'
+        verbose_name = 'Prova personalizada'
     # > from django.contrib.auth.models import User
     # > from provasobi.models import Profile
     # > users = User.objects.filter(profile=None)

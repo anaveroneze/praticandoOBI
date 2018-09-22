@@ -1,80 +1,71 @@
-<!DOCTYPE html>
 {% extends 'base.html' %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Problemas</title>
-</head>
+{% load static %}
 
-    {% block content %}
-    <h2>Listagem dos problemas:</h2>
+{% block container %}
+<h2>Listagem dos problemas:</h2>
 
-    <br>
-        {% for prob in problemas %}
-            <br>{{ prob.numeroproblema }} - {{prob.tituloproblema}}<br/>
+<br>
+    {% for prob in problemas %}
+        <br>{{ prob.numeroproblema }} - {{prob.tituloproblema}}<br/>
 
-            <!--Mostra a classificação do problema, se ele tiver-->
-            <br><b>CLASSIFICAÇÃO:</b>
-            {% for f in prob.classificacao.all %}
-                <br><b>{{f.tituloclassificacao}}</b>
-            {% endfor %}
+        <!--Mostra a classificação do problema, se ele tiver-->
+        <br><b>CLASSIFICAÇÃO:</b>
+        {% for f in prob.classificacao.all %}
+            <br><b>{{f.tituloclassificacao}}</b>
+        {% endfor %}
 
-            <br/><br/>{{prob.enunciadoproblema}}</br>
+        <br/><br/>{{prob.enunciadoproblema}}</br>
 
-            <!--Mostra as regras do problema, se ele tiver-->
-            {% if prob.regrasproblema %}
-                <br/>{{prob.regrasproblema}}<br/>
-            {% endif %}
+        <!--Mostra as regras do problema, se ele tiver-->
+        {% if prob.regrasproblema %}
+            <br/>{{prob.regrasproblema}}<br/>
+        {% endif %}
 
-            <!--Mostra as imagens do problema, se ele tiver-->
-            {% if prob.imgproblema %}
-                {% load static %}
-                <img src={% static prob.imgproblema %} width="200" height="200" alt="My image">
-            {% endif %}
+        <!--Mostra as imagens do problema, se ele tiver-->
+        {% if prob.imgproblema %}
+            {% load static %}
+            <img src={% static prob.imgproblema %} width="200" height="200" alt="My image">
+        {% endif %}
 
-            <!--Mostra as questões do problema-->
-            {% for q in questoes %}
-                {% if q.codproblema.codproblema == prob.codproblema %}
-                    <br>{{ q.numeroquestao }} - {{q.enunciadoquestao}}</br>
+        <!--Mostra as questões do problema-->
+        {% for q in questoes %}
+            {% if q.codproblema.codproblema == prob.codproblema %}
+                <br>{{ q.numeroquestao }} - {{q.enunciadoquestao}}</br>
 
-                    <!--Mostra as imagens da questão-->
-                    {% if q.imgquestao %}
-                        {% load static %}
-                        <img src={% static q.imgquestao %} width="200" height="200" alt="Img"></br>
-                    {% endif %}
-
-                    <!--Mostra as alternativas da questão-->
-                    {% for a in alternativas %}
-                        {% if a.codquestao.codquestao == q.codquestao %}
-                            {{a.letraalternativa}} - {{a.textoalternativa}}</br>
-                        {% endif %}
-                    {% endfor %}
-
-                 <button class="btn btn-outline-success" onclick="myFunction('{{q.codquestao}}')">Ver gabarito</button><br/>
-                 <div id="{{q.codquestao}}">
-                   <div class="highlight">
-                     <pre>{{q.gabaritoquestao}}</pre>
-                   </div>
-                 </div>
-
-                <script>
-                document.getElementById( '{{q.codquestao}}' ).style.display = 'none';
-                function myFunction(elementID) {
-                    var x = document.getElementById(elementID);
-                    if (x.style.display === 'none') {
-                        x.style.display = 'block';
-                    } else {
-                        x.style.display = 'none';
-                    }
-                }</script>
-
+                <!--Mostra as imagens da questão-->
+                {% if q.imgquestao %}
+                    {% load static %}
+                    <img src={% static q.imgquestao %} width="200" height="200" alt="Img"></br>
                 {% endif %}
-            {% endfor %}
 
-        {% endfor%}
-    </ul>
-    {% endblock %}
+                <!--Mostra as alternativas da questão-->
+                {% for a in alternativas %}
+                    {% if a.codquestao.codquestao == q.codquestao %}
+                        {{a.letraalternativa}} - {{a.textoalternativa}}</br>
+                    {% endif %}
+                {% endfor %}
 
+             <button class="btn btn-outline-success" onclick="myFunction('{{q.codquestao}}')">Ver gabarito</button><br/>
+             <div id="{{q.codquestao}}">
+               <div class="highlight">
+                 <pre>{{q.gabaritoquestao}}</pre>
+               </div>
+             </div>
 
-</body>
-</html>
+            <script>
+            document.getElementById( '{{q.codquestao}}' ).style.display = 'none';
+            function myFunction(elementID) {
+                var x = document.getElementById(elementID);
+                if (x.style.display === 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }</script>
+
+            {% endif %}
+        {% endfor %}
+
+    {% endfor%}
+</ul>
+{% endblock %}

@@ -1,10 +1,15 @@
 from django.urls import path
-from usuarios.views import update_perfil, provaperson_lista, provaperson_info, provaperson_nova
+from usuarios.views import update_perfil, cadastro_perfil, home_usuario, provaperson, provaperson_detail
+from provasobi.views import provas, problemas
+from django.contrib.auth import views as auth_views
 
 app_name = 'usuarios_obi'
 urlpatterns = [
-    path('', update_perfil, name='update_perfil'),
-    path('minhasprovas', provaperson_lista, name='provaperson_lista'),
-    path('minhasprovas/<int:pk>/', provaperson_info, name='provaperson_info'),
-    path('minhasprovas/nova/', provaperson_nova, name='provaperson_nova'),
+    path('', home_usuario, name='homeusuario'),
+    path('cadastro/', cadastro_perfil, name='cadastro_perfil'),
+    path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login_perfil'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='home.html'), name='logout_perfil'),
+    path('nova/', provaperson, name='provaperson'),
+    path('nova/<int:pk>', provaperson_detail, name='provaperson_detail'),
+    #path('', update_perfil, name='update_perfil'),
 ]
