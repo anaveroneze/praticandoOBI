@@ -1,4 +1,4 @@
-#!/home/ana/Documentos/2018-2/ps2/praticandoOBI/venv/bin/python3
+#!/home/ana/Área de Trabalho/PS2/praticandoOBI/praticandoOBI/venv/bin/python3
 from django.core import management
 
 if __name__ == "__main__":

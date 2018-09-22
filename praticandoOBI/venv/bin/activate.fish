@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/ana/Documentos/2018-2/ps2/praticandoOBI/venv"
+set -gx VIRTUAL_ENV "/home/ana/Área de Trabalho/PS2/praticandoOBI/praticandoOBI/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

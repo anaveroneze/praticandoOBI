@@ -1,5 +1,6 @@
 certifi==2018.8.24
 Django==2.1
+django-crispy-forms==1.7.2
 pipenv==2018.7.1
 pytz==2018.5
 virtualenv==16.0.0

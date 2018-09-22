@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/ana/Documentos/2018-2/ps2/praticandoOBI/venv"
+VIRTUAL_ENV="/home/ana/Área de Trabalho/PS2/praticandoOBI/praticandoOBI/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
