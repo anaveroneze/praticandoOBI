@@ -2,13 +2,56 @@
 {% load static %}
 
 {% block container %}
-    <div class="row">
-        <div class="col-md-8 col-sm-10 col-12">
-        <h2>Entrar na conta</h2>
-            <form method="post" novalidate>{% csrf_token %}
-            <input type="hidden" name="next" value="{{ next }}">{{ form.as_p }}
-            <button type="submit" class="btn btn-success">Entrar</button>
-            </form>
-        </div>
-    </div>
+
+    <script>
+    jQuery(document).ready(function(){
+        $("#showpassword").on('click', function(){
+
+            var pass = $("#id_password");
+            var fieldtype = pass.attr('type');
+            if (fieldtype == 'password') {
+                pass.attr('type', 'text');
+                $(this).text("Hide Password");
+            }else{
+                pass.attr('type', 'password');
+                $(this).text("Show Password");
+            }
+        });
+    });
+    </script>
+
+    <div class="panel">
+        <h2>Acessar conta</h2>
+   <p>Entre com o seu usuário e senha</p>
+   </div>
+         <form method="post" novalidate>{% csrf_token %}
+             <table class="table">
+                    <!--<input type="hidden" name="next" value="{{ next }}">-->
+                        <!--{{ form.as_p }} -->
+             <tr><td><label for="id_username">Nome de usuário</label></td>
+                 <td><input id="id_username" name="username" type="text" class="form-control"></td>
+             </tr>
+
+             <tr>
+                 <td><label for="id_password">Senha</label></td>
+                 <div class="form-group">
+                     <td><input id="id_password" name="password" type="password" class="form-control"></td>
+                 </div>
+             </tr>
+             </table>
+
+            {% if form.errors %}
+                <p class=" label label-danger"><font size="2" color="red">
+                    O seu usuário ou senha não estão corretos.<br>
+                    Por favor, tente novamente.
+                </p>
+            {% endif %}
+
+            <button type="submit" class="btn btn-primary">Entrar</button>
+             <button class="btn btn-info" type="button" name="showpassword" id="showpassword" value="Show Password">Mostrar senha</button>
+             <div class="forgot">
+                <br><a href="#">Esqueceu a senha? </a>
+             </div>
+        </form>
+
 {% endblock %}
