@@ -10,7 +10,7 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login_perfil'),
     path('logout/', auth_views.LogoutView.as_view(template_name='home.html'), name='logout_perfil'),
     path('nova/', provaperson, name='provaperson'),
-    path('nova/<int:pk>', provaperson_detail, name='provaperson_detail'),
     path('minhasprovas/', provasperson, name='provasperson'),
+    path('minhasprovas/<int:pk>', provaperson_detail, name='provaperson_detail'),
     #path('', update_perfil, name='update_perfil'),
 ]

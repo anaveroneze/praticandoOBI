@@ -70,9 +70,10 @@ def provaperson(request):
 #mostra as provas criadas
 def provasperson(request):
     provas = ProvaPerson.objects.filter(autor=request.user.profile)
-    return render(request, 'minhasprovas.html', {'provas' : provas})
+    return render(request, 'minhasprovas.html', {'provas': provas})
 
 
 def provaperson_detail(request, pk):
-    provaperson = get_object_or_404(ProvaPerson, pk=pk)
+    #provaperson = get_object_or_404(ProvaPerson, pk=pk)
+    provaperson = ProvaPerson.objects.all().filter(pk=pk)
     return render(request, 'novasprovas/provaperson_detail.html', {'provaperson':provaperson})

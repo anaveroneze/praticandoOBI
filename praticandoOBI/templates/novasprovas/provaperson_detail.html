@@ -3,8 +3,12 @@
 
 
 {% block container %}
-    <h2>Minhas provas:</h2>
-    <div class="provaperson">
-        <h1>{{ provaperson.title }}</h1>
-    </div>
+    {% for p in provaperson%}
+        <h2> Prova {{p.pk}}: </h2>
+        Título: {{p.titulo}}</br>
+        Ano: {{p.ano}}</br>
+        Dificuldade: {{p.dificuldade}}</br>
+        Observações: {{p.observacoes}}</br>
+    {% endfor %}
+
 {% endblock %}

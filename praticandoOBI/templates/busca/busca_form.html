@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+    {% block container %}
+        <h2>Busca por Provas</h2>
+        {% if error %}
+        <p style="color: red;">Por favor, entre com um valor.</p>
+        {% endif %}
+        <form action="" method="GET">
+            <input type="text" name="q"> <input type="submit" value="Buscar"><br/>
+            <label for="box1"><input type="radio" name="display_type" value="anobox" id="box1">Ano</label>
+            <label for="box2"><input type="radio" name="display_type" value="fasebox" id="box2">Fase</label>
+            <label for="box3"><input type="radio" name="display_type" value="nivelbox" id="box3">Nível</label>
+            <label for="box4"><input type="radio" name="display_type" value="todosbox" id="box4">Todos</label>
+        </form>
+    {% endblock %}
