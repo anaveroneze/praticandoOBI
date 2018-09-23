@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Profile
+from provasobi.models import ProvaPerson
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from .forms import ProfileForm, ProvaForm
@@ -10,6 +11,7 @@ from django.contrib.auth import login, REDIRECT_FIELD_NAME
 from django.urls import reverse
 from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
+from django.views.generic import (CreateView, DeleteView, DetailView, ListView)
 #
 # @login_required
 def home_usuario(request):
@@ -64,6 +66,12 @@ def provaperson(request):
     else:
         form = ProvaForm()
     return render(request, 'novasprovas/provaperson.html', {'form':form})
+
+#mostra as provas criadas
+def provasperson(request):
+    provas = ProvaPerson.objects.filter(autor=request.user.profile)
+    return render(request, 'minhasprovas.html', {'provas' : provas})
+
 
 def provaperson_detail(request, pk):
     provaperson = get_object_or_404(ProvaPerson, pk=pk)
