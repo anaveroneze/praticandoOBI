@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .models import Prova, Problema, Questao, Alternativa, ProvaPerson
+from .models import Prova, Problema, Questao, Alternativa, ProvaPerson,Classificacao
 from .forms import ProvaForm
+from django.db.models import Q
 
 def home(request):
     return render(request, 'home.html', {})
@@ -74,4 +75,26 @@ def buscaprob(request):
                 classificacao = Classificacao.objects.filter(tituloclassificacao=q)
                 problemas = Problema.objects.filter(classificacao__in=classificacao)
                 return render(request, 'busca/busca_prob_resultado.html', {'problemas': problemas, 'query': q})
+            else:
+                classificacao = Classificacao.objects.filter(tituloclassificacao=q)
+                problemas = Problema.objects.filter(Q(tituloproblema__icontains=q) | Q(classificacao__in=classificacao))
+                return render(request, 'busca/busca_prob_resultado.html', {'problemas': problemas, 'query': q})
+
     return render(request, 'busca/busca_prob_form.html', {'error':error})
+
+
+def problema(request, pk):
+    problemas = Problema.objects.all().filter(codproblema=pk)
+    id_prob = []
+    for p in problemas:
+        id_prob.append(p)
+
+    questoes = Questao.objects.all().select_related('codproblema').filter(codproblema__in=problemas).order_by('numeroquestao')#.filter(codproblema__in=id_questoes)
+
+    id_questoes = []
+    for q in questoes:
+         id_questoes.append(q)
+
+    alternativas = Alternativa.objects.all().select_related('codquestao').filter(codquestao__in=id_questoes)
+
+    return render(request, 'problemas.html', {'problemas': problemas, 'questoes': questoes, 'alternativas' : alternativas})

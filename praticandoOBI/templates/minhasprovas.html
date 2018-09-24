@@ -5,8 +5,11 @@
 
     <h2>Minhas Provas:</h2>
 
-    {% for prova in provas %}
-        <p>Título: <a href="{% url 'usuarios_obi:provaperson_detail' prova.pk %}"> {{ prova.titulo }} </a></p>
-    {% endfor%}
-
+    {% if not provas %}
+        <p>Você ainda não tem provas cadastradas.</p>
+    {% else %}
+        {% for prova in provas %}
+            <p>Título: <a href="{% url 'usuarios_obi:provaperson_detail' prova.pk %}"> {{ prova.titulo }} </a></p>
+        {% endfor%}
+    {% endif %}
 {% endblock %}
