@@ -7,10 +7,10 @@
         Título: {{p.titulo}}</br>
         Ano: {{p.ano}}</br>
         Dificuldade: {{p.dificuldade}}</br>
-        Observações: {{p.observacoes}}</br>
+        Observações: {{p.observacoes}}</br></br>
+        <a href="{% url 'usuarios_obi:provaperson_edit' p.pk %}" class="btn btn-outline-secondary" role="button" >Editar</a>
     {% endfor %}
 
-
-<br><a href="{% url 'usuarios_obi:provasperson' %}" class="btn btn-outline-secondary" role="button" >Voltar</a>
+<a href="{% url 'usuarios_obi:provasperson' %}" class="btn btn-outline-secondary" role="button" >Minhas Provas</a>
 
 {% endblock %}

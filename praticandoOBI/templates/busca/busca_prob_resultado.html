@@ -12,7 +12,7 @@
                     {% for c in p.classificacao.all %}
                         {{c.tituloclassificacao}}
                     {% endfor %}
-                    <input type='checkbox' {% ifequal value 0 %}checked{% endifequal %}>
+                    <!--<input type='checkbox' {% ifequal value 0 %}checked{% endifequal %}>-->
                     </a></li>
             {% endfor %}
         </ul>
@@ -20,6 +20,5 @@
         <p>Nenhum resultado encontrado para a sua pesquisa.</p>
     {% endif %}
 
-    <a href="{% url 'provas_obi:url_buscaprob' %}"><span>Adicionar Problemas</span></a><br/>
     <a href="{% url 'provas_obi:url_buscaprob' %}"><span>Nova busca</span></a>
 {% endblock %}

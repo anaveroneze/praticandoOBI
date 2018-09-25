@@ -1,5 +1,5 @@
 from django.urls import path
-from usuarios.views import update_perfil, cadastro_perfil, home_usuario, provaperson, provaperson_detail, provaperson_edit, provasperson
+from usuarios.views import update_perfil, cadastro_perfil, questoes_add, home_usuario, provaperson, provaperson_detail, provaperson_edit, provasperson
 from provasobi.views import provas, problemas
 from django.contrib.auth import views as auth_views
 
@@ -12,6 +12,7 @@ urlpatterns = [
     path('nova/', provaperson, name='provaperson'),
     path('minhasprovas/', provasperson, name='provasperson'),
     path('minhasprovas/editar/<int:pk>', provaperson_edit, name='provaperson_edit'),
+    path('minhasprovas/editar/<int:pk>/addquestoes', questoes_add, name='questoes_add'),
     path('minhasprovas/<int:pk>', provaperson_detail, name='provaperson_detail'),
     #path('', update_perfil, name='update_perfil'),
 ]

@@ -4,8 +4,13 @@
 {% block container %}
     <h1>Minha prova:</h1>
     <form method="POST" class="post-form">{% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Salvar</button>
-        <button type="submit" class="save btn btn-default">Adicionar Questões</button>
+
+        <tr>
+            <div class="form-group">
+                <td>{{ form.as_p }}</td>
+            </div>
+        </tr>
+        <a href="{% url 'usuarios_obi:questoes_add' pk %}" class="btn btn-outline-secondary" role="button" >Adicionar Questões</a>
+        <br><br><button type="submit" class="btn btn-primary">Salvar</button>
     </form>
 {% endblock %}

@@ -10,6 +10,13 @@ class ProvaForm(forms.ModelForm):
         model = ProvaPerson
         fields = ('titulo', 'ano', 'dificuldade', 'observacoes',)
 
+
+class QuestoesForm(forms.ModelForm):
+    class Meta:
+        model = ProvaPerson
+        fields = ('titulo', 'ano', 'dificuldade', 'observacoes',)
+
+
 # class UserForm(forms.ModelForm):
 #     class Meta:
 #         model = User

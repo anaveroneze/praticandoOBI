@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Profile
-from provasobi.models import ProvaPerson
+from provasobi.models import ProvaPerson, Prova, Questao
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
-from .forms import ProfileForm, ProvaForm
+from .forms import ProfileForm, ProvaForm, QuestoesForm
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.views import LoginView
@@ -12,6 +12,9 @@ from django.urls import reverse
 from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView)
+from django.db.models import Q
+
+
 #
 # @login_required
 def home_usuario(request):
@@ -75,10 +78,10 @@ def provaperson_edit(request, pk):
             provaperson = form.save(commit=False)
             provaperson.autor = request.user.profile
             provaperson.save()
-            return redirect('usuarios_obi:provaperson_edit', provaperson.pk)
+            return redirect('usuarios_obi:provaperson_detail', provaperson.pk)
     else:
         form = ProvaForm(instance=provaperson)
-    return render(request, 'novasprovas/provaperson_edit.html', {'form':form})
+    return render(request, 'novasprovas/provaperson_edit.html', {'form':form, 'pk':pk})
 
 #mostra as provas criadas
 def provasperson(request):
@@ -90,3 +93,47 @@ def provaperson_detail(request, pk):
     #provaperson = get_object_or_404(ProvaPerson, pk=pk)
     provaperson = ProvaPerson.objects.all().filter(pk=pk)
     return render(request, 'novasprovas/provaperson_detail.html', {'provaperson':provaperson})
+
+def questoes_add(request, pk):
+    provaperson = get_object_or_404(ProvaPerson, pk=pk, autor=request.user.profile)
+    error = False
+
+    if 'q' in request.GET:
+        q = request.GET['q']
+        checkbox = request.GET.get("display_type", None)
+        if not q:
+            error = True
+        else:
+            if  checkbox == 'provabox':
+                provas = Prova.objects.filter(Q(anoprova=q) | Q(faseprova=q) | Q(nivelprova=q))
+                return render(request, 'novasprovas/addquestoes_resultado.html', {'provaperson':provaperson, 'provas': provas, 'query': q})
+            elif checkbox == 'problemabox':
+                classificacao = Classificacao.objects.filter(tituloclassificacao=q)
+                provas = Problema.objects.filter(
+                    Q(tituloproblema__icontains=q) | Q(classificacao__in=classificacao))
+                return render(request, 'novasprovas/addquestoes_resultado.html',
+                              {'provaperson': provaperson, 'provas': provas, 'query': q})
+            elif checkbox == 'questaobox':
+                return render(request, 'home', {})
+            else:
+                return render(request, 'home', {})
+
+    return render(request, 'novasprovas/addquestoes.html', {'provaperson':provaperson,'error': error})
+
+
+
+# def question_add(request, pk):
+#
+#     quiz = get_object_or_404(Quiz, pk=pk, owner=request.user)
+#     if request.method == 'POST':
+#         form = QuestionForm(request.POST)
+#         if form.is_valid():
+#             question = form.save(commit=False)
+#             question.quiz = quiz
+#             question.save()
+#             messages.success(request, 'You may now add answers/options to the question.')
+#             return redirect('teachers:question_change', quiz.pk, question.pk)
+#     else:
+#         form = QuestionForm()
+#
+#     return render(request, 'classroom/teachers/question_add_form.html', {'quiz': quiz, 'form': form})

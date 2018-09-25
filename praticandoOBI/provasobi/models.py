@@ -70,6 +70,7 @@ class ProvaPerson(models.Model):
     ano = models.CharField(db_column='ano',  max_length=20, blank=True, null=True, default='')
     dificuldade = models.IntegerField(db_column='dificuldade', blank=True, null=True, default=0)
     observacoes = models.TextField(db_column='observacoes', blank=True, null=True, default='')
+    questoes = models.ManyToManyField(Questao, blank='True')
 
     def __str__(self):
         return self.autor.user.username
