@@ -1,0 +1,11 @@
+{% extends './../base.html' %}
+{% load static %}
+
+{% block container %}
+    <h1>Minha prova:</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Salvar</button>
+        <button type="submit" class="save btn btn-default">Adicionar Questões</button>
+    </form>
+{% endblock %}

@@ -31,7 +31,7 @@ def problemas(request, pk):
 
     alternativas = Alternativa.objects.all().select_related('codquestao').filter(codquestao__in=id_questoes)
 
-    return render(request, 'problemas.html', {'problemas': problemas, 'questoes': questoes, 'alternativas' : alternativas})
+    return render(request, 'problemas.html', {'problemas': problemas, 'questoes': questoes, 'alternativas': alternativas})
     #data = {}
     #data['problemas'] = Problema.objects.filter(pk=pk)
     #return render(request, 'problemas.html', data)

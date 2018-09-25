@@ -1,5 +1,5 @@
 from django.urls import path
-from usuarios.views import update_perfil, cadastro_perfil, home_usuario, provaperson, provaperson_detail, provasperson
+from usuarios.views import update_perfil, cadastro_perfil, home_usuario, provaperson, provaperson_detail, provaperson_edit, provasperson
 from provasobi.views import provas, problemas
 from django.contrib.auth import views as auth_views
 
@@ -11,6 +11,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='home.html'), name='logout_perfil'),
     path('nova/', provaperson, name='provaperson'),
     path('minhasprovas/', provasperson, name='provasperson'),
+    path('minhasprovas/editar/<int:pk>', provaperson_edit, name='provaperson_edit'),
     path('minhasprovas/<int:pk>', provaperson_detail, name='provaperson_detail'),
     #path('', update_perfil, name='update_perfil'),
 ]

@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-{% extends 'base.html' %}
-
+{% extends './../base.html' %}
+{% load static %}
 
 {% block container %}
     {% for p in provaperson%}
@@ -10,5 +9,8 @@
         Dificuldade: {{p.dificuldade}}</br>
         Observações: {{p.observacoes}}</br>
     {% endfor %}
+
+
+<br><a href="{% url 'usuarios_obi:provasperson' %}" class="btn btn-outline-secondary" role="button" >Voltar</a>
 
 {% endblock %}

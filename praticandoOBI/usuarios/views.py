@@ -60,12 +60,25 @@ def provaperson(request):
             provaperson = form.save(commit=False)
             provaperson.autor = request.user.profile
             provaperson.save()
-            messages.success(request, 'Prova criada.')
-            return redirect('home')
+            messages.success(request, 'Prova criada com sucesso! Adicione questões agora.')
+            return redirect('usuarios_obi:provaperson_edit', provaperson.pk)
             #return redirect('usuarios_obi:provaperson_detail', pk=provaperson.pk)
     else:
         form = ProvaForm()
     return render(request, 'novasprovas/provaperson.html', {'form':form})
+
+def provaperson_edit(request, pk):
+    provaperson = get_object_or_404(ProvaPerson, pk=pk)
+    if request.method == "POST":
+        form = ProvaForm(request.POST, instance=provaperson)
+        if form.is_valid():
+            provaperson = form.save(commit=False)
+            provaperson.autor = request.user.profile
+            provaperson.save()
+            return redirect('usuarios_obi:provaperson_edit', provaperson.pk)
+    else:
+        form = ProvaForm(instance=provaperson)
+    return render(request, 'novasprovas/provaperson_edit.html', {'form':form})
 
 #mostra as provas criadas
 def provasperson(request):
