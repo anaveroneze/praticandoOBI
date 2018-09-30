@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Profile
-from provasobi.models import ProvaPerson, Prova, Questao
+from provasobi.models import ProvaPerson, Prova, Questao, Classificacao, Problema, Alternativa
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from .forms import ProfileForm, ProvaForm, QuestoesForm
@@ -104,23 +104,39 @@ def questoes_add(request, pk):
         if not q:
             error = True
         else:
-            if  checkbox == 'provabox':
+            if checkbox == 'provabox':
                 provas = Prova.objects.filter(Q(anoprova=q) | Q(faseprova=q) | Q(nivelprova=q))
-                return render(request, 'novasprovas/addquestoes_resultado.html', {'provaperson':provaperson, 'provas': provas, 'query': q})
+                return render(request, 'novasprovas/addquestoes_resultado.html', {'provaperson':provaperson, 'provas': provas, 'query': q, 'pk':pk})
             elif checkbox == 'problemabox':
                 classificacao = Classificacao.objects.filter(tituloclassificacao=q)
-                provas = Problema.objects.filter(
-                    Q(tituloproblema__icontains=q) | Q(classificacao__in=classificacao))
-                return render(request, 'novasprovas/addquestoes_resultado.html',
-                              {'provaperson': provaperson, 'provas': provas, 'query': q})
+                problemas = Problema.objects.filter(Q(tituloproblema__icontains=q) | Q(classificacao__in=classificacao))
+                return render(request, 'novasprovas/addquestoes_resultado.html', {'provaperson': provaperson, 'problemas': problemas, 'query': q, 'pk': pk})
             elif checkbox == 'questaobox':
-                return render(request, 'home', {})
+                return render(request, 'home.html', {})
             else:
-                return render(request, 'home', {})
 
-    return render(request, 'novasprovas/addquestoes.html', {'provaperson':provaperson,'error': error})
+                return render(request, 'home.html', {})
+    return render(request, 'novasprovas/addquestoes.html', {'provaperson':provaperson,'error': error, 'pk': pk})
 
 
+def problemas_add(request, pk, codprova):
+    problemas = Problema.objects.all().select_related('codprova').filter(codprova=pk)
+
+    id_prob = []
+    for p in problemas:
+        id_prob.append(p)
+
+    questoes = Questao.objects.all().select_related('codproblema').filter(codproblema__in=id_prob).order_by(
+        'numeroquestao')  # .filter(codproblema__in=id_questoes)
+
+    id_questoes = []
+    for q in questoes:
+        id_questoes.append(q)
+
+    alternativas = Alternativa.objects.all().select_related('codquestao').filter(codquestao__in=id_questoes)
+
+    return render(request, 'novasprovas/addproblemas.html',
+                  {'problemas': problemas, 'questoes': questoes, 'alternativas': alternativas, 'pk':codprova})
 
 # def question_add(request, pk):
 #

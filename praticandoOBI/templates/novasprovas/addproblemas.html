@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block container %}
+
+<br class="list-group">
+
+    {% for prob in problemas %}
+
+    <a class="list-group-item">
+    <div class="checkbox pull-left">
+        <label><input type="checkbox" value="">  Selecionar todos </label>
+    </div>
+
+    <div class="pull-left form-control-inline">
+        <h3 class="list-group-item-heading">{{ prob.numeroproblema }} - {{prob.tituloproblema}}</h3>
+        <h4>Classificação:</h4>
+        <!--Mostra a classificação do problema, se ele tiver-->
+        <h5>
+            {% for f in prob.classificacao.all %}
+                {{f.tituloclassificacao}}<br>
+            {% endfor %}
+        </h5>
+
+        <br/>{{prob.enunciadoproblema}}</br>
+
+        <!--Mostra as regras do problema, se ele tiver-->
+        {% if prob.regrasproblema %}
+            <br>{{prob.regrasproblema}}<br>
+        {% endif %}
+
+        <!--Mostra as imagens do problema, se ele tiver-->
+        {% if prob.imgproblema %}
+            {% load static %}
+            <img src={% static prob.imgproblema %} width="200" height="200" alt="My image">
+        {% endif %}
+
+    <!--Mostra as questões do problema-->
+    {% for q in questoes %}
+        {% if q.codproblema.codproblema == prob.codproblema %}
+
+        <a class="list-group-item">
+            <div class="checkbox pull-left">
+                <label>
+                    <input type="checkbox" value="">
+                </label>
+            </div>
+
+            <div class="pull-left form-control-inline">
+                <h4 class="list-group-item-heading">{{ q.numeroquestao }} - {{q.enunciadoquestao}}</h4>
+                <p class="list-group-item-text">
+                     <!--Mostra as imagens da questão-->
+                    {% if q.imgquestao %}
+                        {% load static %}
+                        <img src={% static q.imgquestao %} width="200" height="200" alt="Img"></br>
+                    {% endif %}
+
+                    <!--Mostra as alternativas da questão-->
+                    {% for a in alternativas %}
+                        {% if a.codquestao.codquestao == q.codquestao %}
+                            {{a.letraalternativa}} - {{a.textoalternativa}}</br>
+                        {% endif %}
+                    {% endfor %}
+                </p>
+            </div>
+            <div class="clearfix"></div>
+        </a>
+
+    {% endif %}
+    {% endfor %}
+        <br class="pull-left form-control-inline"></br>
+        </div>
+    </a>
+    {% endfor%}
+
+    <div class="pull-left form-control-inline">
+        <h4 class="list-group-item-heading"><button type="submit" class="btn btn-primary">Adicionar questões</button>
+        <a href="{% url 'usuarios_obi:provaperson_edit' pk %}" class="btn btn-outline-secondary" role="button" >Voltar</a>
+        </h4>
+    </div>
+</ul>
+</div>
+{% endblock %}
