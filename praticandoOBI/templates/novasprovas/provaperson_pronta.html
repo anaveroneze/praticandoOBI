@@ -1,0 +1,46 @@
+{% extends './../base.html' %}
+{% load static %}
+
+{% block container %}
+
+ <h3>{{provaperson.titulo}}</h3>
+
+ {% for p in problemas %}
+ <h4 class="list-group-item-heading">{{p.tituloproblema}} - {{p.enunciadoproblema}}</h4>
+ <!--Mostra as regras do problema, se ele tiver-->
+            {% if prob.regrasproblema %}
+                <br>{{prob.regrasproblema}}<br>
+            {% endif %}
+
+            <!--Mostra as imagens do problema, se ele tiver-->
+            {% if prob.imgproblema %}
+                {% load static %}
+                <img src={% static prob.imgproblema %} width="200" height="200" alt="My image">
+            {% endif %}
+   </br>
+
+   {% for q in questoes %}
+     {% if p.codproblema == q.codproblema.codproblema %}
+     <div class="pull-left form-control-inline">
+          <h4 class="list-group-item-heading">{{ q.numeroquestao }} - {{q.enunciadoquestao}}</h4>
+          <p class="list-group-item-text">
+               <!--Mostra as imagens da questão-->
+              {% if q.imgquestao %}
+                  {% load static %}
+                  <img src={% static q.imgquestao %} width="200" height="200" alt="Img"></br>
+              {% endif %}
+
+              <!--Mostra as alternativas da questão-->
+              {% for a in alternativas %}
+                  {% if a.codquestao.codquestao == q.codquestao %}
+                      {{a.letraalternativa}} - {{a.textoalternativa}}</br>
+                  {% endif %}
+              {% endfor %}
+          </p>
+      </div>
+     {% endif %}
+   {% endfor %}
+  {% endfor %}
+  <button onclick="window.print()">Imprimir Prova</button>
+
+{% endblock %}

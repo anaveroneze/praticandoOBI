@@ -72,6 +72,7 @@ def provaperson(request):
 
 def provaperson_edit(request, pk):
     provaperson = get_object_or_404(ProvaPerson, pk=pk)
+    #apagar pois nao é POST
     if request.method == "POST":
         form = ProvaForm(request.POST, instance=provaperson)
         if form.is_valid():
@@ -94,7 +95,7 @@ def provaperson_detail(request, pk):
     provaperson = ProvaPerson.objects.all().filter(pk=pk)
     return render(request, 'novasprovas/provaperson_detail.html', {'provaperson':provaperson})
 
-def questoes_add(request, pk):
+def questoes_busca(request, pk):
     provaperson = get_object_or_404(ProvaPerson, pk=pk, autor=request.user.profile)
     error = False
 
@@ -119,15 +120,38 @@ def questoes_add(request, pk):
     return render(request, 'novasprovas/addquestoes.html', {'provaperson':provaperson,'error': error, 'pk': pk})
 
 
-def problemas_add(request, pk, codprova):
-    problemas = Problema.objects.all().select_related('codprova').filter(codprova=pk)
+def questoes_add(request, pk, codprova):
 
-    id_prob = []
-    for p in problemas:
-        id_prob.append(p)
+    if request.method == "POST":
+        provaperson = get_object_or_404(ProvaPerson, pk=codprova, autor=request.user.profile)
+        id_questoes = request.POST.getlist('checks')
+        for q in id_questoes:
+            provaperson.questoes.add(q)
+        return provaperson_pronta(request, codprova)
 
-    questoes = Questao.objects.all().select_related('codproblema').filter(codproblema__in=id_prob).order_by(
-        'numeroquestao')  # .filter(codproblema__in=id_questoes)
+    else:
+        problemas = Problema.objects.all().select_related('codprova').filter(codprova=pk)
+
+        id_prob = []
+        for p in problemas:
+            id_prob.append(p)
+
+        questoes = Questao.objects.all().select_related('codproblema').filter(codproblema__in=id_prob).order_by(
+            'numeroquestao')  # .filter(codproblema__in=id_questoes)
+
+        id_questoes = []
+        for q in questoes:
+            id_questoes.append(q)
+
+        alternativas = Alternativa.objects.all().select_related('codquestao').filter(codquestao__in=id_questoes)
+
+    return render(request, 'novasprovas/addquestoes_select.html',
+                  {'problemas': problemas, 'questoes': questoes, 'alternativas': alternativas, 'pk':pk, 'codprova':codprova})
+
+def provaperson_pronta(request, codprova):
+
+    provaperson = get_object_or_404(ProvaPerson, pk=codprova, autor=request.user.profile)
+    questoes = Questao.objects.all().filter(codquestao__in=provaperson.questoes.all()).order_by('numeroquestao')
 
     id_questoes = []
     for q in questoes:
@@ -135,21 +159,7 @@ def problemas_add(request, pk, codprova):
 
     alternativas = Alternativa.objects.all().select_related('codquestao').filter(codquestao__in=id_questoes)
 
-    return render(request, 'novasprovas/addproblemas.html',
-                  {'problemas': problemas, 'questoes': questoes, 'alternativas': alternativas, 'pk':codprova})
+    id_problemas = Questao.objects.all().filter(codquestao__in=provaperson.questoes.all()).values('codproblema')
+    problemas = Problema.objects.all().filter(codproblema__in=id_problemas).distinct()
 
-# def question_add(request, pk):
-#
-#     quiz = get_object_or_404(Quiz, pk=pk, owner=request.user)
-#     if request.method == 'POST':
-#         form = QuestionForm(request.POST)
-#         if form.is_valid():
-#             question = form.save(commit=False)
-#             question.quiz = quiz
-#             question.save()
-#             messages.success(request, 'You may now add answers/options to the question.')
-#             return redirect('teachers:question_change', quiz.pk, question.pk)
-#     else:
-#         form = QuestionForm()
-#
-#     return render(request, 'classroom/teachers/question_add_form.html', {'quiz': quiz, 'form': form})
+    return render(request, 'novasprovas/provaperson_pronta.html', {'provaperson':provaperson, 'problemas':problemas, 'questoes': questoes, 'alternativas':alternativas})

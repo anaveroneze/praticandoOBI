@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block container %}
+
     {% for p in provaperson%}
         <h2> Prova {{p.pk}}: </h2>
         Título: {{p.titulo}}</br>
@@ -9,6 +10,7 @@
         Dificuldade: {{p.dificuldade}}</br>
         Observações: {{p.observacoes}}</br></br>
         <a href="{% url 'usuarios_obi:provaperson_edit' p.pk %}" class="btn btn-outline-secondary" role="button" >Editar</a>
+        <a href="{% url 'usuarios_obi:provaperson_pronta' p.pk %}" class="btn btn-outline-secondary" role="button" >Ver Prova</a>
     {% endfor %}
 
 <a href="{% url 'usuarios_obi:provasperson' %}" class="btn btn-outline-secondary" role="button" >Minhas Provas</a>
