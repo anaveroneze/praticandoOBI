@@ -2,6 +2,14 @@
 {% load static %}
 
 {% block container %}
+<link href="{% static 'admin/css/breadcrumb.css' %}" rel="stylesheet">
+		<ul class="breadcrumb">
+			<li class="completed"><a href="javascript:void(0);">Dados da Prova</a></li>
+			<li class="completed"><a href="javascript:void(0);">Editar Prova</a></li>
+            <li class="active"><a href="javascript:void(0);">Buscar Questões</a></li>
+            <li><a href="javascript:void(0);">Adicionar Questões</a></li>
+			<li><a href="javascript:void(0);">Imprimir Prova</a></li>
+		</ul>
     <p>Resultados para: <strong>{{ query }}</strong></p>
     {% if provas %}
         <p>Encontrou {{provas|length }} prova{{provas|pluralize}}. </p>

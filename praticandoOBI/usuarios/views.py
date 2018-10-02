@@ -63,7 +63,7 @@ def provaperson(request):
             provaperson = form.save(commit=False)
             provaperson.autor = request.user.profile
             provaperson.save()
-            messages.success(request, 'Prova criada com sucesso! Adicione questões agora.')
+            # messages.success(request, 'Prova criada com sucesso! Adicione questões agora.')
             return redirect('usuarios_obi:provaperson_edit', provaperson.pk)
             #return redirect('usuarios_obi:provaperson_detail', pk=provaperson.pk)
     else:

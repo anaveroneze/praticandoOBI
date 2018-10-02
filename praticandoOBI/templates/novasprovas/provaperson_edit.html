@@ -2,15 +2,33 @@
 {% load static %}
 
 {% block container %}
-    <h1>Minha prova:</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
+<link href="{% static 'admin/css/breadcrumb.css' %}" rel="stylesheet">
 
-        <tr>
-            <div class="form-group">
-                <td>{{ form.as_p }}</td>
-            </div>
-        </tr>
-        <a href="{% url 'usuarios_obi:questoes_busca' pk %}" class="btn btn-outline-secondary" role="button" >Adicionar Questões</a>
-        <br><br><button type="submit" class="btn btn-primary">Salvar</button>
-    </form>
+    <div class="row">
+
+        <div class="col-md-8 col-sm-10 col-12">
+		<ul class="breadcrumb">
+			<li class="completed"><a href="javascript:void(0);">Dados da Prova</a></li>
+			<li class="active"><a href="javascript:void(0);">Editar Prova</a></li>
+            <li><a href="javascript:void(0);">Buscar Questões</a></li>
+            <li><a href="javascript:void(0);">Adicionar Questões</a></li>
+			<li><a href="javascript:void(0);">Imprimir Prova</a></li>
+		</ul>
+
+        <h2>Minha Prova</h2>
+            <form method="POST" class="post-form">{% csrf_token %}
+            <tr>
+                <div class="form-group">
+                    <td>{{ form.as_p }}</td>
+                </div>
+            </tr>
+            <a href="{% url 'usuarios_obi:questoes_busca' pk %}" class="btn btn-outline-secondary" role="button" >Adicionar Questões</a>
+            <br><br><button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+
+        </div>
+    </div>
+
+
+
 {% endblock %}

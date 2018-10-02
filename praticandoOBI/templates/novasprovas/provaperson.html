@@ -2,9 +2,20 @@
 {% load static %}
 
 {% block container %}
+<link href="{% static 'admin/css/breadcrumb.css' %}" rel="stylesheet">
+
     <div class="row">
+
         <div class="col-md-8 col-sm-10 col-12">
-        <h2>Nova Prova:</h2>
+		<ul class="breadcrumb">
+			<li class="active"><a href="javascript:void(0);">Dados da Prova</a></li>
+			<li><a href="javascript:void(0);">Editar Prova</a></li>
+            <li><a href="javascript:void(0);">Buscar Questões</a></li>
+            <li><a href="javascript:void(0);">Adicionar Questões</a></li>
+			<li><a href="javascript:void(0);">Imprimir Prova</a></li>
+		</ul>
+
+        <h2>Nova Prova</h2>
             <form method="POST" class="post-form">{% csrf_token %}
 
                 <tr>
@@ -35,16 +46,6 @@
                     </div>
                  </tr>
 
-                <!--{% for field in form %}<p>-->
-                    <!--{{field.label_tag}}<br>-->
-                    <!--{% if field.help_text %}-->
-                        <!--<small style="color: grey">{{field.help_text}}</small><br>-->
-                    <!--{% endif %}-->
-                    <!--{{field}}-->
-                    <!--{% for error in field.error %}-->
-                        <!--<p style="color:red">{{error}}</p>-->
-                    <!--{% endfor %}-->
-                    <!--{% endfor %}-->
                 <a href="{% url 'home' %}" class="btn btn-outline-secondary" role="button" >Cancelar</a>
                 <button type="submit" class="btn btn-primary">Próximo</button>
             </form>
