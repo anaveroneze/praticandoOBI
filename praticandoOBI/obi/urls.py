@@ -24,8 +24,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('provas/', include('provasobi.urls', namespace='provas_obi')),
     path('usuario/', include('usuarios.urls', namespace='usuarios_obi')),
-
-    #path('<int:pk>/minhasprovas/', minhasprovas, name='url_minhasprovas'),
-   # path('prova/<int:pk>', provaperson_detail, name='provadetail'),
-   # path('gabarito/<int:pk>', gabarito, name='url_gabarito'),
 ]
