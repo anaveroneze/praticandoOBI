@@ -1,5 +1,9 @@
-{% extends './../base.html' %}
+{% extends './../base2.html' %}
 {% load static %}
+
+{% block titulo %}
+    Minha Prova
+{% endblock %}
 
 {% block container %}
 <link href="{% static 'admin/css/breadcrumb.css' %}" rel="stylesheet">
@@ -8,27 +12,21 @@
 
         <div class="col-md-8 col-sm-10 col-12">
 		<ul class="breadcrumb">
-			<li class="completed"><a href="{% url 'usuarios_obi:provaperson' %}">Dados da Prova</a></li>
 			<li class="active"><a href="{% url 'usuarios_obi:provaperson_edit' pk %}">Editar Prova</a></li>
             <li><a href="javascript:void(0);">Buscar Questões</a></li>
-            <li><a href="javascript:void(0);">Adicionar Questões</a></li>
+            <li><a href="javascript:void(0);">Selecionar Questões</a></li>
 			<li><a href="javascript:void(0);">Imprimir Prova</a></li>
 		</ul>
 
-        <h2>Minha Prova</h2>
-            <form method="POST" class="post-form">{% csrf_token %}
-            <tr>
-                <div class="form-group">
-                    <td>{{ form.as_p }}</td>
-                </div>
-            </tr>
-            <a href="{% url 'usuarios_obi:questoes_busca' pk %}" class="btn btn-outline-secondary" role="button" >Adicionar Questões</a>
-            <br><br><button type="submit" class="btn btn-primary">Salvar</button>
-            </form>
+        <form method="POST" class="post-form">{% csrf_token %}
+        <tr>
+            <div class="form-group">
+                <td>{{ form.as_p }}</td>
+            </div>
+        </tr>
+        <a href="{% url 'usuarios_obi:questoes_busca' pk %}" class="btn btn-primary" role="button" >Adicionar Questões</a>
+        </form>
 
         </div>
     </div>
-
-
-
 {% endblock %}

@@ -1,5 +1,9 @@
-{% extends 'base.html' %}
+{% extends './addquestoes_resultado.html' %}
 {% load static %}
+
+{% block titulo %}
+    Selecionar Questões
+{% endblock %}
 
 {% block container %}
 <link href="{% static 'admin/css/breadcrumb.css' %}" rel="stylesheet">
@@ -8,10 +12,9 @@
 
 <ul class="breadcrumb">
     <li class="completed"><a href="{% url 'usuarios_obi:provaperson' %}">Dados da Prova</a></li>
-    <li class="completed"><a href="{% url 'usuarios_obi:provaperson_edit' codprova %}">Editar Prova</a></li>
     <li class="completed"><a href="{% url 'usuarios_obi:questoes_busca' codprova %}">Buscar Questões</a></li>
-    <li class="active"><a href="">Adicionar Questões</a></li>
-    <li><a href="javascript:void(0);">Imprimir Prova</a></li>
+    <li class="active"><a href="">Selecionar Questões</a></li>
+    <li><a>Imprimir Prova</a></li>
 </ul>
 
 <form method="POST" class="post-form">{% csrf_token %}

@@ -64,7 +64,7 @@ def provaperson(request):
             provaperson.autor = request.user.profile
             provaperson.save()
             # messages.success(request, 'Prova criada com sucesso! Adicione questões agora.')
-            return redirect('usuarios_obi:provaperson_edit', provaperson.pk)
+            return redirect('usuarios_obi:questoes_busca', provaperson.pk)
             #return redirect('usuarios_obi:provaperson_detail', pk=provaperson.pk)
     else:
         form = ProvaForm()
@@ -115,7 +115,6 @@ def questoes_busca(request, pk):
             elif checkbox == 'questaobox':
                 return render(request, 'home.html', {})
             else:
-
                 return render(request, 'home.html', {})
     return render(request, 'novasprovas/addquestoes.html', {'provaperson':provaperson,'error': error, 'pk': pk})
 

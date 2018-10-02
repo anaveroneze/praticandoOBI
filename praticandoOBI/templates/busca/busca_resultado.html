@@ -1,5 +1,11 @@
-{% extends 'base.html' %}
+{% extends './busca_form.html' %}
 {% load static %}
+
+{% block caminho %}
+    {{ block.super }}
+    / Resultado
+{% endblock %}
+
 
 {% block container %}
     <p>Resultados para: <strong>{{ query }}</strong></p>
@@ -14,5 +20,5 @@
         <p>Nenhum resultado encontrado para a sua pesquisa.</p>
     {% endif %}
 
-    <a href="{% url 'provas_obi:url_busca' %}"><span>Nova busca</span></a>
+    <a href="{% url 'provas_obi:url_busca' %}" class="btn btn-primary"><span>Nova busca</span></a>
 {% endblock %}

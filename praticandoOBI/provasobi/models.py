@@ -66,6 +66,7 @@ class Classificacao(models.Model):
 
 class ProvaPerson(models.Model):
     autor = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    codprovaperson = models.IntegerField(db_column='codProvaPerson', null=True, default='0')
     titulo = models.CharField(db_column='titulo', max_length=200, blank=True, null=True, default='')
     ano = models.CharField(db_column='ano',  max_length=20, blank=True, null=True, default='')
     dificuldade = models.IntegerField(db_column='dificuldade', blank=True, null=True, default=0)
