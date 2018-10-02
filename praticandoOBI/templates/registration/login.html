@@ -1,6 +1,11 @@
 {% extends './../base.html' %}
 {% load static %}
 
+{% block titulo %}
+    {{ block.super }}
+    / Acessar conta
+{% endblock %}
+
 {% block container %}
     <script>
     jQuery(document).ready(function(){
@@ -20,7 +25,6 @@
     </script>
 
     <div class="panel">
-        <h2>Acessar conta</h2>
    <p>Entre com o seu usuário e senha</p>
    </div>
          <form method="post" novalidate>{% csrf_token %}

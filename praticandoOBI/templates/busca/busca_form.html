@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block titulo %}
+    {{ block.super }}
+    / Busca por Provas
+{% endblock %}
 {% block container %}
      <form action="" method="GET">
         <div class="form-group">
-            <h2>Busca por Provas</h2>
 
             {% if error %}
                 <p style="color: red;">Por favor, entre com um valor.</p>

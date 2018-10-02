@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
+{% block titulo %}
+    {{ block.super }}
+    / Provas Passadas da OBI
+{% endblock %}
 {% block container %}
 
-    <h2>Provas Passadas OBI</h2>
     <ul>
         {% for prova in provas %}
         <li>{{ prova.anoprova }} - {{prova.faseprova}} - {{prova.nivelprova}} - <a href="{{prova.urlprova}}"> Acesse </a> </li>

@@ -1,15 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block container %}
+{% block titulo %}
+    {{ block.super}}
+    / Minhas Provas
+{% endblock %}
 
-    <h2>Minhas Provas:</h2>
+{% block container %}
 
     {% if not provas %}
         <p>Você ainda não tem provas cadastradas.</p>
     {% else %}
+    <ul class="list-group product-category-all">
         {% for prova in provas %}
-            <p>Título: <a href="{% url 'usuarios_obi:provaperson_detail' prova.pk %}"> {{ prova.titulo }} </a></p>
+        <li class="list-group-item"><span class="badge" ></i></span>
+            <a href="{% url 'usuarios_obi:provaperson_detail' prova.pk %}"> {{ prova.titulo }} </a>
+        </li>
         {% endfor%}
     {% endif %}
+    </ul>
 {% endblock %}

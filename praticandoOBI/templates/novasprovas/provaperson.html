@@ -1,6 +1,11 @@
 {% extends './../base.html' %}
 {% load static %}
 
+{% block titulo %}
+    {{ block.super }}
+    / Nova Prova
+{% endblock %}
+
 {% block container %}
 <link href="{% static 'admin/css/breadcrumb.css' %}" rel="stylesheet">
 
@@ -15,7 +20,6 @@
 			<li><a href="javascript:void(0);">Imprimir Prova</a></li>
 		</ul>
 
-        <h2>Nova Prova</h2>
             <form method="POST" class="post-form">{% csrf_token %}
 
                 <tr>
