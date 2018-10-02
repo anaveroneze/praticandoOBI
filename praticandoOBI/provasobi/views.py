@@ -72,11 +72,11 @@ def buscaprob(request):
                 problemas = Problema.objects.filter(tituloproblema__icontains=q)
                 return render(request, 'busca/busca_prob_resultado.html', {'problemas': problemas, 'query': q})
             elif checkbox == 'classificacaobox':
-                classificacao = Classificacao.objects.filter(tituloclassificacao=q)
+                classificacao = Classificacao.objects.filter(tituloclassificacao__icontains=q)
                 problemas = Problema.objects.filter(classificacao__in=classificacao)
                 return render(request, 'busca/busca_prob_resultado.html', {'problemas': problemas, 'query': q})
             else:
-                classificacao = Classificacao.objects.filter(tituloclassificacao=q)
+                classificacao = Classificacao.objects.filter(tituloclassificacao__icontains=q)
                 problemas = Problema.objects.filter(Q(tituloproblema__icontains=q) | Q(classificacao__in=classificacao))
                 return render(request, 'busca/busca_prob_resultado.html', {'problemas': problemas, 'query': q})
 
