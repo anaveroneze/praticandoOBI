@@ -1,10 +1,15 @@
 {% extends './../base.html' %}
 {% load static %}
 
+{% block titulo %}
+    {{ block.super }}
+    / Prova
+{% endblock %}
+
+
 {% block container %}
 
     {% for p in provaperson%}
-        <h2> Prova {{p.pk}}: </h2>
         Título: {{p.titulo}}</br>
         Ano: {{p.ano}}</br>
         Dificuldade: {{p.dificuldade}}</br>

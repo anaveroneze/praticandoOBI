@@ -18,9 +18,6 @@
                 <li><a href="{% url 'usuarios_obi:questoes_add' pk p.codprova %}">{{p.anoprova}} - Fase {{p.faseprova}} - Nível {{p.nivelprova}}</a></li>
             {% endfor %}
         </ul>
-    {% endif %}
-    {% if problemas %}
-        {{problemas}}
     {% else %}
         <p>Nenhum resultado encontrado para a sua pesquisa.</p>
     {% endif %}
