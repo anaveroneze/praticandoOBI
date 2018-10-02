@@ -9,6 +9,7 @@
         Ano: {{p.ano}}</br>
         Dificuldade: {{p.dificuldade}}</br>
         Observações: {{p.observacoes}}</br></br>
+{{p.codprova}}
         <a href="{% url 'usuarios_obi:provaperson_edit' p.pk %}" class="btn btn-outline-secondary" role="button" >Editar</a>
         <a href="{% url 'usuarios_obi:provaperson_pronta' p.pk %}" class="btn btn-outline-secondary" role="button" >Ver Prova</a>
     {% endfor %}

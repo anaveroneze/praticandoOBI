@@ -7,10 +7,10 @@
 <br class="list-group">
 
 <ul class="breadcrumb">
-    <li class="completed"><a href="javascript:void(0);">Dados da Prova</a></li>
-    <li class="completed"><a href="javascript:void(0);">Editar Prova</a></li>
-    <li class="completed"><a href="javascript:void(0);">Buscar Questões</a></li>
-    <li class="active"><a href="javascript:void(0);">Adicionar Questões</a></li>
+    <li class="completed"><a href="{% url 'usuarios_obi:provaperson' %}">Dados da Prova</a></li>
+    <li class="completed"><a href="{% url 'usuarios_obi:provaperson_edit' codprova %}">Editar Prova</a></li>
+    <li class="completed"><a href="{% url 'usuarios_obi:questoes_busca' codprova %}">Buscar Questões</a></li>
+    <li class="active"><a href="">Adicionar Questões</a></li>
     <li><a href="javascript:void(0);">Imprimir Prova</a></li>
 </ul>
 
@@ -80,7 +80,7 @@
     <div class="pull-left form-control-inline">
         <h4 class="list-group-item-heading">
             <button type="submit" class="btn btn-primary">Adicionar Questões</button>
-            <a href="{% url 'usuarios_obi:provaperson_edit' pk %}" class="btn btn-outline-secondary" role="button" >Cancelar</a>
+            <a href="{% url 'usuarios_obi:provaperson_edit' codprova %}" class="btn btn-outline-secondary" role="button" >Cancelar</a>
         </h4>
     </div>
 </form>

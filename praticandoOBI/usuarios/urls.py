@@ -15,6 +15,6 @@ urlpatterns = [
     path('minhasprovas/editar/<int:pk>/buscaquestoes/', questoes_busca, name='questoes_busca'),
     path('minhasprovas/<int:pk>/', provaperson_detail, name='provaperson_detail'),
 
-    path('minhasprovas/editar/<int:pk>/adquestoes/<int:codprova>/', questoes_add, name='questoes_add'),
+    path('minhasprovas/editar/<int:codprova>/adquestoes/<int:pk>/', questoes_add, name='questoes_add'),
     path('minhasprovas/<int:codprova>/baixarprova/', provaperson_pronta, name='provaperson_pronta'),
 ]

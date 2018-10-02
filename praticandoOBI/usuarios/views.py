@@ -120,7 +120,7 @@ def questoes_busca(request, pk):
     return render(request, 'novasprovas/addquestoes.html', {'provaperson':provaperson,'error': error, 'pk': pk})
 
 
-def questoes_add(request, pk, codprova):
+def questoes_add(request, codprova, pk):
 
     if request.method == "POST":
         provaperson = get_object_or_404(ProvaPerson, pk=codprova, autor=request.user.profile)
@@ -162,4 +162,4 @@ def provaperson_pronta(request, codprova):
     id_problemas = Questao.objects.all().filter(codquestao__in=provaperson.questoes.all()).values('codproblema')
     problemas = Problema.objects.all().filter(codproblema__in=id_problemas).distinct()
 
-    return render(request, 'novasprovas/provaperson_pronta.html', {'provaperson':provaperson, 'problemas':problemas, 'questoes': questoes, 'alternativas':alternativas})
+    return render(request, 'novasprovas/provaperson_pronta.html', {'provaperson':provaperson, 'problemas':problemas, 'questoes': questoes, 'alternativas':alternativas, 'codprova':codprova})
