@@ -3,7 +3,55 @@
 
 {% block container %}
 
-        <h2>Arrumar homepage</h2>
+<link href="{% static 'admin/css/style2.css' %}" rel="stylesheet">
+
+<img src="./../static/images/obi-logo.png" alt="OBI" style="width:90px;height:90px;" class="centro">
+
+     <div class="container">
+         <div class="centro">
+            <div class="col=12 mt-3">
+                <div class="jumbotron" style="background-color:#E8E8E8">
+                    <h3>Crie suas <b>próprias</b> provas da OBI<br> na Modalidade Iniciação</h3>
+                  <p class="lead">No Praticando OBI você pode criar provas personalizadas de maneira fácil e rápida para aplicar em treinamentos e simulados.</p>
+                  <hr class="my-2">
+                  <p>Comece já a criar suas provas!</p>
+                    <p style="text-align: center" class="lead">
+                        {% if user.is_authenticated %}
+                            <a class="btn standard-btn" href="{% url 'usuarios_obi:provaperson' %}" role="button"><b>Criar Prova</b></a>
+                        {% else %}
+                            <a class="btn standard-btn" href="{% url 'usuarios_obi:login_perfil' %}" role="button"><b>Criar Prova</b></a>
+                        {% endif %}
+                       </p>
+            </div>
+         </div>
+        </div>
+     </div>
+
+</br><hr class="my-2"></br></br>
+      <div class="container">
+       <div class="row">
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                  <h5 class="card-title"><b>O que é a OBI?</b></h5>
+                <p class="card-text">A <a href="https://olimpiada.ic.unicamp.br/">Olimpíada Brasileira de Informática</a> é uma competição de programação anual voltada a alunos de ensino básico e superior, sendo aplicadas avaliações para diferentes modalidades e níveis.<br>
+                    Tem por um dos objetivos despertar nos alunos o interesse por Ciência da Computação.
+                    </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="card">
+              <div class="card-body">
+                  <h5 class="card-title"><b>Como criar minhas provas?</b></h5>
+                <p class="card-text">Selecione questões no nosso banco de provas passadas da OBI na Modalidade Iniciação.<br>
+                Crie sua própria prova, salve, imprima e aplique!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+     </div>
     <!--<a href = "{% url 'provas_obi:url_provas' %}">Ver Provas</a><br/>-->
 
     <!--{% if user.is_authenticated %}-->
