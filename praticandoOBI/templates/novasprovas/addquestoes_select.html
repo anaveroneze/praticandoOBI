@@ -17,12 +17,20 @@
     <li><a>Imprimir Prova</a></li>
 </ul>
 
+<script>
+function toggle(source) {
+    var checkboxes = document.querySelectorAll('input[name="checks"]');
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i] != source)
+            checkboxes[i].checked = source.checked;
+    }
+}
+</script>
+
+
 <form method="POST" class="post-form">{% csrf_token %}
     {% for prob in problemas %}
     <a class="list-group-item">
-        <div class="checkbox pull-left">
-            <label><input type="checkbox" name="checks" value="">  Selecionar todos </label>
-        </div>
 
         <div class="pull-left form-control-inline">
             <h3 class="list-group-item-heading">{{ prob.numeroproblema }} - {{prob.tituloproblema}}</h3>
@@ -44,13 +52,15 @@
                 <img src={% static prob.imgproblema %} width="200" height="200" alt="My image">
             {% endif %}
 
+
         <!--Mostra as questões do problema-->
         {% for q in questoes %}
             {% if q.codproblema.codproblema == prob.codproblema %}
+
             <a class="list-group-item">
                 <div class="checkbox pull-left">
                     <label>
-                        <input type="checkbox" name="checks" value="{{q.codquestao}}">
+                        <input type="checkbox" name="checks" value="{{q.codquestao}}" id="{{q.codproblema.codproblema}}">
                     </label>
                 </div>
 
@@ -75,15 +85,21 @@
 
         {% endif %}
         {% endfor %}
-        <br class="pull-left form-control-inline"></br>
+
+    <a class="list-group-item">
+        <div class="checkbox pull-left">
+        <label><input type="checkbox" onclick="toggle(this);">  Selecionar todos de <b>{{prob.tituloproblema}}</b></label>
         </div>
+    </a>
+    <br class="pull-left form-control-inline"></br>
+    </div>
     </a>
     {% endfor%}
 
     <div class="pull-left form-control-inline">
         <h4 class="list-group-item-heading">
-            <button type="submit" class="btn btn-primary">Adicionar Questões</button>
             <a href="{% url 'usuarios_obi:provaperson_edit' codprova %}" class="btn btn-outline-secondary" role="button" >Cancelar</a>
+            <button type="submit" class="btn btn-primary">Adicionar Questões</button>
         </h4>
     </div>
 </form>
