@@ -20,14 +20,14 @@
  {% for p in problemas %}
  <h4 class="list-group-item-heading">{{p.tituloproblema}} - {{p.enunciadoproblema}}</h4>
  <!--Mostra as regras do problema, se ele tiver-->
-            {% if prob.regrasproblema %}
-                <br>{{prob.regrasproblema}}<br>
+            {% if p.regrasproblema %}
+                <br>{{p.regrasproblema}}<br>
             {% endif %}
 
             <!--Mostra as imagens do problema, se ele tiver-->
-            {% if prob.imgproblema %}
+            {% if p.imgproblema %}
                 {% load static %}
-                <img src={% static prob.imgproblema %} width="200" height="200" alt="My image">
+                <img src={% static p.imgproblema %} width="200" height="200" alt="My image">
             {% endif %}
    </br>
 
@@ -53,6 +53,6 @@
      {% endif %}
    {% endfor %}
   {% endfor %}
-  <button onclick="window.print()">Imprimir Prova</button>
+  <a href="{% url 'usuarios_obi:provaperson_baixar' codprova %}">Imprimir Prova</a>
 
 {% endblock %}

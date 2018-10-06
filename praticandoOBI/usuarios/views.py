@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+import codecs
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Profile
 from provasobi.models import ProvaPerson, Prova, Questao, Classificacao, Problema, Alternativa
@@ -13,9 +15,12 @@ from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView)
 from django.db.models import Q
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image
+from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.lib.units import inch
+from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponse
 
-
-#
 # @login_required
 def home_usuario(request):
     return render(request, 'usuarios/homeusuario.html', {})
@@ -162,3 +167,76 @@ def provaperson_pronta(request, codprova):
     problemas = Problema.objects.all().filter(codproblema__in=id_problemas).distinct()
 
     return render(request, 'novasprovas/provaperson_pronta.html', {'provaperson':provaperson, 'problemas':problemas, 'questoes': questoes, 'alternativas':alternativas, 'codprova':codprova})
+
+
+def provaperson_baixar(request, codprova):
+
+    #ENCONTRA CONTEUDO DA PROVA:
+    provaperson = get_object_or_404(ProvaPerson, pk=codprova, autor=request.user.profile)
+    questoes = Questao.objects.all().filter(codquestao__in=provaperson.questoes.all()).order_by('numeroquestao')
+
+    id_questoes = []
+    for q in questoes:
+        # print(q.enunciadoquestao) #ARRUMAR ACENTUAÇÃO
+        id_questoes.append(q)
+
+    alternativas = Alternativa.objects.all().select_related('codquestao').filter(codquestao__in=id_questoes)
+
+    id_problemas = Questao.objects.all().filter(codquestao__in=provaperson.questoes.all()).values('codproblema')
+    problemas = Problema.objects.all().filter(codproblema__in=id_problemas).distinct()
+
+    #  ESCREVE NA PROVA
+    count = 1
+
+    doc = SimpleDocTemplate("/tmp/prova-" + str(codprova) + ".pdf", rightMargin=50, leftMargin=50, topMargin=40, bottomMargin=50)
+    styles = getSampleStyleSheet()
+    Story = [Spacer(1, 0.2 * inch)]
+    style = styles["Normal"]
+
+    par = Paragraph('<para align=center fontSize=20 > <b>' + provaperson.titulo + '</b></para>', style)
+    Story.append(par)
+    Story.append(Spacer(1, 0.4 * inch))
+
+    for p in problemas:
+        par = Paragraph('<para align=center fontSize=14><b>' + p.tituloproblema + '</b><br/></para>', style)
+        Story.append(par)
+        Story.append(Spacer(1, 0.2 * inch))
+        par = Paragraph('<para fontSize=12>' + p.enunciadoproblema + '<br/></para>',style)
+        Story.append(par)
+        if p.regrasproblema:
+            Story.append(Spacer(1, 0.1 * inch))
+            par = Paragraph('<para fontSize=12><b>REGRAS:</b><br/></para>', style)
+            Story.append(par)
+            par = Paragraph('<para fontSize=12>' + p.regrasproblema + '<br/></para>', style)
+            Story.append(par)
+            Story.append(Spacer(1, 0.2 * inch))
+        else:
+            Story.append(Spacer(1, 0.2 * inch))
+        if p.imgproblema:
+            img = Image("static/"+p.imgproblema, 4 * inch, 3 * inch)
+            Story.append(img)
+
+        for q in questoes:
+            print(q.codproblema.codproblema)
+            if p.codproblema == q.codproblema.codproblema:
+                par = Paragraph('<para fontSize=12><b>Questão ' + str(count) + "</b> - " + q.enunciadoquestao + '<br/></para>', style)
+                Story.append(par)
+                Story.append(Spacer(1, 0.2 * inch))
+                count+=1
+                if q.imgquestao:
+                    img = Image("static/"+q.imgproblema, 4 * inch, 3 * inch)
+                    Story.append(img)
+                for a in alternativas:
+                    if a.codquestao.codquestao == q.codquestao:
+                        par = Paragraph('<para fontSize=12><b>' + a.letraalternativa + ')</b> ' + a.textoalternativa + '<br/></para>', style)
+                        Story.append(par)
+                        Story.append(Spacer(1, 0.1 * inch))
+        Story.append(Spacer(1, 0.3 * inch))
+    doc.build(Story)
+    nome = "prova-" + str(codprova)
+    print(nome)
+    fs = FileSystemStorage("/tmp")
+    with fs.open("prova-"+str(codprova)+".pdf") as pdf:
+        response = HttpResponse(pdf, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename='+nome+'.pdf'
+    return response
