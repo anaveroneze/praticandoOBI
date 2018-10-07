@@ -215,6 +215,7 @@ def provaperson_baixar(request, codprova):
         else:
             Story.append(Spacer(1, 0.2 * inch))
         if p.imgproblema:
+            #local: 'static/ + p.imgproblema'
             img = Image('/app/praticandoOBI/static/' + p.imgproblema, 2 * inch, 2 * inch)
             Story.append(img)
 
@@ -226,7 +227,8 @@ def provaperson_baixar(request, codprova):
                 Story.append(Spacer(1, 0.2 * inch))
                 count+=1
                 if q.imgquestao:
-                    img = Image("static/"+q.imgproblema, 2 * inch, 2 * inch)
+                    # local: 'static/ + q.imgproblema'
+                    img = Image('/app/praticandoOBI/static/' + q.imgproblema, 2 * inch, 2 * inch)
                     Story.append(img)
                 for a in alternativas:
                     if a.codquestao.codquestao == q.codquestao:
