@@ -34,12 +34,27 @@
                     </div>
                  </tr>
 
+
                 <tr>
                 <td><label for="id_dificuldade">Dificuldade:</label></td>
-                    <div class="form-group">
-                        <td><input name="dificuldade" type="text" maxlength="20" id="id_dificuldade" class="form-control"></td>
-                    </div>
-                 </tr>
+                <div class="row">
+                    <div class="form-group form-group-multiple-selectsp col-xs-11 col-sm-8 col-md-4">
+                        <div class="input-group input-group-multiple-selectp col-xs-8">
+                            <select class="form-control" name="dificuldade">
+                                <option value="">Selecione uma</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <span class="input-group-addon input-group-addon-remove">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </span>
+                        </div>
+                    </div></div>
+                </tr>
+
 
                 <tr>
                 <td><label for="id_observacoes">Observações:</label></td>
