@@ -55,7 +55,7 @@ def cadastro_perfil(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
             login(request, user)
-            return redirect('usuarios_obi:homeusuario')
+            return redirect('home')
     else:
         form = ProfileForm()
     return render(request, 'usuarios/signup.html', {'form': form})
