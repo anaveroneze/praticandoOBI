@@ -215,7 +215,7 @@ def provaperson_baixar(request, codprova):
         else:
             Story.append(Spacer(1, 0.2 * inch))
         if p.imgproblema:
-            img = Image(p.imgproblema, 2 * inch, 2 * inch)
+            img = Image('/app/praticandoOBI/static/' + p.imgproblema, 2 * inch, 2 * inch)
             Story.append(img)
 
         for q in questoes:
