@@ -20,6 +20,8 @@ from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.units import inch
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse
+from django.conf.urls.static import static
+from django.conf import settings
 
 # @login_required
 def home_usuario(request):
@@ -213,7 +215,8 @@ def provaperson_baixar(request, codprova):
         else:
             Story.append(Spacer(1, 0.2 * inch))
         if p.imgproblema:
-            img = Image(p.imgproblema, 2 * inch, 2 * inch)
+            filepath = settings.STATIC_URL + p.imgproblema
+            img = Image(filepath, 2 * inch, 2 * inch)
             Story.append(img)
 
         for q in questoes:
@@ -224,7 +227,7 @@ def provaperson_baixar(request, codprova):
                 Story.append(Spacer(1, 0.2 * inch))
                 count+=1
                 if q.imgquestao:
-                    img = Image(q.imgproblema, 2 * inch, 2 * inch)
+                    img = Image("static/"+q.imgproblema, 2 * inch, 2 * inch)
                     Story.append(img)
                 for a in alternativas:
                     if a.codquestao.codquestao == q.codquestao:
