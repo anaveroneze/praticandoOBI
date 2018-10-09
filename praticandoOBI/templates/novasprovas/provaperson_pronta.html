@@ -33,18 +33,10 @@
    </br>
 
 
-<script>var count = 0;
-document.getElementById("counter").value = 0;</script>
-
    {% for q in questoes %}
      {% if p.codproblema == q.codproblema.codproblema %}
      <div class="pull-left form-control-inline">
-         <h5 class="list-group-item-heading"><b>Questão - <div id="counter"></div> </b>{{q.enunciadoquestao}}</h5>
-         <script>
-          count = parseInt(document.getElementById("counter").value);
-          document.getElementById("counter").value = count+1;
-        </script>
-
+         <h5 class="list-group-item-heading"><b>Questão {{forloop.counter}} - </b>{{q.enunciadoquestao}}</h5>
          <p class="list-group-item-text">
                <!--Mostra as imagens da questão-->
               {% if q.imgquestao %}

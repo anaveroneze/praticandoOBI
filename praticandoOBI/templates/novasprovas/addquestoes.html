@@ -19,7 +19,7 @@
      <form action="" method="GET">
         <div class="form-group">
              <h5>Busque questões de provas passadas da OBI</h5>
-
+                 <small>Pesquise questões pelo ano, fase ou nível da prova:</small>
             {% if error %}
                 <p style="color: red;">Por favor, entre com um valor.</p>
             {% endif %}
@@ -27,10 +27,9 @@
             <div class="col-xs-9">
                 <input type="text" class="form-control" name="q"/>
                 <label class="radio-inline">Procurar questões por: </label>
-                 
-                <label for="box1"><input type="radio" name="display_type" value="provabox" id="box1">Prova</label>&emsp;
-                <label for="box2"><input type="radio" name="display_type" value="problemabox" id="box2">Problema</label>&emsp;
-                <label for="box3"><input type="radio" name="display_type" value="questaobox" id="box3">Questão</label>&emsp;
+                <label for="box1"><input type="radio" name="display_type" value="anobox" id="box1">Ano</label>&emsp;
+                <label for="box2"><input type="radio" name="display_type" value="fasebox" id="box2">Fase</label>&emsp;
+                <label for="box3"><input type="radio" name="display_type" value="nivelbox" id="box3">Nível</label>&emsp;
 
             </div>
             <div class="col-xs-2">

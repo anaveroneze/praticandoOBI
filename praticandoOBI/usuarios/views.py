@@ -86,7 +86,8 @@ def provaperson_edit(request, pk):
             provaperson = form.save(commit=False)
             provaperson.autor = request.user.profile
             provaperson.save()
-            return redirect('usuarios_obi:provaperson_detail', provaperson.pk)
+            messages.success(request, "Alterações salvas!")
+            return redirect('usuarios_obi:provaperson_edit', provaperson.pk)
     else:
         form = ProvaForm(instance=provaperson)
     return render(request, 'novasprovas/provaperson_edit.html', {'form':form, 'pk':pk, 'titulo':provaperson.titulo, 'ano':provaperson.ano, 'dificuldade':provaperson.dificuldade, 'obs':provaperson.observacoes})
@@ -112,17 +113,23 @@ def questoes_busca(request, pk):
         if not q:
             error = True
         else:
-            if checkbox == 'provabox':
-                provas = Prova.objects.filter(Q(anoprova=q) | Q(faseprova=q) | Q(nivelprova=q))
+            if checkbox == 'anoox':
+                provas = Prova.objects.filter(Q(anoprova=q))
                 return render(request, 'novasprovas/addquestoes_resultado.html', {'provaperson':provaperson, 'provas': provas, 'query': q, 'pk':pk})
-            elif checkbox == 'problemabox':
-                classificacao = Classificacao.objects.filter(tituloclassificacao=q)
-                problemas = Problema.objects.filter(Q(tituloproblema__icontains=q) | Q(classificacao__in=classificacao))
-                return render(request, 'novasprovas/addquestoes_resultado.html', {'provaperson': provaperson, 'problemas': problemas, 'query': q, 'pk': pk})
-            elif checkbox == 'questaobox':
-                return render(request, 'home.html', {})
+            elif checkbox == 'fasebox':
+                provas = Prova.objects.filter(Q(faseprova=q))
+                return render(request, 'novasprovas/addquestoes_resultado.html', {'provaperson': provaperson, 'provas': provas, 'query': q, 'pk': pk})
+
+                # classificacao = Classificacao.objects.filter(tituloclassificacao=q)
+                # problemas = Problema.objects.filter(Q(tituloproblema__icontains=q) | Q(classificacao__in=classificacao))
+                # return render(request, 'novasprovas/addquestoes_resultado.html', {'provaperson': provaperson, 'problemas': problemas, 'query': q, 'pk': pk})
+            elif checkbox == 'nivelbox':
+                provas = Prova.objects.filter(Q(nivelprova=q))
+                return render(request, 'novasprovas/addquestoes_resultado.html', {'provaperson': provaperson, 'provas': provas, 'query': q, 'pk': pk})
             else:
-                return render(request, 'home.html', {})
+                provas = Prova.objects.filter(Q(anoprova=q) | Q(faseprova=q) | Q(nivelprova=q))
+                return render(request, 'novasprovas/addquestoes_resultado.html', {'provaperson': provaperson, 'provas': provas, 'query': q, 'pk': pk})
+
     return render(request, 'novasprovas/addquestoes.html', {'provaperson':provaperson,'error': error, 'pk': pk})
 
 
