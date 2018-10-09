@@ -89,7 +89,7 @@ def provaperson_edit(request, pk):
             return redirect('usuarios_obi:provaperson_detail', provaperson.pk)
     else:
         form = ProvaForm(instance=provaperson)
-    return render(request, 'novasprovas/provaperson_edit.html', {'form':form, 'pk':pk})
+    return render(request, 'novasprovas/provaperson_edit.html', {'form':form, 'pk':pk, 'titulo':provaperson.titulo, 'ano':provaperson.ano, 'dificuldade':provaperson.dificuldade, 'obs':provaperson.observacoes})
 
 #mostra as provas criadas
 def provasperson(request):

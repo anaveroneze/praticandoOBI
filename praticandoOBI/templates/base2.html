@@ -82,7 +82,11 @@
     <div class="copy-banner" style="margin-top: 85px;">
         <p style="margin-left: 10px; padding: 10px; color: white; font-size:28px; ">
             {% block titulo %}
+            {% if user.is_authenticated %}
+                Olá, {{ user.get_username }}!
+            {% else %}
                 Home
+            {% endif %}
             {% endblock %}</p>
     </div>
 
