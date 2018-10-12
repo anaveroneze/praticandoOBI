@@ -223,7 +223,8 @@ def provaperson_baixar(request, codprova):
             Story.append(Spacer(1, 0.2 * inch))
         if p.imgproblema:
             #local: 'static/ + p.imgproblema'
-            img = Image('/app/praticandoOBI/static/' + p.imgproblema, 2 * inch, 2 * inch)
+            #heroku: '/app/praticandoOBI/static/'
+            img = Image( 'static/' + p.imgproblema, 4 * inch, 4*inch)
             Story.append(img)
 
         for q in questoes:

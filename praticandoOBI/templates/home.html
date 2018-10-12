@@ -5,29 +5,33 @@
 
 <link href="{% static 'admin/css/style2.css' %}" rel="stylesheet">
 
-<img src="./../static/images/obi-logo.png" alt="OBI" style="width:90px;height:90px;" class="centro">
+<img src="./../static/images/Praticandoobi-logo.png" alt="OBI" style="width:80%;" class="centro">
 
      <div class="container">
          <div class="centro">
-            <div class="col=12 mt-3">
-                <div class="jumbotron" style="background-color:#E8E8E8">
-                    <h3>Crie suas <b>próprias</b> provas da OBI<br> na Modalidade Iniciação</h3>
-                  <p class="lead">No Praticando OBI você pode criar provas personalizadas de maneira fácil e rápida para aplicar em treinamentos e simulados.</p>
-                  <hr class="my-2">
-                  <p>Comece já a criar suas provas!</p>
+            <div class="col=5 mt-9">
+                <div class="jumbotron" style="background-color:transparent" style="width:100%;">
+                  <p class="lead" style="font-size:25px">No Praticando OBI você pode criar provas personalizadas de maneira fácil e rápida para aplicar em treinamentos e simulados. <br>Além disso, você também pode buscar provas e problemas de OBI's passadas da modalidade iniciação.</p>
+                    &nbsp;
                     <p style="text-align: center" class="lead">
                         {% if user.is_authenticated %}
                             <a class="btn standard-btn" href="{% url 'usuarios_obi:provaperson' %}" role="button"><b>Criar Prova</b></a>
                         {% else %}
                             <a class="btn standard-btn" href="{% url 'usuarios_obi:login_perfil' %}" role="button"><b>Criar Prova</b></a>
                         {% endif %}
-                       </p>
+                        &nbsp;
+                        &nbsp;
+                         <a class="btn standard-btn" href="{% url 'provas_obi:url_busca' %}" role="button"><b>Buscar Prova</b></a>
+                    </p>
             </div>
          </div>
         </div>
      </div>
 
+<img src="./../static/images/obi-logo.png" alt="OBI" style="width:10%;" class="centro">
+
 </br><hr class="my-2"></br></br>
+
       <div class="container">
        <div class="row">
           <div class="col-sm-6">

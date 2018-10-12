@@ -14,11 +14,15 @@
             <li class="completed"><a href="{% url 'home' %}">Adicionar Questões</a></li>
 			<li class="active"><a href="{% url 'home' %}">Imprimir Prova</a></li>
 		</ul>
+<p align="center" style="margin-top:5%;">
+    <a href="{% url 'usuarios_obi:provaperson_baixar' codprova %}" class="btn btn-primary" >Gerar PDF</a>
+</p>
+<br/>
 
-<br><h3 style="color:#54a9ff;text-align:center;"><b>{{provaperson.titulo}}</b></h3><br>
+<br><h3 style="color:#54a9ff;text-align:center;"><b>{{provaperson.titulo}}</b></h3><br><br/>
 
  {% for p in problemas %}
-<h4 class="list-group-item-heading" style="text-align:center;"><b>{{p.tituloproblema}}</b></h4>
+<h4 class="list-group-item-heading" style="text-align:center;"><b>{{p.tituloproblema}}</b></h4><br/>
 <h5>{{p.enunciadoproblema}}</h4>
  <!--Mostra as regras do problema, se ele tiver-->
             {% if p.regrasproblema %}
@@ -28,10 +32,9 @@
             <!--Mostra as imagens do problema, se ele tiver-->
             {% if p.imgproblema %}
                 {% load static %}
-                <img src={% static p.imgproblema %} width="200" height="200" alt="My image">
+                <img src={% static p.imgproblema %} width="350" alt="My image">
             {% endif %}
    </br>
-
 
    {% for q in questoes %}
      {% if p.codproblema == q.codproblema.codproblema %}
@@ -53,10 +56,8 @@
           </p>
       </div>
 
-
      {% endif %}
    {% endfor %}
+    <hr>
   {% endfor %}
-  <a href="{% url 'usuarios_obi:provaperson_baixar' codprova %}" class="btn btn-primary">Gerar PDF</a>
-
 {% endblock %}

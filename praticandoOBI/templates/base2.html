@@ -42,7 +42,7 @@
             </a>
           </li>
           <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navdrop" role="button" data-toggle="dropdown" data-hover="dropdown">Provas</a>
+              <a class="nav-link dropdown-toggle" href="#" id="navdrop" role="button" data-toggle="dropdown" data-hover="dropdown">Buscar</a>
                 <div class="dropdown-menu" aria-labelledby="navdrop">
                     <a href="{% url 'provas_obi:url_provas' %}" class="dropdown-item">Ver Provas</a>
                     <a href="{% url 'provas_obi:url_busca' %}" class="dropdown-item">Buscar Prova</a>
@@ -100,7 +100,7 @@
         </div>
         {% endfor %}
         {% endblock messages %}
-        <div style="margin-left: 10px; margin-bottom:50px;" class="container" >
+        <div style="margin-bottom:50px;" class="container" >
 
             {% block container %}
             {% endblock %}

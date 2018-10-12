@@ -7,10 +7,11 @@
 
 {% block container %}
     {% for prob in problemas %}
-        <br>{{ prob.numeroproblema }} - {{prob.tituloproblema}}<br/>
+    <br/>
+<h3><p align="center"><b>{{prob.tituloproblema}}</b></p></h3><br/>
 
         <!--Mostra a classificação do problema, se ele tiver-->
-        <br><b>CLASSIFICAÇÃO:</b>
+        <br><font color="#8bc34a"><b>CLASSIFICAÇÃO:</b></font>
         {% for f in prob.classificacao.all %}
             <br><b>{{f.tituloclassificacao}}</b>
         {% endfor %}
@@ -25,7 +26,7 @@
         <!--Mostra as imagens do problema, se ele tiver-->
         {% if prob.imgproblema %}
             {% load static %}
-            <img src={% static prob.imgproblema %} width="200" height="200" alt="My image">
+            <img src={% static prob.imgproblema %} width="350" alt="My image">
         {% endif %}
 
         <!--Mostra as questões do problema-->
@@ -50,7 +51,7 @@
              <button class="btn btn-outline-success" onclick="myFunction('{{q.codquestao}}')">Ver gabarito</button><br/>
              <div id="{{q.codquestao}}"> &nbsp;
                <div class="highlight">
-                 <pre>{{q.gabaritoquestao}}</pre>
+                   <p><font size="6"><b><pre>{{q.gabaritoquestao}}</pre></b></font></fontziseb></p>
                </div>
              </div>
 
@@ -67,7 +68,7 @@
 
             {% endif %}
         {% endfor %}
-
+    <hr>
     {% endfor%}
 </ul>
 {% endblock %}

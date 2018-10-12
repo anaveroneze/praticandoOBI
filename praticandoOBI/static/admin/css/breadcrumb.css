@@ -1,6 +1,14 @@
+.breadcrumb li a {
+  color: #0C355E;
+  text-decoration: none;
+  background-color: rgb(212, 212, 212);
+  -webkit-text-decoration-skip: objects;
+}
+
+
 .breadcrumb {
     padding: 0px;
-	background: #D4D4D4;
+	background: transparent;
 	list-style: none;
 	overflow: hidden;
     margin-top: 20px;
@@ -11,6 +19,11 @@
 .breadcrumb li {
 	float: left;
 }
+
+.breadcrumb li:last-child a::before {
+    content: none;
+}
+
 .breadcrumb li.active a {
 	background: brown;                   /* fallback color */
 	background: #ffc107 ;
@@ -68,3 +81,7 @@
 }
 .breadcrumb li a:hover { background: #54a9ff  ; }
 .breadcrumb li a:hover:after { border-left-color: #54a9ff   !important; }
+
+.breadcrumb li:last-child a::before {
+    content: none;
+}
