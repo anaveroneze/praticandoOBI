@@ -18,9 +18,9 @@
 </ul>
 
 <script>
-function toggle(source) {
+function toggle(source, f, init, end) {
     var checkboxes = document.querySelectorAll('input[name="checks"]');
-    for (var i = 0; i < checkboxes.length; i++) {
+    for (var i = init[f-1] - 1; i < end[f-1]; i++) {
         if (checkboxes[i] != source)
             checkboxes[i].checked = source.checked;
     }
@@ -30,8 +30,11 @@ function toggle(source) {
 
 <form method="POST" class="post-form">{% csrf_token %}
     {% for prob in problemas %}
-    <a class="list-group-item">
 
+    <a class="list-group-item">
+        <div class="checkbox pull-left">
+        <label><input type="checkbox" onclick="toggle(this, {{forloop.counter}}, {{init}}, {{end}})"> Selecionar todos de <b>{{prob.tituloproblema}}</b></label>
+        </div>
         <div class="pull-left form-control-inline">
             <h3 class="list-group-item-heading">{{ prob.numeroproblema }} - {{prob.tituloproblema}}</h3>
             <h4>Classificação:</h4>
@@ -45,13 +48,11 @@ function toggle(source) {
             {% if prob.regrasproblema %}
                 <br>{{prob.regrasproblema}}<br>
             {% endif %}
-
             <!--Mostra as imagens do problema, se ele tiver-->
             {% if prob.imgproblema %}
                 {% load static %}
                 <img src={% static prob.imgproblema %} width="200" height="200" alt="My image">
             {% endif %}
-
 
         <!--Mostra as questões do problema-->
         {% for q in questoes %}
@@ -86,11 +87,7 @@ function toggle(source) {
         {% endif %}
         {% endfor %}
 
-    <a class="list-group-item">
-        <div class="checkbox pull-left">
-        <label><input type="checkbox" onclick="toggle(this);">  Selecionar todos de <b>{{prob.tituloproblema}}</b></label>
-        </div>
-    </a>
+
     <br class="pull-left form-control-inline"></br>
     </div>
     </a>

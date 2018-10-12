@@ -46,7 +46,9 @@ def busca(request):
         if not q:
             error=True
         else:
-            if checkbox == 'anobox':
+            if q.isnumeric() == False:
+                return render(request, 'busca/busca_form.html', {'error': error})
+            elif checkbox == 'anobox':
                 provas = Prova.objects.filter(anoprova=q)
                 return render(request, 'busca/busca_resultado.html', {'provas': provas, 'query': q})
             elif checkbox == 'fasebox':

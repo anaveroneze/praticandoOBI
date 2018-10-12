@@ -156,10 +156,21 @@ def questoes_add(request, codprova, pk):
         for q in questoes:
             id_questoes.append(q)
 
+        init = []
+        end = []
+        count = 0
+
+        for p in problemas:
+            init.append(questoes[count].numeroquestao)
+            for q in questoes:
+                if q.codproblema.codproblema == p.codproblema:
+                    count = count + 1
+            end.append(questoes[count-1].numeroquestao)
+
         alternativas = Alternativa.objects.all().select_related('codquestao').filter(codquestao__in=id_questoes)
 
     return render(request, 'novasprovas/addquestoes_select.html',
-                  {'problemas': problemas, 'questoes': questoes, 'alternativas': alternativas, 'pk':pk, 'codprova':codprova})
+                  {'problemas': problemas, 'questoes': questoes, 'alternativas': alternativas, 'pk':pk, 'codprova':codprova, 'init':init, 'end':end})
 
 def provaperson_pronta(request, codprova):
 
@@ -228,7 +239,6 @@ def provaperson_baixar(request, codprova):
             Story.append(img)
 
         for q in questoes:
-            print(q.codproblema.codproblema)
             if p.codproblema == q.codproblema.codproblema:
                 par = Paragraph('<para fontSize=12><b>Questão ' + str(count) + "</b> - " + q.enunciadoquestao + '<br/></para>', style)
                 Story.append(par)
@@ -246,7 +256,6 @@ def provaperson_baixar(request, codprova):
         Story.append(Spacer(1, 0.3 * inch))
     doc.build(Story)
     nome = "prova-" + str(codprova)
-    print(nome)
     fs = FileSystemStorage("/tmp")
     with fs.open("prova-"+str(codprova)+".pdf") as pdf:
         response = HttpResponse(pdf, content_type='application/pdf')

@@ -33,7 +33,8 @@
 	background: #8bc34a;
 }
 .breadcrumb li.active a:after {
-	border-left: 30px solid #ffc107 ;
+	border-left: 30px
+	solid #ffc107 ;
 }
 .breadcrumb li.completed a:after {
 	border-left: 30px solid #8bc34a;
@@ -79,8 +80,14 @@
 .breadcrumb li:first-child a {
 	padding-left: 15px;
 }
-.breadcrumb li a:hover { background: #54a9ff  ; }
-.breadcrumb li a:hover:after { border-left-color: #54a9ff   !important; }
+.breadcrumb li a:hover {
+
+}
+
+.breadcrumb li a:hover:after {
+
+!important;
+}
 
 .breadcrumb li:last-child a::before {
     content: none;
