@@ -113,7 +113,9 @@ def questoes_busca(request, pk):
         if not q:
             error = True
         else:
-            if checkbox == 'anoox':
+            if q.isnumeric() == False:
+                return redirect('usuarios_obi:questoes_busca', provaperson.pk)
+            elif checkbox == 'anoox':
                 provas = Prova.objects.filter(Q(anoprova=q))
                 return render(request, 'novasprovas/addquestoes_resultado.html', {'provaperson':provaperson, 'provas': provas, 'query': q, 'pk':pk})
             elif checkbox == 'fasebox':
