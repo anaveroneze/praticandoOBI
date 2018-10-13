@@ -4,6 +4,7 @@ from django.urls import reverse
 from .models import Prova, Problema, Questao, Alternativa, ProvaPerson,Classificacao
 from .forms import ProvaForm
 from django.db.models import Q
+from django.contrib import messages
 
 def home(request):
     return render(request, 'home.html', {})
@@ -47,7 +48,8 @@ def busca(request):
             error=True
         else:
             if q.isnumeric() == False:
-                return render(request, 'busca/busca_form.html', {'error': error})
+                erroinput = True
+                return render(request, 'busca/busca_form.html', {'erroinput': erroinput})
             elif checkbox == 'anobox':
                 provas = Prova.objects.filter(anoprova=q)
                 return render(request, 'busca/busca_resultado.html', {'provas': provas, 'query': q})
