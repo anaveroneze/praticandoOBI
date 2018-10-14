@@ -281,7 +281,7 @@ def dadosbanco(request):
     file_path = '/app/praticandoOBI/OBI.db'
     with open(file_path, 'rb') as fh:
         response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
-        response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
+        response['Content-Disposition'] = 'inline; filename="OBI.db"'
         return response
     raise Http404
 
