@@ -271,14 +271,19 @@ def provaperson_baixar(request, codprova):
 def dadosbanco(request):
     download = get_object_or_404(ProvaPerson, autor=request.user.profile)
 
-    path_to_file = '/app/praticandoOBI/OBI.db'
-    f = open(path_to_file, 'r')
-    myfile = File(f)
-    response = HttpResponse(myfile, content_type='application/force-download')
-    response['Content-Disposition'] = 'attachment; filename="Banco"'
-    # response = HttpResponse(myfile, content_type='application/vnd.ms-excel')
-    # response['Content-Disposition'] = 'attachment; filename=' + name
-    return response
+    # path_to_file = '/app/praticandoOBI/OBI.db'
+    # f = open(path_to_file, 'r')
+    # myfile = File(f)
+    # response = HttpResponse(myfile, content_type='application/force-download')
+    # response['Content-Disposition'] = 'attachment; filename="Banco"'
+    # return response
+
+    file_path = '/app/praticandoOBI/OBI.db'
+    with open(file_path, 'rb') as fh:
+        response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
+        response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
+        return response
+    raise Http404
 
     # response['Content-Disposition'] = 'attachment; filename="/app/praticandoOBI/OBI.db'
     # return response
