@@ -211,7 +211,7 @@ def provaperson_baixar(request, codprova):
     id_problemas = Questao.objects.all().filter(codquestao__in=provaperson.questoes.all()).values('codproblema')
     problemas = Problema.objects.all().filter(codproblema__in=id_problemas).distinct()
 
-    #  ESCREVE NA PROVA
+    #ESCREVE NA PROVA
     count = 1
 
     doc = SimpleDocTemplate("/tmp/prova-" + str(codprova) + ".pdf", rightMargin=50, leftMargin=50, topMargin=40, bottomMargin=50)
@@ -246,7 +246,18 @@ def provaperson_baixar(request, codprova):
 
         for q in questoes:
             if p.codproblema == q.codproblema.codproblema:
-                par = Paragraph('<para fontSize=12><b>Questão ' + str(count) + "</b> - " + q.enunciadoquestao + '<br/></para>', style)
+                e = q.enunciadoquestao
+                e = e.replace("á", "á")
+                e = e.replace("é", "é")
+                e = e.replace("õ", "õ")
+                e = e.replace("Ã", "Ã")
+                e = e.replace("ã", "ã")
+                e = e.replace("ç", "ç")
+                e = e.replace("ú", "ú")
+                e = e.replace("ô", "ô")
+                e = e.replace("ê", "ê")
+                par = Paragraph('<para fontSize=12><b>Questão ' + str(count) + "</b> - " + e + '<br/></para>', style)
+
                 Story.append(par)
                 Story.append(Spacer(1, 0.2 * inch))
                 count+=1
@@ -256,7 +267,18 @@ def provaperson_baixar(request, codprova):
                     Story.append(img)
                 for a in alternativas:
                     if a.codquestao.codquestao == q.codquestao:
-                        par = Paragraph('<para fontSize=12><b>' + a.letraalternativa + ')</b> ' + a.textoalternativa + '<br/></para>', style)
+                        alt = a.textoalternativa
+                      #  print(alt)
+                        alt = alt.replace("á", "á")
+                        alt = alt.replace("é", "é")
+                        alt = alt.replace("õ", "õ")
+                        alt = alt.replace("Ã", "Ã")
+                        alt = alt.replace("ã", "ã")
+                        alt = alt.replace("ç", "ç")
+                        alt = alt.replace("ú", "ú")
+                        alt = alt.replace("ô", "ô")
+                        alt = alt.replace("ê", "ê")
+                        par = Paragraph('<para fontSize=12><b>' + a.letraalternativa + ')</b> ' + alt + '<br/></para>', style)
                         Story.append(par)
                         Story.append(Spacer(1, 0.1 * inch))
         Story.append(Spacer(1, 0.3 * inch))
@@ -269,23 +291,10 @@ def provaperson_baixar(request, codprova):
     return response
 
 def dadosbanco(request):
-    download = get_object_or_404(ProvaPerson, autor=request.user.profile)
-
-    # path_to_file = '/app/praticandoOBI/OBI.db'
-    # f = open(path_to_file, 'r')
-    # myfile = File(f)
-    # response = HttpResponse(myfile, content_type='application/force-download')
-    # response['Content-Disposition'] = 'attachment; filename="Banco"'
-    # return response
-
+  #  download = get_object_or_404(ProvaPerson, autor=request.user.profile)
     file_path = '/app/praticandoOBI/OBI.db'
     with open(file_path, 'rb') as fh:
         response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
         response['Content-Disposition'] = 'inline; filename="OBI.db"'
         return response
     raise Http404
-
-    # response['Content-Disposition'] = 'attachment; filename="/app/praticandoOBI/OBI.db'
-    # return response
-    #fazer download do banco do heroku
-   # os.sys(/app/praticandoOBI/OBI.db)
