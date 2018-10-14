@@ -11,11 +11,35 @@
         <p>Você ainda não tem provas cadastradas.</p>
     {% else %}
     <ul class="list-group product-category-all">
+
+    <div class="container">
+    <div class="row">
+
         {% for prova in provas %}
-        <li class="list-group-item"><span class="badge" ></i></span>
-            <a href="{% url 'usuarios_obi:provaperson_detail' prova.pk %}"> {{ prova.titulo }} </a>
-        </li>
-        {% endfor%}
+      <div class="col-sm-6 mt-3">
+        <div class="card">
+          <div class="card-body">
+              <h5 class="card-title"><b>{{ prova.titulo }}</b></h5>
+            <p class="card-text">
+                Ano: {{prova.ano}}</br>
+                {% if prova.dificuldade == None %}
+                    Dificuldade: não inserida</br>
+                {% else %}
+                    Dificuldade: {{prova.dificuldade}}</br>
+                {% endif %}
+                Observações: {{prova.observacoes}}</br></br>
+                <a href="{% url 'usuarios_obi:provaperson_edit' prova.pk %}" class="btn btn-primary" role="button" >Editar</a>
+                <a href="{% url 'usuarios_obi:provaperson_pronta' prova.pk %}" class="btn btn-primary" role="button" >Ver Prova</a>
+            </p>
+          </div>
+        </div>
+      </div>
+          {% endfor%}
+
+      </div>
+    </div>
+
+
     {% endif %}
     </ul>
 {% endblock %}

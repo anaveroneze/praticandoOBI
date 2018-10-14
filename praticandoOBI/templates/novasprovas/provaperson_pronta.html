@@ -12,7 +12,7 @@
 			<li class="completed"><a href="{% url 'usuarios_obi:provaperson_edit' codprova %}">Editar Prova</a></li>
             <li class="completed"><a href="{% url 'usuarios_obi:questoes_busca' codprova %}">Buscar Questões</a></li>
             <li class="completed"><a href="{% url 'usuarios_obi:questoes_busca' codprova %}">Adicionar Questões</a></li>
-			<li class="active"><a href="{% url 'home' %}">Imprimir Prova</a></li>
+			<li class="active"><a href="{% url 'usuarios_obi:provaperson_baixar' codprova %}">Prova Pronta!</a></li>
 		</ul>
 <p align="center" style="margin-top:5%;">
     <a href="{% url 'usuarios_obi:provaperson_baixar' codprova %}" class="btn btn-primary" >Gerar PDF</a>

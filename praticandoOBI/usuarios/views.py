@@ -132,6 +132,9 @@ def questoes_busca(request, pk):
                 provas = Prova.objects.filter(Q(anoprova=q) | Q(faseprova=q) | Q(nivelprova=q))
                 return render(request, 'novasprovas/addquestoes_resultado.html', {'provaperson': provaperson, 'provas': provas, 'query': q, 'pk': pk})
 
+        provas = Prova.objects.all()
+        return render(request, 'novasprovas/addquestoes_resultado.html', {'provaperson': provaperson, 'provas': provas, 'query': q, 'pk': pk})
+
     return render(request, 'novasprovas/addquestoes.html', {'provaperson':provaperson,'error': error, 'pk': pk})
 
 

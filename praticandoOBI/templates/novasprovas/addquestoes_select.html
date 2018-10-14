@@ -14,7 +14,7 @@
     <li class="completed"><a href="{% url 'usuarios_obi:provaperson' %}">Dados da Prova</a></li>
     <li class="completed"><a href="{% url 'usuarios_obi:questoes_busca' codprova %}">Buscar Questões</a></li>
     <li class="active"><a href="">Selecionar Questões</a></li>
-    <li><a>Imprimir Prova</a></li>
+    <li><a>Prova Pronta!</a></li>
 </ul>
 
 <script>
@@ -95,7 +95,6 @@ function toggle(source, f, init, end) {
 
     <div class="pull-left form-control-inline">
         <h4 class="list-group-item-heading">
-            <a href="{% url 'usuarios_obi:provaperson_edit' codprova %}" class="btn btn-outline-secondary" role="button" >Cancelar</a>
             <button type="submit" class="btn btn-primary">Adicionar Questões</button>
         </h4>
     </div>

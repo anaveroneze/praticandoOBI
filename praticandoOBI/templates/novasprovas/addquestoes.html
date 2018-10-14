@@ -12,7 +12,7 @@
 			<li class="completed"><a href="{% url 'usuarios_obi:provaperson' %}">Dados da Prova</a></li>
             <li class="active"><a href="{% url 'usuarios_obi:questoes_busca' pk %}">Buscar Questões</a></li>
             <li><a>Selecionar Questões</a></li>
-			<li><a>Imprimir Prova</a></li>
+			<li><a>Prova Pronta!</a></li>
 		</ul>
 
 
@@ -30,6 +30,7 @@
                 <label for="box1"><input type="radio" name="display_type" value="anobox" id="box1">Ano</label>&emsp;
                 <label for="box2"><input type="radio" name="display_type" value="fasebox" id="box2">Fase</label>&emsp;
                 <label for="box3"><input type="radio" name="display_type" value="nivelbox" id="box3">Nível</label>&emsp;
+                <label for="box4"><input type="radio" name="display_type" value="todosbox" id="box4" checked="checked">Todos</label>
 
             </div>
             <div class="col-xs-2">

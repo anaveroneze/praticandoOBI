@@ -62,6 +62,8 @@ def busca(request):
             else:
                 provas = Prova.objects.filter(Q(anoprova=q) | Q(faseprova=q) | Q(nivelprova=q))
                 return render(request, 'busca/busca_resultado.html', {'provas' : provas, 'query': q})
+        provas = Prova.objects.all()
+        return render(request, 'busca/busca_resultado.html', {'provas': provas, 'query': q})
     return render(request, 'busca/busca_form.html', {'error':error})
 
 def buscaprob(request):
@@ -84,6 +86,9 @@ def buscaprob(request):
                 problemas = Problema.objects.filter(Q(tituloproblema__icontains=q) | Q(classificacao__in=classificacao))
                 return render(request, 'busca/busca_prob_resultado.html', {'problemas': problemas, 'query': q})
 
+        classificacao = Classificacao.objects.all()
+        problemas = Problema.objects.all()
+        return render(request, 'busca/busca_prob_resultado.html', {'problemas': problemas, 'query': q})
     return render(request, 'busca/busca_prob_form.html', {'error':error})
 
 
