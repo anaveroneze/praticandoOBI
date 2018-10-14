@@ -274,8 +274,10 @@ def dadosbanco(request):
     path_to_file = '/app/praticandoOBI/OBI.db'
     f = open(path_to_file, 'r')
     myfile = File(f)
-    response = HttpResponse(myfile, content_type='application/vnd.ms-excel')
-    response['Content-Disposition'] = 'attachment; filename=' + name
+    response = HttpResponse(myFile, content_type='application/force-download')
+    response['Content-Disposition'] = 'attachment; filename="Banco"'
+    # response = HttpResponse(myfile, content_type='application/vnd.ms-excel')
+    # response['Content-Disposition'] = 'attachment; filename=' + name
     return response
 
     # response['Content-Disposition'] = 'attachment; filename="/app/praticandoOBI/OBI.db'
