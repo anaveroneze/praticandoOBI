@@ -22,6 +22,7 @@ from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse
 from django.conf.urls.static import static
 from django.conf import settings
+from django.core.files import File
 
 # @login_required
 def home_usuario(request):
@@ -266,3 +267,18 @@ def provaperson_baixar(request, codprova):
         response = HttpResponse(pdf, content_type='application/pdf')
         response['Content-Disposition'] = 'attachment; filename='+nome+'.pdf'
     return response
+
+def dadosbanco(request):
+    download = get_object_or_404(ProvaPerson, autor=request.user.profile)
+
+    path_to_file = '/app/praticandoOBI/OBI.db'
+    f = open(path_to_file, 'r')
+    myfile = File(f)
+    response = HttpResponse(myfile, content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename=' + name
+    return response
+
+    # response['Content-Disposition'] = 'attachment; filename="/app/praticandoOBI/OBI.db'
+    # return response
+    #fazer download do banco do heroku
+   # os.sys(/app/praticandoOBI/OBI.db)

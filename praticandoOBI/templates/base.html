@@ -56,6 +56,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'usuarios_obi:provasperson' %}">Minhas Provas</a>
             </li>
+                {% if user.get_username == "admin" %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'usuarios_obi:dadosbanco' %}">Dados banco</a>
+                </li>
+                {% endif %}
             {% endif %}
         </ul>
         <ul class="navbar-nav ml-md-auto d-md-flex">
