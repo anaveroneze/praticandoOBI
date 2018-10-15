@@ -2,7 +2,9 @@
 {% load static %}
 
 {% block titulo %}
-    Lista de Problemas
+{% for p in provas %}
+    Prova:  {{p.anoprova}} - Fase {{p.faseprova}} - Nível {{p.nivelprova}}
+{% endfor %}
 {% endblock %}
 
 {% block container %}

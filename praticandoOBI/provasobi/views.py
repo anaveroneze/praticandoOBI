@@ -19,6 +19,7 @@ def provas(request):
 
 def problemas(request, pk):
     problemas = Problema.objects.all().select_related('codprova').filter(codprova=pk)
+    provas = Prova.objects.filter(codprova=pk)
 
     id_prob = []
     for p in problemas:
@@ -32,7 +33,7 @@ def problemas(request, pk):
 
     alternativas = Alternativa.objects.all().select_related('codquestao').filter(codquestao__in=id_questoes)
 
-    return render(request, 'problemas.html', {'problemas': problemas, 'questoes': questoes, 'alternativas': alternativas})
+    return render(request, 'problemas.html', {'problemas': problemas, 'questoes': questoes, 'alternativas': alternativas, 'provas':provas})
     #data = {}
     #data['problemas'] = Problema.objects.filter(pk=pk)
     #return render(request, 'problemas.html', data)
@@ -94,9 +95,13 @@ def buscaprob(request):
 
 def problema(request, pk):
     problemas = Problema.objects.all().filter(codproblema=pk)
+
     id_prob = []
     for p in problemas:
         id_prob.append(p)
+        codp = p.codprova.codprova
+
+    provas = Prova.objects.filter(codprova=codp)
 
     questoes = Questao.objects.all().select_related('codproblema').filter(codproblema__in=problemas).order_by('numeroquestao')#.filter(codproblema__in=id_questoes)
 
@@ -106,4 +111,4 @@ def problema(request, pk):
 
     alternativas = Alternativa.objects.all().select_related('codquestao').filter(codquestao__in=id_questoes)
 
-    return render(request, 'problemas.html', {'problemas': problemas, 'questoes': questoes, 'alternativas' : alternativas})
+    return render(request, 'problemas.html', {'problemas': problemas, 'questoes': questoes, 'alternativas' : alternativas, 'provas':provas})
