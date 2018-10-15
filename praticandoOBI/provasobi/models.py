@@ -79,8 +79,3 @@ class ProvaPerson(models.Model):
     class Meta:
         verbose_name_plural = 'Provas personalizadas'
         verbose_name = 'Prova personalizada'
-    # > from django.contrib.auth.models import User
-    # > from provasobi.models import Profile
-    # > users = User.objects.filter(profile=None)
-    # > for user in users:
-    #     > Profile.objects.create(user=user)
