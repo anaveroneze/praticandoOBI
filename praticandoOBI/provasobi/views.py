@@ -82,9 +82,12 @@ def buscaprob(request):
                 classificacao = Classificacao.objects.filter(tituloclassificacao__icontains=q)
                 problemas = Problema.objects.filter(classificacao__in=classificacao)
                 return render(request, 'busca/busca_prob_resultado.html', {'problemas': problemas, 'query': q})
+            elif checkbox == 'palavrabox':
+                problemas = Problema.objects.filter(Q(tituloproblema__icontains=q) | Q(regrasproblema__icontains=q) | Q(enunciadoproblema__icontains=q))
+                return render(request, 'busca/busca_prob_resultado.html', {'problemas': problemas, 'query': q})
             else:
                 classificacao = Classificacao.objects.filter(tituloclassificacao__icontains=q)
-                problemas = Problema.objects.filter(Q(tituloproblema__icontains=q) | Q(classificacao__in=classificacao))
+                problemas = Problema.objects.filter(Q(tituloproblema__icontains=q) | Q(regrasproblema__icontains=q) | Q(enunciadoproblema__icontains=q) | Q(classificacao__in=classificacao))
                 return render(request, 'busca/busca_prob_resultado.html', {'problemas': problemas, 'query': q})
 
         classificacao = Classificacao.objects.all()

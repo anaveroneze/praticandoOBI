@@ -30,9 +30,10 @@
     <div id="wrapper" class="animate">
     <nav class="navbar header-top fixed-top navbar-expand-lg  navbar-light" style="background-color: #54a9ff;">
         <a class="navbar-brand" href="{% url 'home' %}"> Praticando OBI</a>
-            <button class="navbar-toggler" type="button" data-target="#navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+
+        <button class="navbar-toggler" type="button" data-target="#navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav animate side-nav">
@@ -105,23 +106,19 @@
         {% endfor %}
         {% endblock messages %}
         <div style="margin-bottom:50px;" class="container" >
-
             {% block container %}
             {% endblock %}
         </div>
 
 
-        <!--<div class="container-fluid">-->
-            <!--<div class="row">-->
-                <!--<div class="col">-->
-                <!--{% block content %}-->
-                <!--{% endblock %}-->
-                <!--</div>-->
-                <!--{% for m in messages %}-->
-                    <!--{{ m }}-->
-                <!--{% endfor %}-->
-            <!--</div>-->
-        <!--</div>-->
+        <div class="container-fluid">
+            <div class="row">
+
+                {% block content %}
+                {% endblock %}
+
+            </div>
+        </div>
   </div>
     </body>
 </html>

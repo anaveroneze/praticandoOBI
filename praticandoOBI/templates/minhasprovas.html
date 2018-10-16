@@ -21,7 +21,12 @@
           <div class="card-body">
               <h5 class="card-title"><b>{{ prova.titulo }}</b></h5>
             <p class="card-text">
-                Ano: {{prova.ano}}</br>
+                {% if prova.ano == None %}
+                    Ano: não inserido</br>
+                {% else %}
+                    Ano: {{prova.ano}}</br>
+                {% endif %}
+
                 {% if prova.dificuldade == None %}
                     Dificuldade: não inserida</br>
                 {% else %}
