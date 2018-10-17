@@ -86,52 +86,56 @@
     <session id="1110059672">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="26" />
+          <entry key="project.closed" value="42" />
           <entry key="project.open.time.11" value="4" />
-          <entry key="project.open.time.12" value="6" />
-          <entry key="project.open.time.13" value="3" />
-          <entry key="project.open.time.14" value="3" />
-          <entry key="project.open.time.15" value="5" />
-          <entry key="project.open.time.16" value="2" />
+          <entry key="project.open.time.12" value="8" />
+          <entry key="project.open.time.13" value="7" />
+          <entry key="project.open.time.14" value="5" />
+          <entry key="project.open.time.15" value="9" />
+          <entry key="project.open.time.16" value="3" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.27" value="1" />
+          <entry key="project.open.time.22" value="1" />
+          <entry key="project.open.time.27" value="2" />
+          <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="28" />
+          <entry key="project.opened" value="44" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="125" />
-          <entry key="html" value="10878" />
-          <entry key="py" value="5590" />
+          <entry key="css" value="396" />
+          <entry key="html" value="13601" />
+          <entry key="py" value="7869" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="125" />
-          <entry key="HTML" value="10117" />
-          <entry key="Python" value="5590" />
+          <entry key="CSS" value="396" />
+          <entry key="HTML" value="12840" />
+          <entry key="Python" value="7869" />
           <entry key="XML" value="761" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="23" />
-          <entry key="html" value="339" />
+          <entry key="css" value="37" />
+          <entry key="html" value="401" />
           <entry key="js" value="1" />
-          <entry key="py" value="131" />
+          <entry key="py" value="157" />
+          <entry key="rnc" value="1" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="23" />
-          <entry key="HTML" value="308" />
+          <entry key="CSS" value="37" />
+          <entry key="HTML" value="368" />
           <entry key="JavaScript" value="1" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="131" />
-          <entry key="XML" value="31" />
+          <entry key="Python" value="157" />
+          <entry key="RNG Compact" value="1" />
+          <entry key="XML" value="33" />
         </counts>
       </usages-collector>
     </session>
@@ -139,22 +143,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/novasprovas/provaperson.html">
+        <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="59" selection-start-line="59" selection-end-line="64" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/praticandoOBI/usuarios/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="88" column="56" selection-start-line="88" selection-start-column="56" selection-end-line="88" selection-end-column="56" />
-              <folding>
-                <element signature="e#24#37#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1380">
+              <caret line="92" column="18" selection-start-line="92" selection-start-column="18" selection-end-line="92" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -162,21 +154,30 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/novasprovas/provaperson_pronta.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="38" column="78" selection-start-line="38" selection-start-column="78" selection-end-line="38" selection-end-column="78" />
-              <folding>
-                <element signature="n#style#0;n#h3#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h4#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="270">
+              <caret line="18" column="57" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/praticandoOBI/usuarios/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="71" selection-start-line="1" selection-start-column="71" selection-end-line="1" selection-end-column="71" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/novasprovas/addquestoes.html">
+        <entry file="file://$PROJECT_DIR$/praticandoOBI/usuarios/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="35" column="26" lean-forward="true" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+            <state relative-caret-position="222">
+              <caret line="326" column="6" selection-start-line="326" selection-start-column="6" selection-end-line="326" selection-end-column="6" />
+              <folding>
+                <element signature="e#24#37#0" expanded="true" />
+                <marker date="1539718437998" expanded="true" signature="13955:18193" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -192,36 +193,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>#f</find>
-      <find>hsla</find>
-      <find>prova cr</find>
-      <find>provaperson.html</find>
-      <find>select</find>
-      <find>addquestoes.</find>
-      <find>addd</find>
-      <find>pront</find>
-      <find>pronta</find>
-      <find>detail.</find>
-      <find>select.</find>
-      <find>container</find>
-      <find>pratic</find>
-      <find>pad</find>
-      <find>nenhu</find>
-      <find>style.css</find>
-      <find>banner</find>
-      <find>copy</find>
-      <find>style.c</find>
-      <find>#ecf0f1</find>
-      <find>jumbotro</find>
       <find>prob.</find>
       <find>deco</find>
       <find>simple</find>
       <find>hide</find>
       <find>homeusua</find>
       <find>edit</find>
-      <find>messages</find>
       <find>messa</find>
       <find>home</find>
+      <find>bread</find>
+      <find>#D4D4D4</find>
+      <find>image</find>
+      <find>a.</find>
+      <find>card</find>
+      <find>jumbot</find>
+      <find>jumb</find>
+      <find>selec</find>
+      <find>print</find>
+      <find>login</find>
+      <find>buscar</find>
+      <find>mess</find>
+      <find>messages</find>
+      <find>problemas</find>
+      <find>problemas.</find>
+      <find>toggl</find>
+      <find>.page</find>
+      <find>body</find>
+      <find>.pag</find>
+      <find>.</find>
+      <find>container</find>
+      <find>.pa</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -230,7 +231,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/praticandoOBI/usuarios/admin.py" />
         <option value="$PROJECT_DIR$/praticandoOBI/templates/usuarios/usuarios.html" />
         <option value="$PROJECT_DIR$/praticandoOBI/templates/provaperson.html" />
         <option value="$PROJECT_DIR$/praticandoOBI/templates/provaperson_detail.html" />
@@ -250,45 +250,46 @@
         <option value="$PROJECT_DIR$/praticandoOBI/obi/urls.py" />
         <option value="$PROJECT_DIR$/praticandoOBI/provasobi/urls.py" />
         <option value="$PROJECT_DIR$/praticandoOBI/static/admin/css/bootstrap.min.css" />
-        <option value="$PROJECT_DIR$/praticandoOBI/static/admin/css/breadcrumb.css" />
-        <option value="$PROJECT_DIR$/praticandoOBI/static/admin/css/base.css" />
-        <option value="$PROJECT_DIR$/praticandoOBI/provasobi/views.py" />
-        <option value="$PROJECT_DIR$/praticandoOBI/provasobi/models.py" />
-        <option value="$PROJECT_DIR$/praticandoOBI/templates/minhasprovas.html" />
         <option value="$PROJECT_DIR$/praticandoOBI/templates/busca/busca_resultado.html" />
         <option value="$PROJECT_DIR$/praticandoOBI/templates/busca/busca_prob_resultado.html" />
         <option value="$PROJECT_DIR$/praticandoOBI/templates/usuarios/perfil.html" />
         <option value="$PROJECT_DIR$/praticandoOBI/templates/usuarios/homeusuario.html" />
-        <option value="$PROJECT_DIR$/praticandoOBI/templates/novasprovas/addquestoes_resultado.html" />
-        <option value="$PROJECT_DIR$/praticandoOBI/templates/provas.html" />
-        <option value="$PROJECT_DIR$/praticandoOBI/templates/problemas.html" />
-        <option value="$PROJECT_DIR$/praticandoOBI/templates/busca/busca_prob_form.html" />
-        <option value="$PROJECT_DIR$/praticandoOBI/templates/busca/busca_form.html" />
         <option value="$PROJECT_DIR$/praticandoOBI/templates/novasprovas/provaperson_detail.html" />
         <option value="$PROJECT_DIR$/praticandoOBI/static/admin/css/style.css" />
-        <option value="$PROJECT_DIR$/praticandoOBI/static/admin/css/bootstrap.css" />
-        <option value="$PROJECT_DIR$/praticandoOBI/static/admin/css/style2.css" />
-        <option value="$PROJECT_DIR$/praticandoOBI/templates/registration/login.html" />
-        <option value="$PROJECT_DIR$/praticandoOBI/templates/home.html" />
-        <option value="$PROJECT_DIR$/praticandoOBI/templates/novasprovas/addquestoes_select.html" />
-        <option value="$PROJECT_DIR$/praticandoOBI/usuarios/urls.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/praticandoOBI/templates/usuarios/signup.html" />
+        <option value="$PROJECT_DIR$/praticandoOBI/static/admin/css/base.css" />
+        <option value="$PROJECT_DIR$/praticandoOBI/static/admin/css/style2.css" />
+        <option value="$PROJECT_DIR$/praticandoOBI/static/admin/css/breadcrumb.css" />
+        <option value="$PROJECT_DIR$/praticandoOBI/templates/busca/busca_form.html" />
+        <option value="$PROJECT_DIR$/praticandoOBI/templates/provas.html" />
+        <option value="$PROJECT_DIR$/praticandoOBI/templates/registration/login.html" />
+        <option value="$PROJECT_DIR$/praticandoOBI/templates/novasprovas/addquestoes_resultado.html" />
+        <option value="$PROJECT_DIR$/praticandoOBI/templates/novasprovas/addquestoes.html" />
+        <option value="$PROJECT_DIR$/praticandoOBI/templates/novasprovas/addquestoes_select.html" />
         <option value="$PROJECT_DIR$/praticandoOBI/templates/novasprovas/provaperson.html" />
         <option value="$PROJECT_DIR$/praticandoOBI/templates/novasprovas/provaperson_edit.html" />
-        <option value="$PROJECT_DIR$/praticandoOBI/templates/novasprovas/addquestoes.html" />
-        <option value="$PROJECT_DIR$/praticandoOBI/usuarios/views.py" />
-        <option value="$PROJECT_DIR$/praticandoOBI/templates/base.html" />
         <option value="$PROJECT_DIR$/praticandoOBI/templates/base2.html" />
+        <option value="$PROJECT_DIR$/praticandoOBI/provasobi/models.py" />
+        <option value="$PROJECT_DIR$/praticandoOBI/templates/problemas.html" />
+        <option value="$PROJECT_DIR$/praticandoOBI/provasobi/views.py" />
+        <option value="$PROJECT_DIR$/praticandoOBI/templates/busca/busca_prob_form.html" />
+        <option value="$PROJECT_DIR$/praticandoOBI/templates/minhasprovas.html" />
+        <option value="$PROJECT_DIR$/praticandoOBI/static/admin/css/bootstrap.css" />
+        <option value="$PROJECT_DIR$/praticandoOBI/templates/base.html" />
+        <option value="$PROJECT_DIR$/praticandoOBI/static/admin/css/footer.css" />
+        <option value="$PROJECT_DIR$/praticandoOBI/templates/home.html" />
+        <option value="$PROJECT_DIR$/praticandoOBI/usuarios/urls.py" />
         <option value="$PROJECT_DIR$/praticandoOBI/templates/novasprovas/provaperson_pronta.html" />
+        <option value="$PROJECT_DIR$/praticandoOBI/usuarios/views.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-21" />
+    <option name="x" value="186" />
     <option name="y" value="27" />
-    <option name="width" value="1253" />
-    <option name="height" value="603" />
+    <option name="width" value="1064" />
+    <option name="height" value="634" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -298,6 +299,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -326,7 +328,27 @@
               <item name="praticandoOBI" type="b2602c69:ProjectViewProjectNode" />
               <item name="praticandoOBI" type="462c0819:PsiDirectoryNode" />
               <item name="praticandoOBI" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="praticandoOBI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="praticandoOBI" type="462c0819:PsiDirectoryNode" />
+              <item name="praticandoOBI" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="praticandoOBI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="praticandoOBI" type="462c0819:PsiDirectoryNode" />
+              <item name="praticandoOBI" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="praticandoOBI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="praticandoOBI" type="462c0819:PsiDirectoryNode" />
+              <item name="praticandoOBI" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="busca" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="praticandoOBI" type="b2602c69:ProjectViewProjectNode" />
@@ -339,13 +361,19 @@
               <item name="praticandoOBI" type="b2602c69:ProjectViewProjectNode" />
               <item name="praticandoOBI" type="462c0819:PsiDirectoryNode" />
               <item name="praticandoOBI" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="registration" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="praticandoOBI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="praticandoOBI" type="462c0819:PsiDirectoryNode" />
+              <item name="praticandoOBI" type="462c0819:PsiDirectoryNode" />
               <item name="usuarios" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -391,7 +419,7 @@
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15673982" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3299373" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -402,7 +430,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.23164764" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2365416" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3278302" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -410,7 +438,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19435737" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14811912" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -421,7 +449,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.23817292" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.21859707" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3278302" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -451,16 +479,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/provasobi/migrations/0001_initial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="59" column="97" selection-start-line="59" selection-start-column="97" selection-end-line="59" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/provasobi/__init__.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/praticandoOBI/provasobi/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-315">
@@ -499,41 +517,10 @@
     <entry file="file://$PROJECT_DIR$/praticandoOBI/static/admin/js/cancel.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/provasobi/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/static/admin/css/breadcrumb.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="69" column="57" selection-start-line="69" selection-start-column="57" selection-end-line="69" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/static/admin/css/base.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="983" selection-start-line="983" selection-end-line="983" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/praticandoOBI/obi/wsgi.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="188">
           <caret line="15" column="36" lean-forward="true" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/usuarios/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -546,13 +533,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/gabarito.html">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/busca/busca_resultado.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="47" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="70" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/usuarios/perfil.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -575,111 +555,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/busca/busca_prob_resultado.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="26" column="51" lean-forward="true" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/busca/busca_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/provas.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/static/admin/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/static/admin/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="63" selection-start-line="6" selection-start-column="63" selection-end-line="6" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/static/admin/css/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="5208" column="18" lean-forward="true" selection-start-line="5208" selection-start-column="2" selection-end-line="5208" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/static/admin/css/style2.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/novasprovas/addquestoes_resultado.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="92" selection-start-line="26" selection-start-column="92" selection-end-line="26" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/busca/busca_prob_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-104">
-          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/provapersoninfo.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="17" lean-forward="true" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/provasobi/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/novasprovas/addquestoes_select.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="90" column="57" lean-forward="true" selection-start-line="90" selection-start-column="57" selection-end-line="90" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/problemas.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/minhasprovas.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/novasprovas/provaperson_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="66" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="88" />
         </state>
       </provider>
     </entry>
@@ -707,23 +586,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/registration/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="57" column="41" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/usuarios/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="19" column="50" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/praticandoOBI/obi/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
@@ -731,76 +593,237 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/provasobi/models.py">
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/pycharm.jar!/resources/html5-schema/html5/embed.rnc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="66" column="15" lean-forward="true" selection-start-line="66" selection-start-column="15" selection-end-line="66" selection-end-column="15" />
+        <state relative-caret-position="84">
+          <caret line="44" column="22" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/novasprovas/provaperson.html">
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/static/admin/css/bootstrap.min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="59" selection-start-line="59" selection-end-line="64" selection-end-column="22" />
+        <state>
+          <caret selection-end-line="6" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/static/admin/css/breadcrumb.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/busca/busca_prob_resultado.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="26" column="51" lean-forward="true" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/busca/busca_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="26" column="16" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="132" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/registration/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-540">
+          <caret column="22" selection-start-column="22" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/novasprovas/addquestoes_resultado.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/novasprovas/provaperson_edit.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="65" column="22" selection-start-line="65" selection-start-column="22" selection-end-line="65" selection-end-column="22" />
+        <state relative-caret-position="255">
+          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/usuarios/views.py">
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/novasprovas/provaperson.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="88" column="56" selection-start-line="88" selection-start-column="56" selection-end-line="88" selection-end-column="56" />
-          <folding>
-            <element signature="e#24#37#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/base2.html">
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/novasprovas/addquestoes_select.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="94" column="28" lean-forward="true" selection-start-line="94" selection-start-column="28" selection-end-line="94" selection-end-column="28" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="91" column="83" selection-start-line="91" selection-start-column="83" selection-end-line="91" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="60" column="46" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/novasprovas/provaperson_pronta.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="38" column="78" selection-start-line="38" selection-start-column="78" selection-end-line="38" selection-end-column="78" />
-          <folding>
-            <element signature="n#style#0;n#h3#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h4#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="240">
+          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/novasprovas/addquestoes.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="35" column="26" lean-forward="true" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+        <state relative-caret-position="210">
+          <caret line="14" column="32" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/base2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="49" column="17" selection-start-line="49" selection-start-column="17" selection-end-line="49" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/usuarios/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/novasprovas/provaperson_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="17" selection-start-line="15" selection-start-column="8" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/provas.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="99" selection-start-line="10" selection-start-column="99" selection-end-line="10" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/busca/busca_resultado.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/provasobi/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="866">
+          <caret line="80" column="44" selection-start-line="80" selection-start-column="44" selection-end-line="80" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/provasobi/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="85" column="151" selection-start-line="85" selection-start-column="151" selection-end-line="85" selection-end-column="151" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/busca/busca_prob_form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="19" column="142" selection-start-line="19" selection-start-column="142" selection-end-line="19" selection-end-column="142" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/problemas.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="53" selection-start-line="5" selection-start-column="53" selection-end-line="5" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/static/admin/css/style2.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/minhasprovas.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="26" column="43" selection-start-line="26" selection-start-column="43" selection-end-line="26" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/static/admin/css/base.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="821" column="2" selection-start-line="821" selection-start-column="2" selection-end-line="821" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/static/admin/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/static/admin/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8445">
+          <caret line="563" column="21" selection-start-line="563" selection-start-column="2" selection-end-line="563" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/static/admin/css/footer.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1770">
+          <caret line="118" selection-start-line="118" selection-end-line="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/provasobi/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1380">
+          <caret line="92" column="18" selection-start-line="92" selection-start-column="18" selection-end-line="92" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/templates/novasprovas/provaperson_pronta.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="57" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/usuarios/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="71" selection-start-line="1" selection-start-column="71" selection-end-line="1" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/praticandoOBI/usuarios/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="326" column="6" selection-start-line="326" selection-start-column="6" selection-end-line="326" selection-end-column="6" />
+          <folding>
+            <element signature="e#24#37#0" expanded="true" />
+            <marker date="1539718437998" expanded="true" signature="13955:18193" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
