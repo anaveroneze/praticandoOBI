@@ -24,6 +24,11 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.core.files import File
 
+from docx import Document
+from django.http import HttpResponse
+from docx.shared import Inches, RGBColor
+from docx.enum.text import WD_ALIGN_PARAGRAPH
+
 # @login_required
 def home_usuario(request):
     return render(request, 'usuarios/homeusuario.html', {})
@@ -294,6 +299,111 @@ def provaperson_baixar(request, codprova):
     with fs.open("prova-"+str(codprova)+".pdf") as pdf:
         response = HttpResponse(pdf, content_type='application/pdf')
         response['Content-Disposition'] = 'attachment; filename='+nome+'.pdf'
+    return response
+
+def provaperson_baixar_docx(request, codprova):
+    # ENCONTRA CONTEUDO DA PROVA:
+    provaperson = get_object_or_404(ProvaPerson, pk=codprova, autor=request.user.profile)
+    questoes = Questao.objects.all().filter(codquestao__in=provaperson.questoes.all()).order_by('numeroquestao')
+
+    id_questoes = []
+    for q in questoes:
+        id_questoes.append(q)
+
+    alternativas = Alternativa.objects.all().select_related('codquestao').filter(codquestao__in=id_questoes)
+    id_problemas = Questao.objects.all().filter(codquestao__in=provaperson.questoes.all()).values('codproblema')
+    problemas = Problema.objects.all().filter(codproblema__in=id_problemas).distinct()
+
+    document = Document()
+    document.add_heading(provaperson.titulo, 0)
+
+    count = 1
+
+    for p in problemas:
+        par2 = document.add_heading(p.tituloproblema, level=1)
+        par2.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        run2 = par2.add_run()
+
+     #   font = run2.font
+    #    font.color.rgb = RGBColor(84,169,255)
+
+        run2.add_break()
+
+        par1 = document.add_paragraph()
+        #par1.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+        run = par1.add_run(p.enunciadoproblema)
+        run.add_break()
+        run.add_break()
+
+
+
+        if p.regrasproblema:
+            par1.add_run('REGRAS: ')
+            run = par1.add_run(p.regrasproblema)
+            run.add_break()
+            run.add_break()
+
+        if p.imgproblema:
+            document.add_picture('static/' + p.imgproblema, width=Inches(4))
+            #local: 'static/ + p.imgproblema'
+            #heroku: '/app/praticandoOBI/static/'
+
+        par = document.add_paragraph()
+        par.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        for q in questoes:
+                if p.codproblema == q.codproblema.codproblema:
+                    e = q.enunciadoquestao
+                    e = e.replace("á", "á")
+                    e = e.replace("é", "é")
+                    e = e.replace("õ", "õ")
+                    e = e.replace("Ã", "Ã")
+                    e = e.replace("ã", "ã")
+                    e = e.replace("ç", "ç")
+                    e = e.replace("ú", "ú")
+                    e = e.replace("ô", "ô")
+                    e = e.replace("ê", "ê")
+                    e = e.replace("ı́", "í")
+                    e = e.replace("à", "à")
+                    e = e.replace("ó", "ó")
+
+                    par.add_run('Questão ').bold = True
+                    par.add_run(str(count)).bold = True
+                    par.add_run(': ')
+                    run = par.add_run(q.enunciadoquestao)
+                    run.add_break()
+                    count+=1
+
+                    if q.imgquestao:
+                        # local: 'static/ + q.imgproblema'
+                        # heroku: '/app/praticandoOBI/static/' + q.imgproblema
+                        document.add_picture('static/' + q.imgproblema, width=Inches(4))
+
+                    for a in alternativas:
+                        if a.codquestao.codquestao == q.codquestao:
+                            alt = a.textoalternativa
+                          #  print(alt)
+                            alt = alt.replace("á", "á")
+                            alt = alt.replace("é", "é")
+                            alt = alt.replace("õ", "õ")
+                            alt = alt.replace("Ã", "Ã")
+                            alt = alt.replace("ã", "ã")
+                            alt = alt.replace("ç", "ç")
+                            alt = alt.replace("ú", "ú")
+                            alt = alt.replace("ô", "ô")
+                            alt = alt.replace("ê", "ê")
+                            alt = alt.replace("ı́", "í")
+                            alt = alt.replace("à", "à")
+                            alt = alt.replace("ó", "ó")
+                            par.add_run(a.letraalternativa).bold = True
+                            par.add_run(') ').bold = True
+                            run = par.add_run(alt)
+                            run.add_break()
+
+                    run.add_break()
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+    response['Content-Disposition'] = 'attachment; filename=download.docx'
+    document.save(response)
+
     return response
 
 def dadosbanco(request):

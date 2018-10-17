@@ -15,7 +15,8 @@
 			<li class="active"><a href="{% url 'usuarios_obi:provaperson_baixar' codprova %}">Prova Pronta!</a></li>
 		</ul>
 <p align="center" style="margin-top:5%;">
-    <a href="{% url 'usuarios_obi:provaperson_baixar' codprova %}" class="btn btn-primary" >Gerar PDF</a>
+    <a href="{% url 'usuarios_obi:provaperson_baixar' codprova %}" class="btn btn-primary" >Download como PDF</a>
+    <a href="{% url 'usuarios_obi:provaperson_baixar_docx' codprova %}" class="btn btn-primary" >Download como .docx</a>
 </p>
 <br/>
 

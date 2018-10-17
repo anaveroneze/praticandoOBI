@@ -1,5 +1,5 @@
 from django.urls import path
-from usuarios.views import provaperson_baixar, dadosbanco, update_perfil, cadastro_perfil, questoes_add, questoes_busca, home_usuario, provaperson, provaperson_detail, provaperson_edit, provasperson, provaperson_pronta
+from usuarios.views import provaperson_baixar, provaperson_baixar_docx, dadosbanco, update_perfil, cadastro_perfil, questoes_add, questoes_busca, home_usuario, provaperson, provaperson_detail, provaperson_edit, provasperson, provaperson_pronta
 from provasobi.views import provas, problemas
 from django.contrib.auth import views as auth_views
 
@@ -19,5 +19,6 @@ urlpatterns = [
     path('minhasprovas/editar/<int:codprova>/adquestoes/<int:pk>/', questoes_add, name='questoes_add'),
     path('minhasprovas/<int:codprova>/verprova/', provaperson_pronta, name='provaperson_pronta'),
     path('minhasprovas/<int:codprova>/baixarprova/', provaperson_baixar, name='provaperson_baixar'),
+    path('minhasprovas/<int:codprova>/baixarprova_docx/', provaperson_baixar_docx, name='provaperson_baixar_docx'),
 # path('minhasprovas/pdf/', Pdf.as_view(), name='provaperson_baixar'),
 ]
