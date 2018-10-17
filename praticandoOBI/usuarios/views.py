@@ -344,7 +344,7 @@ def provaperson_baixar_docx(request, codprova):
             run.add_break()
 
         if p.imgproblema:
-            document.add_picture('static/' + p.imgproblema, width=Inches(4))
+            document.add_picture('/app/praticandoOBI/static/' + p.imgproblema, width=Inches(4))
             #local: 'static/ + p.imgproblema'
             #heroku: '/app/praticandoOBI/static/'
 
@@ -376,7 +376,7 @@ def provaperson_baixar_docx(request, codprova):
                     if q.imgquestao:
                         # local: 'static/ + q.imgproblema'
                         # heroku: '/app/praticandoOBI/static/' + q.imgproblema
-                        document.add_picture('static/' + q.imgproblema, width=Inches(4))
+                        document.add_picture('/app/praticandoOBI/static/' + q.imgproblema, width=Inches(4))
 
                     for a in alternativas:
                         if a.codquestao.codquestao == q.codquestao:
