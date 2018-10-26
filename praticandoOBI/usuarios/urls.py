@@ -1,4 +1,5 @@
 from django.urls import path
+from django.conf.urls import url
 from usuarios.views import provaperson_baixar, provaperson_baixar_docx, dadosbanco, update_perfil, cadastro_perfil, questoes_add, questoes_busca, home_usuario, provaperson, provaperson_detail, provaperson_edit, provasperson, provaperson_pronta
 from provasobi.views import provas, problemas
 from django.contrib.auth import views as auth_views
@@ -7,6 +8,7 @@ app_name = 'usuarios_obi'
 urlpatterns = [
     path('', home_usuario, name='homeusuario'),
     path('cadastro/', cadastro_perfil, name='cadastro_perfil'),
+
     path('banco/', dadosbanco, name='dadosbanco'),
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login_perfil'),
     path('logout/', auth_views.LogoutView.as_view(template_name='home.html'), name='logout_perfil'),

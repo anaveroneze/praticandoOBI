@@ -55,31 +55,64 @@
                 <tr>
                 <td><label for="id_username">Usuário:</label></td>
                     <div class="form-group">
-                     <td><input name="username" type="text" maxlength="100" autofocus required id="id_username" class="form-control"></td>
+                     <td><input name="username" type="text" maxlength="100" autofocus required id="id_username" class="form-control">
+                        <small style="color:red;"><li><span class="helptext">Obrigatório.</span></li></small>
+                     </td>
                     </div>
                  </tr>
 
                 <tr>
                 <td><label for="id_email">Email:</label></td>
                     <div class="form-group">
-                     <td><input name="email" type="email" maxlength="200" id="id_email" class="form-control"></td>
-                    </div>
-                 </tr>
-
-                <tr>
-                <td><label for="id_data_nascimento">Data de Nascimento:</label></td>
-
-                    <div class="form-group">
-                     <td><input name="data_nascimento" type="text" maxlength="200" id="id_data_nascimento" class="form-control">
-                         <small><span class="helptext">Use o formato: YYYY-MM-DD</span></small>
+                     <td><input name="email" type="email" maxlength="200" required id="id_email" class="form-control">
+                     <small style="color:red;"><li><span class="helptext">Obrigatório.</span></li></small>
                      </td>
                     </div>
                  </tr>
 
                 <tr>
-                <td><label for="id_localizacao">Cidade e Estado:</label></td>
+                <td><label for="id_data_nascimento">Data de Nascimento:</label></td>
                     <div class="form-group">
-                     <td><input name="localizacao" type="text" id="id_localizacao" class="form-control">
+                        <td>
+                            <input type="date" name="data_nascimento">
+                        </td>
+                    </div>
+                 </tr>
+
+                <tr>
+                <td><label for="id_localizacao">Estado:</label></td>
+                    <div class="form-group">
+                     <td>
+                         <select name="localizacao" id="id_localizacao" >
+                             <option value="None">---</option>
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+                        </select>
                      </td>
                     </div>
                  </tr>
@@ -105,7 +138,6 @@
                 <td><label for="id_password2">Confirmação da Senha:</label></td>
                     <div class="form-group">
                      <td><input name="password2" type="password" required id="id_password2" class="form-control">
-                        <small><span class="helptext">Entre com a mesma senha do que antes, para verificação.</span></small>
                      </td>
                     </div>
                  </tr>
