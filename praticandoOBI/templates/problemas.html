@@ -8,9 +8,17 @@
 {% endblock %}
 
 {% block container %}
+
+    <button onclick="goBack()">Voltar</button>
+    <script>
+    function goBack() {
+        window.history.back();
+    }
+    </script>
+
     {% for prob in problemas %}
     <br/>
-<h3><p align="center"><b>{{prob.tituloproblema}}</b></p></h3><br/>
+    <h3><p align="center"><b>{{prob.tituloproblema}}</b></p></h3><br/>
 
         <!--Mostra a classificação do problema, se ele tiver-->
         <br><font color="#8bc34a"><b>CLASSIFICAÇÃO:</b></font>

@@ -29,12 +29,15 @@
 
                 {% if prova.dificuldade == None %}
                     Dificuldade: não inserida</br>
+                {% elif prova.dificuldade == 0 %}
+                    Dificuldade: não inserida</br>
                 {% else %}
                     Dificuldade: {{prova.dificuldade}}</br>
                 {% endif %}
                 Observações: {{prova.observacoes}}</br></br>
                 <a href="{% url 'usuarios_obi:provaperson_edit' prova.pk %}" class="btn btn-primary" role="button" >Editar</a>
-                <a href="{% url 'usuarios_obi:provaperson_pronta' prova.pk %}" class="btn btn-primary" role="button" >Ver Prova</a>
+                <a href="{% url 'usuarios_obi:provaperson_pronta' prova.pk %}" class="btn btn-primary" role="button" >Visualizar</a>
+                <a href="{% url 'usuarios_obi:provaperson_excluir' prova.pk %}" class="btn btn-primary" role="button" >Excluir</a>
             </p>
           </div>
         </div>

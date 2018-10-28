@@ -135,6 +135,11 @@ def provaperson(request):
         form = ProvaForm()
     return render(request, 'novasprovas/provaperson.html', {'form':form})
 
+def provaperson_excluir(request, pk):
+    provaperson = get_object_or_404(ProvaPerson, pk=pk)
+    provaperson.delete()
+    return redirect('usuarios_obi:provasperson')
+
 def provaperson_edit(request, pk):
     provaperson = get_object_or_404(ProvaPerson, pk=pk)
     #apagar pois nao é POST
@@ -148,6 +153,7 @@ def provaperson_edit(request, pk):
             return redirect('usuarios_obi:provaperson_edit', provaperson.pk)
     else:
         form = ProvaForm(instance=provaperson)
+
     return render(request, 'novasprovas/provaperson_edit.html', {'form':form, 'pk':pk, 'titulo':provaperson.titulo, 'ano':provaperson.ano, 'dificuldade':provaperson.dificuldade, 'obs':provaperson.observacoes})
 
 #mostra as provas criadas
@@ -252,6 +258,9 @@ def provaperson_pronta(request, codprova):
     return render(request, 'novasprovas/provaperson_pronta.html', {'provaperson':provaperson, 'problemas':problemas, 'questoes': questoes, 'alternativas':alternativas, 'codprova':codprova})
 
 
+acentoserro = ["á", "à", "ã", "Ã", "é", "ê", "õ", "ô", "ó", "ç", "ú", "ı́"]
+acentos = ["á", "à", "ã", "Ã", "é", "ê", "õ", "ô", "ó", "ç", "ú", "í"]
+
 def provaperson_baixar(request, codprova):
 
     #ENCONTRA CONTEUDO DA PROVA:
@@ -284,66 +293,62 @@ def provaperson_baixar(request, codprova):
         par = Paragraph('<para align=center fontSize=14><b>' + p.tituloproblema + '</b><br/></para>', style)
         Story.append(par)
         Story.append(Spacer(1, 0.2 * inch))
-        par = Paragraph('<para fontSize=12>' + p.enunciadoproblema + '<br/></para>',style)
+
+        e = p.enunciadoproblema
+        print(e)
+        for i in range(len(acentos)):
+            e = e.replace(acentoserro[i], acentos[i])
+
+        par = Paragraph('<para fontSize=12>' + e + '<br/></para>',style)
         Story.append(par)
+
         if p.regrasproblema:
             Story.append(Spacer(1, 0.1 * inch))
             par = Paragraph('<para fontSize=12><b>REGRAS:</b><br/></para>', style)
             Story.append(par)
-            par = Paragraph('<para fontSize=12>' + p.regrasproblema + '<br/></para>', style)
+
+            e = p.regrasproblema
+            print(e)
+            for i in range(len(acentos)):
+                e = e.replace(acentoserro[i], acentos[i])
+
+            par = Paragraph('<para fontSize=12>' + e + '<br/></para>', style)
             Story.append(par)
-            Story.append(Spacer(1, 0.2 * inch))
-        else:
-            Story.append(Spacer(1, 0.2 * inch))
+
+        Story.append(Spacer(1, 0.2 * inch))
+
         if p.imgproblema:
-            #local: 'static/ + p.imgproblema'
+            #local: 'static/'
             #heroku: '/app/praticandoOBI/static/'
-            img = Image( '/app/praticandoOBI/static/' + p.imgproblema, 4 * inch, 4*inch)
+            img = Image('static/' + p.imgproblema, 4 * inch, 4*inch)
             Story.append(img)
 
         for q in questoes:
             if p.codproblema == q.codproblema.codproblema:
                 e = q.enunciadoquestao
-                e = e.replace("á", "á")
-                e = e.replace("é", "é")
-                e = e.replace("õ", "õ")
-                e = e.replace("Ã", "Ã")
-                e = e.replace("ã", "ã")
-                e = e.replace("ç", "ç")
-                e = e.replace("ú", "ú")
-                e = e.replace("ô", "ô")
-                e = e.replace("ê", "ê")
-                e = e.replace("ı́", "í")
-                e = e.replace("à", "à")
-                e = e.replace("ó", "ó")
-                par = Paragraph('<para fontSize=12><b>Questão ' + str(count) + "</b> - " + e + '<br/></para>', style)
+                for i in range(len(acentos)):
+                    e = e.replace(acentoserro[i], acentos[i])
 
+                par = Paragraph('<para fontSize=12><b>Questão ' + str(count) + "</b> - " + e + '<br/></para>', style)
                 Story.append(par)
                 Story.append(Spacer(1, 0.2 * inch))
                 count+=1
+
                 if q.imgquestao:
-                    # local: 'static/ + q.imgproblema'
-                    img = Image('/app/praticandoOBI/static/' + q.imgproblema, 2 * inch, 2 * inch)
+                    #local: 'static/'
+                    #heroku: '/app/praticandoOBI/static/'
+                    img = Image( 'static/' + q.imgproblema, 2 * inch, 2 * inch)
                     Story.append(img)
                 for a in alternativas:
                     if a.codquestao.codquestao == q.codquestao:
-                        alt = a.textoalternativa
-                      #  print(alt)
-                        alt = alt.replace("á", "á")
-                        alt = alt.replace("é", "é")
-                        alt = alt.replace("õ", "õ")
-                        alt = alt.replace("Ã", "Ã")
-                        alt = alt.replace("ã", "ã")
-                        alt = alt.replace("ç", "ç")
-                        alt = alt.replace("ú", "ú")
-                        alt = alt.replace("ô", "ô")
-                        alt = alt.replace("ê", "ê")
-                        alt = alt.replace("ı́", "í")
-                        alt = alt.replace("à", "à")
-                        alt = alt.replace("ó", "ó")
-                        par = Paragraph('<para fontSize=12><b>' + a.letraalternativa + ')</b> ' + alt + '<br/></para>', style)
+                        e = a.textoalternativa
+                        for i in range(len(acentos)):
+                            e = e.replace(acentoserro[i], acentos[i])
+
+                        par = Paragraph('<para fontSize=12><b>' + a.letraalternativa + ')</b> ' + e + '<br/></para>', style)
                         Story.append(par)
                         Story.append(Spacer(1, 0.1 * inch))
+
         Story.append(Spacer(1, 0.3 * inch))
     doc.build(Story)
     nome = "prova-" + str(codprova)
@@ -354,7 +359,8 @@ def provaperson_baixar(request, codprova):
     return response
 
 def provaperson_baixar_docx(request, codprova):
-    # ENCONTRA CONTEUDO DA PROVA:
+
+    #ENCONTRA CONTEUDO DA PROVA:
     provaperson = get_object_or_404(ProvaPerson, pk=codprova, autor=request.user.profile)
     questoes = Questao.objects.all().filter(codquestao__in=provaperson.questoes.all()).order_by('numeroquestao')
 
@@ -370,14 +376,10 @@ def provaperson_baixar_docx(request, codprova):
     document.add_heading(provaperson.titulo, 0)
 
     count = 1
-
     for p in problemas:
         par2 = document.add_heading(p.tituloproblema, level=1)
         par2.alignment = WD_ALIGN_PARAGRAPH.CENTER
         run2 = par2.add_run()
-
-     #   font = run2.font
-    #    font.color.rgb = RGBColor(84,169,255)
 
         run2.add_break()
 
@@ -386,8 +388,6 @@ def provaperson_baixar_docx(request, codprova):
         run = par1.add_run(p.enunciadoproblema)
         run.add_break()
         run.add_break()
-
-
 
         if p.regrasproblema:
             par1.add_run('REGRAS: ')
@@ -404,24 +404,15 @@ def provaperson_baixar_docx(request, codprova):
         par.alignment = WD_ALIGN_PARAGRAPH.LEFT
         for q in questoes:
                 if p.codproblema == q.codproblema.codproblema:
+
                     e = q.enunciadoquestao
-                    e = e.replace("á", "á")
-                    e = e.replace("é", "é")
-                    e = e.replace("õ", "õ")
-                    e = e.replace("Ã", "Ã")
-                    e = e.replace("ã", "ã")
-                    e = e.replace("ç", "ç")
-                    e = e.replace("ú", "ú")
-                    e = e.replace("ô", "ô")
-                    e = e.replace("ê", "ê")
-                    e = e.replace("ı́", "í")
-                    e = e.replace("à", "à")
-                    e = e.replace("ó", "ó")
+                    for i in range(len(acentos)):
+                        e = e.replace(acentoserro[i], acentos[i])
 
                     par.add_run('Questão ').bold = True
                     par.add_run(str(count)).bold = True
                     par.add_run(': ')
-                    run = par.add_run(q.enunciadoquestao)
+                    run = par.add_run(e)
                     run.add_break()
                     count+=1
 
@@ -433,19 +424,9 @@ def provaperson_baixar_docx(request, codprova):
                     for a in alternativas:
                         if a.codquestao.codquestao == q.codquestao:
                             alt = a.textoalternativa
-                          #  print(alt)
-                            alt = alt.replace("á", "á")
-                            alt = alt.replace("é", "é")
-                            alt = alt.replace("õ", "õ")
-                            alt = alt.replace("Ã", "Ã")
-                            alt = alt.replace("ã", "ã")
-                            alt = alt.replace("ç", "ç")
-                            alt = alt.replace("ú", "ú")
-                            alt = alt.replace("ô", "ô")
-                            alt = alt.replace("ê", "ê")
-                            alt = alt.replace("ı́", "í")
-                            alt = alt.replace("à", "à")
-                            alt = alt.replace("ó", "ó")
+                            for i in range(len(acentos)):
+                                alt = alt.replace(acentoserro[i], acentos[i])
+
                             par.add_run(a.letraalternativa).bold = True
                             par.add_run(') ').bold = True
                             run = par.add_run(alt)

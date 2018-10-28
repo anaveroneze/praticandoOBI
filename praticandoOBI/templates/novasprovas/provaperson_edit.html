@@ -40,10 +40,15 @@
                     <td><label for="id_dificuldade">Dificuldade:</label></td><br>
                     <small>Valores de menor para a maior dificuldade</small>
                 <div class="row">
-                    <div class="form-group form-group-multiple-selectsp col-xs-11 col-sm-8 col-md-4">
+                    <div class="form-group form-group-multiple-selectsp col-xs-11 col-sm-8 col-md-5">
                         <div class="input-group input-group-multiple-selectp col-xs-8">
                             <select class="form-control" name="dificuldade">
-                                <option selected="selected" value="{{dificuldade}}">Atual: {{dificuldade}}</option>
+                                {% if dificuldade == None %}
+                                    <option selected="selected" value="0">Atual: {{dificuldade}}</option>
+                                {% else %}
+                                    <option selected="selected" value={{dificuldade}}>Atual: {{dificuldade}}</option>
+                                {% endif %}
+
                                 <option value="1">1 - Muito fácil</option>
                                 <option value="2">2 - Fácil</option>
                                 <option value="3">3 - Médio</option>
