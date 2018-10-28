@@ -92,8 +92,7 @@ def cadastro_perfil(request):
             error = True
     else:
         form = ProfileForm()
-        error = True
-    return render(request, 'usuarios/signup.html', {'form': form, 'error': error })
+    return render(request, 'usuarios/signup.html', {'form': form, 'error': error})
 
 
 def activate(request, uidb64, token):
