@@ -23,8 +23,8 @@ class QuestoesForm(forms.ModelForm):
 #         fields = ('first_name', 'last_name', 'username', 'email',)
 
 class ProfileForm(UserCreationForm):
-    data_nascimento = forms.DateField(required=False, help_text='Required. Format: YYYY-MM-DD')
-    localizacao = forms.CharField(required=False, help_text='Cidade e Estado')
+    data_nascimento = forms.DateField(required=False, help_text='Formato: YYYY-MM-DD')
+    localizacao = forms.CharField(required=False, help_text='Estado')
     instituicao = forms.CharField(required=False, help_text='Instituição de Ensino')
 
     class Meta:

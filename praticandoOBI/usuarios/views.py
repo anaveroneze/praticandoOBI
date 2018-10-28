@@ -58,9 +58,12 @@ def update_perfil(request):
     return render(request, 'usuarios/perfil.html', {'user_form': user_form, 'profile_form': profile_form })
 
 def cadastro_perfil(request):
+
+    error = False
     if request.method == 'POST':
         form = ProfileForm(request.POST)
         if form.is_valid():
+            error = False
             user = form.save()
             user.refresh_from_db()  # load the profile instance created by the signal
             user.profile.data_nascimento = form.cleaned_data.get('data_nascimento')
@@ -85,9 +88,12 @@ def cadastro_perfil(request):
             email = EmailMessage(mail_subject, message, to=[to_email])
             email.send()
             return render(request, 'registration/confirmacao.html', {})
+        else:
+            error = True
     else:
         form = ProfileForm()
-    return render(request, 'usuarios/signup.html', {'form': form})
+        error = True
+    return render(request, 'usuarios/signup.html', {'form': form, 'error': error })
 
 
 def activate(request, uidb64, token):
