@@ -2,16 +2,15 @@
 import codecs
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Profile
+from .forms import ProfileForm, ProvaForm, QuestoesForm
 from provasobi.models import ProvaPerson, Prova, Questao, Classificacao, Problema, Alternativa
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
-from .forms import ProfileForm, ProvaForm, QuestoesForm
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login, REDIRECT_FIELD_NAME
 from django.urls import reverse
-from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView)
 from django.db.models import Q
@@ -25,11 +24,9 @@ from django.conf import settings
 from django.core.files import File
 
 from docx import Document
-from django.http import HttpResponse
 from docx.shared import Inches, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.sites.shortcuts import get_current_site
@@ -93,16 +90,6 @@ def cadastro_perfil(request):
     return render(request, 'usuarios/signup.html', {'form': form})
 
 
-    #         messages.success(request, 'Perfil criado.')
-    #         raw_password = form.cleaned_data.get('password1')
-    #         user = authenticate(username=user.username, password=raw_password)
-    #         login(request, user)
-    #         return redirect('home')
-    # else:
-    #     form = ProfileForm()
-    # return render(request, 'usuarios/signup.html', {'form': form})
-
-
 def activate(request, uidb64, token):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
@@ -128,9 +115,7 @@ def provaperson(request):
             provaperson = form.save(commit=False)
             provaperson.autor = request.user.profile
             provaperson.save()
-            # messages.success(request, 'Prova criada com sucesso! Adicione questões agora.')
             return redirect('usuarios_obi:questoes_busca', provaperson.pk)
-            #return redirect('usuarios_obi:provaperson_detail', pk=provaperson.pk)
     else:
         form = ProvaForm()
     return render(request, 'novasprovas/provaperson.html', {'form':form})
@@ -142,7 +127,6 @@ def provaperson_excluir(request, pk):
 
 def provaperson_edit(request, pk):
     provaperson = get_object_or_404(ProvaPerson, pk=pk)
-    #apagar pois nao é POST
     if request.method == "POST":
         form = ProvaForm(request.POST, instance=provaperson)
         if form.is_valid():
@@ -163,7 +147,6 @@ def provasperson(request):
 
 
 def provaperson_detail(request, pk):
-    #provaperson = get_object_or_404(ProvaPerson, pk=pk)
     provaperson = ProvaPerson.objects.all().filter(pk=pk)
     return render(request, 'novasprovas/provaperson_detail.html', {'provaperson':provaperson})
 
@@ -218,8 +201,7 @@ def questoes_add(request, codprova, pk):
         for p in problemas:
             id_prob.append(p)
 
-        questoes = Questao.objects.all().select_related('codproblema').filter(codproblema__in=id_prob).order_by(
-            'numeroquestao')  # .filter(codproblema__in=id_questoes)
+        questoes = Questao.objects.all().select_related('codproblema').filter(codproblema__in=id_prob).order_by('numeroquestao')  # .filter(codproblema__in=id_questoes)
 
         id_questoes = []
         for q in questoes:
@@ -320,7 +302,7 @@ def provaperson_baixar(request, codprova):
         if p.imgproblema:
             #local: 'static/'
             #heroku: '/app/praticandoOBI/static/'
-            img = Image('static/' + p.imgproblema, 4 * inch, 4*inch)
+            img = Image('/app/praticandoOBI/static/' + p.imgproblema, 4 * inch, 4*inch)
             Story.append(img)
 
         for q in questoes:
@@ -337,7 +319,7 @@ def provaperson_baixar(request, codprova):
                 if q.imgquestao:
                     #local: 'static/'
                     #heroku: '/app/praticandoOBI/static/'
-                    img = Image( 'static/' + q.imgproblema, 2 * inch, 2 * inch)
+                    img = Image( '/app/praticandoOBI/static/' + q.imgproblema, 2 * inch, 2 * inch)
                     Story.append(img)
                 for a in alternativas:
                     if a.codquestao.codquestao == q.codquestao:
@@ -396,9 +378,9 @@ def provaperson_baixar_docx(request, codprova):
             run.add_break()
 
         if p.imgproblema:
-            document.add_picture('/app/praticandoOBI/static/' + p.imgproblema, width=Inches(4))
             #local: 'static/ + p.imgproblema'
             #heroku: '/app/praticandoOBI/static/'
+            document.add_picture('/app/praticandoOBI/static/' + p.imgproblema, width=Inches(4))
 
         par = document.add_paragraph()
         par.alignment = WD_ALIGN_PARAGRAPH.LEFT
@@ -440,7 +422,6 @@ def provaperson_baixar_docx(request, codprova):
     return response
 
 def dadosbanco(request):
-  #  download = get_object_or_404(ProvaPerson, autor=request.user.profile)
     file_path = '/app/praticandoOBI/OBI.db'
     with open(file_path, 'rb') as fh:
         response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
