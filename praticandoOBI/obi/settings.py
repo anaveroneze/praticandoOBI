@@ -85,8 +85,17 @@ WSGI_APPLICATION = 'obi.wsgi.application'
 #    }
 #}
 
-DATABASES = {'default': dj_database_url.config(conn_max_age=500)}
-
+#DATABASES = {'default': dj_database_url.config(conn_max_age=500)}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'obidatabase',
+        'USER': 'postgres',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
