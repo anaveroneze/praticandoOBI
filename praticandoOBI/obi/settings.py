@@ -86,10 +86,10 @@ WSGI_APPLICATION = 'obi.wsgi.application'
 #}
 
 
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
+#db_from_env = dj_database_url.config()
+#DATABASES['default'].update(db_from_env)
 
-#DATABASES = {'default': dj_database_url.config(conn_max_age=500)}
+DATABASES = {'default': dj_database_url.config(conn_max_age=500)}
 
 #DATABASES = {
  #   'default': {
