@@ -95,9 +95,9 @@ DATABASES = {
     'default': {
 	'ENGINE': 'django.db.backends.postgresql_psycopg2',
     	'NAME': 'obidatabase',
-    	'USER': 'postgres',
+    	'USER': 'ana',
     	'PASSWORD': 'password',
-    	'HOST': 'localhost',
+    	'HOST': '',
     	'PORT': '5432',
     }
 }
