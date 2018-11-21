@@ -6,7 +6,7 @@ import datetime
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    localizacao = models.CharField(max_length=30, blank=True, default='')
+    localizacao = models.CharField(max_length=100, blank=True, default='')
     instituicao = models.CharField(max_length=100, blank=True, default='')
     data_nascimento = models.DateField(null=True, blank=True)
 
