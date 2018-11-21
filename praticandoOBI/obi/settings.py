@@ -89,7 +89,6 @@ WSGI_APPLICATION = 'obi.wsgi.application'
 #db_from_env = dj_database_url.config()
 #DATABASES['default'].update(db_from_env)
 
-SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 DATABASES = {
     'default': dj_database_url.config(
