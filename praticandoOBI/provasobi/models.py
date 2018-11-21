@@ -3,7 +3,7 @@ from usuarios.models import Profile
 
 class Alternativa(models.Model):
     codalternativa = models.IntegerField(db_column='codAlternativa', primary_key=True)  # Field name made lowercase.
-    letraalternativa = models.CharField(db_column='letraAlternativa', max_length=1, blank=True, null=True)  # Field name made lowercase.
+    letraalternativa = models.CharField(db_column='letraAlternativa', max_length=10, blank=True, null=True)  # Field name made lowercase.
     textoalternativa = models.TextField(db_column='textoAlternativa', blank=True, null=True)  # Field name made lowercase.
     codquestao = models.ForeignKey('Questao', models.DO_NOTHING, db_column='codQuestao', blank=True, null=True)  # Field name made lowercase.
 
