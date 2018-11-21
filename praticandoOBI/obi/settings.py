@@ -90,9 +90,7 @@ WSGI_APPLICATION = 'obi.wsgi.application'
 #DATABASES['default'].update(db_from_env)
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
+    'default': dj_database_url.config()
 }
 
 #DATABASES = {'default': dj_database_url.config()}
