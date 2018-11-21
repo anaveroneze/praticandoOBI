@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'obi.wsgi.application'
 #DATABASES['default'].update(db_from_env)
 
 #DATABASES = {'default': dj_database_url.config(conn_max_age=500)}
-DATABASES = {'default': dj_database_url.config()}
+DATABASES = {'default': dj_database_url.config(default='postgres://ana:password@localhost/obidatabase')}
 
 #DATABASES = {
 #    'default': {
