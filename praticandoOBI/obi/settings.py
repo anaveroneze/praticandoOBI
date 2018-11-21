@@ -94,11 +94,11 @@ WSGI_APPLICATION = 'obi.wsgi.application'
 DATABASES = {
     'default': {
 	'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'obidatabase',
-    'USER': 'ana',
-    'PASSWORD': 'password',
-    'HOST': 'localhost',
-    'PORT': '5432',
+    	'NAME': 'obidatabase',
+    	'USER': 'ana',
+    	'PASSWORD': 'password',
+    	'HOST': 'localhost',
+    	'PORT': '5432',
     }
 }
 
