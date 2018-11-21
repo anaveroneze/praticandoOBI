@@ -89,23 +89,19 @@ WSGI_APPLICATION = 'obi.wsgi.application'
 #db_from_env = dj_database_url.config()
 #DATABASES['default'].update(db_from_env)
 
-DATABASES = {
-    'default': dj_database_url.config()
-}
-
 #DATABASES = {'default': dj_database_url.config()}
 #DATABASES = {'default': dj_database_url.config(default='postgres://ana:password@localhost/obidatabase')}
 
-#DATABASES = {
-#    'default': {
-#	'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#    	'NAME': 'obidatabase',
-#    	'USER': 'ana',
-#    	'PASSWORD': 'password',
-#    	'HOST': '',
-#    	'PORT': '5432',
-#    }
-#}
+DATABASES = {
+    'default': {
+	'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    	'NAME': 'obidatabase',
+    	'USER': 'ana',
+    	'PASSWORD': 'password',
+    	'HOST': '',
+    	'PORT': '5432',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
