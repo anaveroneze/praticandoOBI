@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'rh=%2m6_)5k#2ui2ttw6c=8gr%-nwa-346@e8_1pk$hhim8df^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -78,30 +78,7 @@ WSGI_APPLICATION = 'obi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'OBI.db'),
-#    }
-#}
-
-
-#db_from_env = dj_database_url.config()
-#DATABASES['default'].update(db_from_env)
-
 DATABASES = {'default': dj_database_url.config()}
-#DATABASES = {'default': dj_database_url.config(default='postgres://ana:password@localhost/obidatabase')}
-
-#DATABASES = {
-#    'default': {
-#	'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#    	'NAME': 'obidatabase',
-#    	'USER': 'ana',
-#    	'PASSWORD': 'password',
-#    	'HOST': '',
-#    	'PORT': '5432',
-#    }
-#}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -160,3 +137,8 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'praticandoobi@gmail.com'
 EMAIL_HOST_PASSWORD = '2018projetosoftware2'
 EMAIL_PORT = 587
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
