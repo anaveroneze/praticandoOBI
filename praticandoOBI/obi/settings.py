@@ -78,19 +78,19 @@ WSGI_APPLICATION = 'obi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'OBI.db'),
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'OBI.db'),
+#    }
+#}
 
 
 #db_from_env = dj_database_url.config()
 #DATABASES['default'].update(db_from_env)
 
 #DATABASES = {'default': dj_database_url.config(conn_max_age=500)}
-#DATABASES = {'default': dj_database_url.config()}
+DATABASES = {'default': dj_database_url.config()}
 
 #DATABASES = {
 #    'default': {
