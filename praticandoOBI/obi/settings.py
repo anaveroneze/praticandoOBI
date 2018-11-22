@@ -44,8 +44,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -118,8 +118,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 ALLOWED_HOSTS = ['*']
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+#novo para static files
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 #static files in production
+
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
