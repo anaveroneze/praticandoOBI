@@ -115,14 +115,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
-
 ALLOWED_HOSTS = ['*']
 
-#novo para static files
+#DO SITE DO HEROKU
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-#static files in production
-
 STATIC_URL = '/static/'
+#static files in production
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
