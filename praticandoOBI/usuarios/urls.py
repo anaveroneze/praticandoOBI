@@ -1,6 +1,6 @@
 from django.urls import path
-from django.conf.urls import url
-from usuarios.views import provaperson_baixar, provaperson_excluir, provaperson_baixar_docx, dadosbanco, update_perfil, cadastro_perfil, questoes_add, questoes_busca, home_usuario, provaperson, provaperson_detail, provaperson_edit, provasperson, provaperson_pronta
+from django.conf.urls import include, url
+from usuarios.views import upload_drive, provaperson_baixar, provaperson_excluir, provaperson_baixar_docx, dadosbanco, update_perfil, cadastro_perfil, questoes_add, questoes_busca, home_usuario, provaperson, provaperson_detail, provaperson_edit, provasperson, provaperson_pronta
 from provasobi.views import provas, problemas
 from django.contrib.auth import views as auth_views
 
@@ -11,6 +11,7 @@ urlpatterns = [
 
     path('banco/', dadosbanco, name='dadosbanco'),
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login_perfil'),
+    path('login/', include('registration.backends.default.urls')),
     path('logout/', auth_views.LogoutView.as_view(template_name='home.html'), name='logout_perfil'),
     path('novaprova/', provaperson, name='provaperson'),
     path('minhasprovas/', provasperson, name='provasperson'),
@@ -23,5 +24,7 @@ urlpatterns = [
     path('minhasprovas/<int:codprova>/baixarprova/', provaperson_baixar, name='provaperson_baixar'),
     path('minhasprovas/excluir/<int:pk>/', provaperson_excluir, name='provaperson_excluir'),
     path('minhasprovas/<int:codprova>/baixarprova_docx/', provaperson_baixar_docx, name='provaperson_baixar_docx'),
+    path('minhasprovas/<int:codprova>/upload_drive/', upload_drive, name='upload_drive'),
+
 # path('minhasprovas/pdf/', Pdf.as_view(), name='provaperson_baixar'),
 ]

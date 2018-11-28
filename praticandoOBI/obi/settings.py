@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'registration',
     'provasobi',
     'usuarios',
 ]
@@ -131,7 +132,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "live-static", "media_root")
 
 #
 
-
+# django registration redux
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+REGISTRATION_EMAIL_HTML = False
 
 #STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/'),)
 
@@ -145,7 +149,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'praticandoobi@gmail.com'
-EMAIL_HOST_PASSWORD = '2018projetosoftware2'
+EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 
 try:

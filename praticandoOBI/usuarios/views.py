@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import codecs
 from django.shortcuts import render, redirect, get_object_or_404
+import os
 from .models import Profile
 from .forms import ProfileForm, ProvaForm, QuestoesForm
 from provasobi.models import ProvaPerson, Prova, Questao, Classificacao, Problema, Alternativa
@@ -36,6 +37,15 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
+
+#API DRIVE:
+from googleapiclient.discovery import build
+from httplib2 import Http
+from oauth2client import file, client, tools
+from apiclient.http import MediaFileUpload
+
+#If modifying these scopes, delete the file token.json.
+SCOPES = 'https://www.googleapis.com/auth/drive'
 
 # @login_required
 def home_usuario(request):
@@ -425,6 +435,111 @@ def provaperson_baixar_docx(request, codprova):
     document.save(response)
 
     return response
+
+
+def upload_drive(request, codprova):
+
+    #CRIA PROVA DOCX:
+    provaperson = get_object_or_404(ProvaPerson, pk=codprova, autor=request.user.profile)
+    questoes = Questao.objects.all().filter(codquestao__in=provaperson.questoes.all()).order_by('numeroquestao')
+
+    id_questoes = []
+    for q in questoes:
+        id_questoes.append(q)
+
+    alternativas = Alternativa.objects.all().select_related('codquestao').filter(codquestao__in=id_questoes)
+    id_problemas = Questao.objects.all().filter(codquestao__in=provaperson.questoes.all()).values('codproblema')
+    problemas = Problema.objects.all().filter(codproblema__in=id_problemas).distinct()
+
+    document = Document()
+    document.add_heading(provaperson.titulo, 0)
+
+    count = 1
+    for p in problemas:
+        par2 = document.add_heading(p.tituloproblema, level=1)
+        par2.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        run2 = par2.add_run()
+
+        run2.add_break()
+
+        par1 = document.add_paragraph()
+        # par1.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+        run = par1.add_run(p.enunciadoproblema)
+        run.add_break()
+        run.add_break()
+
+        if p.regrasproblema:
+            par1.add_run('REGRAS: ')
+            run = par1.add_run(p.regrasproblema)
+            run.add_break()
+            run.add_break()
+
+        if p.imgproblema:
+            # local: 'static/ + p.imgproblema'
+            # heroku: '/app/praticandoOBI/static/'
+            document.add_picture('/app/praticandoOBI/static/' + p.imgproblema, width=Inches(4))
+
+        par = document.add_paragraph()
+        par.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        for q in questoes:
+            if p.codproblema == q.codproblema.codproblema:
+
+                e = q.enunciadoquestao
+                for i in range(len(acentos)):
+                    e = e.replace(acentoserro[i], acentos[i])
+
+                par.add_run('Questão ').bold = True
+                par.add_run(str(count)).bold = True
+                par.add_run(': ')
+                run = par.add_run(e)
+                run.add_break()
+                count += 1
+
+                if q.imgquestao:
+                    # local: 'static/ + q.imgproblema'
+                    # heroku: '/app/praticandoOBI/static/' + q.imgproblema
+                    document.add_picture('/app/praticandoOBI/static/' + q.imgproblema, width=Inches(4))
+
+                for a in alternativas:
+                    if a.codquestao.codquestao == q.codquestao:
+                        alt = a.textoalternativa
+                        for i in range(len(acentos)):
+                            alt = alt.replace(acentoserro[i], acentos[i])
+
+                        par.add_run(a.letraalternativa).bold = True
+                        par.add_run(') ').bold = True
+                        run = par.add_run(alt)
+                        run.add_break()
+
+                run.add_break()
+    #SALVA A PROVA LOCAL
+    document.save(provaperson.titulo + '.docx')
+
+    #CONECTA COM CONTA NO DRIVE
+    store = file.Storage('token.json')
+    creds = store.get()
+
+    if not creds or creds.invalid:
+        flags = tools.argparser.parse_args(args=[])
+        flow = client.flow_from_clientsecrets('credentials.json', SCOPES)
+        creds = tools.run_flow(flow, store, flags)
+    service = build('drive', 'v3', http=creds.authorize(Http()))
+
+
+    #ENVIA O ARQUIVO
+    file_metadata = {
+        'name': provaperson.titulo + '.docx',
+    }
+    media = MediaFileUpload(provaperson.titulo + '.docx',
+                            mimetype='text/',
+                            resumable=True)
+    prova = service.files().create(body=file_metadata,
+                                        media_body=media).execute()
+
+    #APAGA A PROVA SALVA LOCALMENTE
+    os.remove(provaperson.titulo + '.docx')
+    return redirect('https://docs.google.com/document/d/' + prova.get('id') + '/edit')
+
 
 def dadosbanco(request):
     file_path = '/app/praticandoOBI/OBI.db'
