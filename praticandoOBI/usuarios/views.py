@@ -513,15 +513,15 @@ def upload_drive(request, codprova):
 
                 run.add_break()
     #SALVA A PROVA LOCAL
-    document.save(provaperson.titulo + '.docx')
+    document.save('/app/praticandoOBI/' + provaperson.titulo + '.docx')
 
     #CONECTA COM CONTA NO DRIVE
-    store = file.Storage('token.json')
+    store = file.Storage('/app/praticandoOBI/token.json')
     creds = store.get()
 
     if not creds or creds.invalid:
         flags = tools.argparser.parse_args(args=[])
-        flow = client.flow_from_clientsecrets('credentials.json', SCOPES)
+        flow = client.flow_from_clientsecrets('/app/praticandoOBI/credentials.json', SCOPES)
         creds = tools.run_flow(flow, store, flags)
     service = build('drive', 'v3', http=creds.authorize(Http()))
 
@@ -537,7 +537,7 @@ def upload_drive(request, codprova):
                                         media_body=media).execute()
 
     #APAGA A PROVA SALVA LOCALMENTE
-    os.remove(provaperson.titulo + '.docx')
+    os.remove('/app/praticandoOBI/' + provaperson.titulo + '.docx')
     return redirect('https://docs.google.com/document/d/' + prova.get('id') + '/edit')
 
 
