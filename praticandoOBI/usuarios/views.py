@@ -530,7 +530,7 @@ def upload_drive(request, codprova):
     file_metadata = {
         'name': provaperson.titulo + '.docx',
     }
-    media = MediaFileUpload(provaperson.titulo + '.docx',
+    media = MediaFileUpload('/app/praticandoOBI/' + provaperson.titulo + '.docx',
                             mimetype='text/',
                             resumable=True)
     prova = service.files().create(body=file_metadata,
