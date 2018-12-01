@@ -152,6 +152,11 @@ EMAIL_HOST_USER = 'praticandoobi@gmail.com'
 EMAIL_HOST_PASSWORD = '2018projetosoftware2'
 EMAIL_PORT = 587
 
+EMAIL_HOST = os.environ.get('MAILGUN_SMTP_SERVER', '')
+EMAIL_PORT = os.environ.get('MAILGUN_SMTP_PORT', '')
+EMAIL_HOST_USER = os.environ.get('MAILGUN_SMTP_LOGIN', '')
+EMAIL_HOST_PASSWORD = os.environ.get('MAILGUN_SMTP_PASSWORD', '')
+
 try:
     from .local_settings import *
 except ImportError:
