@@ -2,7 +2,7 @@ from django.db import models
 from usuarios.models import Profile
 
 class Alternativa(models.Model):
-    codalternativa = models.IntegerField(db_column='codAlternativa', primary_key=True)  # Field name made lowercase.
+    codalternativa = models.AutoField(db_column='codAlternativa', primary_key=True)  # Field name made lowercase.
     letraalternativa = models.CharField(db_column='letraAlternativa', max_length=10, blank=True, null=True)  # Field name made lowercase.
     textoalternativa = models.TextField(db_column='textoAlternativa', blank=True, null=True)  # Field name made lowercase.
     codquestao = models.ForeignKey('Questao', models.DO_NOTHING, db_column='codQuestao', blank=True, null=True)  # Field name made lowercase.
@@ -13,13 +13,14 @@ class Alternativa(models.Model):
 
 
 class Prova(models.Model):
-    codprova = models.IntegerField(db_column='codProva', primary_key=True)  # Field name made lowercase.
+    codprova = models.AutoField(db_column='codProva', primary_key=True)  # Field name made lowercase.
     anoprova = models.IntegerField(db_column='anoProva', blank=True, null=True)  # Field name made lowercase.
     nivelprova = models.IntegerField(db_column='nivelProva', blank=True, null=True)  # Field name made lowercase.
     faseprova = models.IntegerField(db_column='faseProva', blank=True, null=True)  # Field name made lowercase.
-    urlprova = models.URLField(db_column='urlProva', null=True, blank=True, default='https://olimpiada.ic.unicamp.br/passadas/')
+    urlprova = models.URLField(db_column='urlProva', unique=True, null=True, blank=True, default='https://olimpiada.ic.unicamp.br/passadas/')
 
     class Meta:
+        unique_together = ['anoprova', 'faseprova', 'nivelprova']
         managed = True
         db_table = 'prova'
         ordering = ['anoprova']
@@ -40,7 +41,7 @@ class Problema(models.Model):
         db_table = 'problema'
 
 class Questao(models.Model):
-    codquestao = models.IntegerField(db_column='codQuestao', primary_key=True)  # Field name made lowercase.
+    codquestao = models.AutoField(db_column='codQuestao', primary_key=True)  # Field name made lowercase.
     numeroquestao = models.IntegerField(db_column='numeroQuestao', blank=True, null=True)  # Field name made lowercase.
     enunciadoquestao = models.TextField(db_column='enunciadoQuestao', blank=True, null=True)  # Field name made lowercase.
     gabaritoquestao = models.CharField(db_column='gabaritoQuestao', max_length=10, blank=True, null=True)

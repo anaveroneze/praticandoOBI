@@ -3,7 +3,7 @@ from .models import Prova, Classificacao, ProvaPerson, Questao, Problema, Altern
 
 # Customization Admin
 class ProvaAdmin(admin.ModelAdmin):
-    fields = [('codprova', 'anoprova', 'nivelprova', 'faseprova', 'urlprova')]
+    fields = [('anoprova', 'nivelprova', 'faseprova', 'urlprova')]
     list_display = ['codprova', 'anoprova', 'nivelprova', 'faseprova']
     search_fields = ['nivelprova', 'faseprova', 'anoprova']
 
