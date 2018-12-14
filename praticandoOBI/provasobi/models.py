@@ -28,7 +28,7 @@ class Prova(models.Model):
 class Problema(models.Model):
     codproblema = models.AutoField(db_column='codProblema', primary_key=True)
     numeroproblema = models.IntegerField(db_column='numeroProblema', blank=True, null=True)
-    tituloproblema = models.TextField(db_column='tituloProblema', blank=True, null=True)
+    tituloproblema = models.TextField(db_column='tituloProblema', blank=True, null=True, unique=True)
     enunciadoproblema = models.TextField(db_column='enunciadoProblema', blank=True, null=True)
     regrasproblema = models.TextField(db_column='regrasProblema', blank=True, null=True)
     imgproblema = models.TextField(db_column='imgProblema', blank=True, null=True, default='')

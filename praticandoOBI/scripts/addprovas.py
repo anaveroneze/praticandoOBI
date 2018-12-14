@@ -8,22 +8,28 @@ for file in files:
     prova = open(file, 'r')
     prova = prova.read()
     prova = json.loads(prova)
-
-    try:
-        prova_obj = Prova.objects.create(anoprova=prova['anoprova'], nivelprova=prova['nivelprova'],
-                                         faseprova=prova['faseprova'],
-                                         urlprova=prova['urlprova'])
-        prova_obj.save()
-        numeroproblema = 1
-        for problema in prova['problemas']:
+    prova_obj, created = Prova.objects.get_or_create(anoprova=prova['anoprova'], nivelprova=prova['nivelprova'],
+                                     faseprova=prova['faseprova'])
+    if created:
+        prova_obj(urlprova=prova['urlprova'])
+    prova_obj.save()
+    numproblema = 1
+    for problema in prova['problemas']:
+        try:
+            while 1:
+                try:
+                    Problema.objects.get(codprova=prova_obj, numeroproblema=numproblema)
+                    numproblema+=1
+                except Problema.DoesNotExist:
+                    break
             problema_obj = Problema.objects.create(tituloproblema=problema['tituloproblema'],
                                                    enunciadoproblema=problema['enunciadoproblema'],
                                                    regrasproblema=problema['regrasproblema'],
-                                                   imgproblema=problema['imgproblema'], numeroproblema=numeroproblema,
+                                                   imgproblema=problema['imgproblema'], numeroproblema=numproblema,
                                                    codprova=prova_obj)
             problema_obj.classificacao.set(problema['classificacao'])
             problema_obj.save()
-            numeroproblema += 1
+            numproblema += 1
             numeroquestao = 1
             for questao in problema['questoes']:
                 questao_obj = Questao.objects.create(numeroquestao=numeroquestao,
@@ -38,5 +44,6 @@ for file in files:
                                                          textoalternativa=alt['textoalternativa'],
                                                          codquestao=questao_obj)
                     alt_obj.save()
-    except IntegrityError:
-        print('Prova já Existe')
+        except IntegrityError:
+            print('Problema já existe')
+
