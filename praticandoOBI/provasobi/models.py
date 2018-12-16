@@ -11,6 +11,8 @@ class Alternativa(models.Model):
         managed = True
         db_table = 'alternativa'
 
+    def __str__(self):
+        return self.letraalternativa
 
 class Prova(models.Model):
     codprova = models.AutoField(db_column='codProva', primary_key=True)  # Field name made lowercase.
@@ -40,6 +42,9 @@ class Problema(models.Model):
         managed = True
         db_table = 'problema'
 
+    def __str__(self):
+        return self.tituloproblema
+
 class Questao(models.Model):
     codquestao = models.AutoField(db_column='codQuestao', primary_key=True)  # Field name made lowercase.
     numeroquestao = models.IntegerField(db_column='numeroQuestao', blank=True, null=True)  # Field name made lowercase.
@@ -53,6 +58,9 @@ class Questao(models.Model):
         db_table = 'questao'
         verbose_name_plural = 'Questões'
         verbose_name = 'Questão'
+
+    def __str__(self):
+        return self.numeroquestao.__str__()
 
 class Classificacao(models.Model):
     codclassificacao = models.AutoField(db_column='codClassificacao', primary_key=True)

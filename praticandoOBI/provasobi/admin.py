@@ -5,15 +5,23 @@ import nested_admin
 
 
 # Customization Admin
+class AlternativaInline(nested_admin.NestedTabularInline):
+    model = Alternativa
+    sortable_field_name = "letraalternativa"
+    extra = 0
+    max_num = 5
+
 class QuestaoInline(nested_admin.NestedStackedInline):
     model = Questao
     sortable_field_name = "numeroquestao"
-
+    extra = 0
+    inlines = [AlternativaInline]
 
 class ProblemaInline(nested_admin.NestedStackedInline):
     model = Problema
     sortable_field_name = "numeroproblema"
     inlines = [QuestaoInline]
+    extra = 0
 
 
 class ProvaAdmin(nested_admin.NestedModelAdmin):
