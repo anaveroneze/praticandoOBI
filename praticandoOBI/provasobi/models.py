@@ -64,6 +64,9 @@ class Classificacao(models.Model):
         verbose_name_plural = 'Classificações'
         verbose_name = 'Classificação'
 
+    def __str__(self):
+        return self.tituloclassificacao
+
 
 class ProvaPerson(models.Model):
     autor = models.ForeignKey(Profile, on_delete=models.CASCADE, default='')

@@ -1,28 +1,30 @@
 from django.contrib import admin
 from .models import Prova, Classificacao, ProvaPerson, Questao, Problema, Alternativa
 
+import nested_admin
+
 
 # Customization Admin
-# class QuestaoInline(admin.TabularInline):
-#     model = Questao
-#     max_num = 10
-#
-#
-# class ProblemaInline(admin.TabularInline):
-#     model = Problema
-#     max_num = 10
-#     inlines = (QuestaoInline,)
+class QuestaoInline(nested_admin.NestedStackedInline):
+    model = Questao
+    sortable_field_name = "numeroquestao"
 
 
-class ProvaAdmin(admin.ModelAdmin):
+class ProblemaInline(nested_admin.NestedStackedInline):
+    model = Problema
+    sortable_field_name = "numeroproblema"
+    inlines = [QuestaoInline]
+
+
+class ProvaAdmin(nested_admin.NestedModelAdmin):
     fields = [('anoprova', 'nivelprova', 'faseprova', 'urlprova')]
     list_display = ['codprova', 'anoprova', 'nivelprova', 'faseprova']
     search_fields = ['nivelprova', 'faseprova', 'anoprova']
-    # inlines = (ProblemaInline,)
+    inlines = [ProblemaInline]
 
 
 class ProvaPersonAdmin(admin.ModelAdmin):
-    fields = [('autor', 'titulo', 'ano', 'dificuldade', 'observacoes')]
+    fields = ['autor', 'titulo', 'ano', 'dificuldade', 'observacoes']
     list_display = ['autor', 'titulo', 'ano']
     search_fields = ['autor', 'ano']
 

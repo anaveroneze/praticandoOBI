@@ -26,4 +26,5 @@ urlpatterns = [
     path('provas/', include('provasobi.urls', namespace='provas_obi')),
     path('usuario/', include('usuarios.urls', namespace='usuarios_obi')),
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', activate, name='activate'),
+    url(r'^nested_admin/', include('nested_admin.urls')),
 ]
